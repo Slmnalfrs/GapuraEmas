@@ -1,0 +1,7 @@
+- [x] Fix CSS syntax errors in style.css (var (--bg-light) -> var(--bg-light), line-height: 1,6; -> 1.6, content:(); -> content: "")
+- [ ] Fix HTML structure in index.html (remove unmatched </main>)
+- [x] Update app cards in index.html to use local logo images from logo/ folder
+- [x] Apply highlight-app class to SMART Perizinan card in index.html
+- [x] Adjust .orange-circle positioning in style.css
+- [x] Remove or fix unused responsive classes in style.css
+- [x] Test the page by opening index.html in browser

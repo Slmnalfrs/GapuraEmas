@@ -1,0 +1,303 @@
+/* --- Global Stylesheet (Final Fixed Navbar) --- */
+
+:root {
+    --primary-orange: #f15a24;
+    --bg-light: #f9f9f9;
+    --text-dark: #333333;
+    --text-grey: #777777;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+html, body {
+    overflow-x: hidden; 
+}
+
+img, svg, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* ================================================
+   1. NAVBAR
+   ================================================ */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    /* --- INI YANG MEMBUATNYA FIXED --- */
+    position: fixed; /* Typo diperbaiki */
+    top: 0;
+    width: 100%;   
+    /* --- --- --- --- --- --- --- --- */
+    
+    z-index: 1000;
+}
+
+/* Navigasi (Tengah) */
+.navbar nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+}
+
+nav a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: var(--text-grey);
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: transparent;
+    display: inline-block;
+    font-size: 0.9rem;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-separator {
+    color: var(--text-grey);
+    font-weight: 500;
+    margin: 0 2px;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    background-color: transparent;
+    color: var(--primary-orange);
+    transform: translateY(-2px); 
+}
+
+nav a.active {
+    background-color: var(--primary-orange);
+    color: var(--white);
+    transform: translateY(0); 
+}
+nav a.active:hover {
+    background-color: #d13a0a; 
+}
+
+/* Logo (Kiri) */
+.navbar .logo {
+    flex-shrink: 0;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo img {
+    width: 35px;
+}
+.logo h1 {
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 1.25rem;
+}
+.logo .orange {
+    color: var(--primary-orange);
+}
+
+/* Info User (Kanan) */
+.navbar .user-info {
+    flex-shrink: 0;
+    margin-left: auto;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: right;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.notification-icon,
+.user-icon {
+    font-size: 20px;
+    color: var(--text-grey);
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+.user-icon {
+    font-size: 28px;
+    color: var(--primary-orange);
+}
+
+.notification-icon:hover {
+    color: var(--primary-orange);
+    transform: scale(1.1) translateY(-1px); 
+}
+.user-icon:hover {
+    color: #d13a0a;
+    transform: scale(1.1); 
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 0;
+    font-size: 0.9rem;
+}
+.user-details .role {
+    font-size: 0.75rem;
+    color: var(--text-grey);
+    margin: 0;
+}
+
+/* ================================================
+   2. FOOTER
+   ================================================ */
+footer {
+    background-color: var(--white);
+    padding: 25px 0;
+    margin-top: 60px; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-grey);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* ================================================
+   3. KONTEN UTAMA & ANIMASI
+   ================================================ */
+
+/* BARU: PENDORONG KONTEN */
+main {
+    /* Mendorong konten ke bawah seukuran navbar desktop */
+    padding-top: 70px; 
+    
+    /* Animasi fade-in saat ganti halaman */
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================================
+   4. RESPONSIVE
+   ================================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+    }
+    .navbar nav {
+        order: 3; 
+        width: 100%;
+        justify-content: center;
+        padding-right: 0;
+        margin-top: 10px;
+    }
+    .user-info {
+        order: 2; 
+        margin-left: auto;
+        margin-right: 0;
+    }
+    .logo h1 {
+        font-size: 1rem;
+    }
+    .logo img {
+        width: 30px;
+    }
+    .user-details {
+        display: none; 
+    }
+    .notification-icon,
+    .user-icon {
+        font-size: 24px;
+    }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    /* BARU: PENDORONG KONTEN MOBILE */
+    main {
+        /* Di mobile, navbar-nya 2 baris (lebih tinggi) */
+        padding-top: 110px; 
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 8px 10px;
+    }
+    .navbar nav a {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+        margin: 0 2px;
+    }
+    .nav-separator {
+        font-size: 0.8rem;
+        margin: 0 1px;
+    }
+    .logo h1 {
+        font-size: 0.9rem;
+    }
+    .logo img {
+        width: 25px;
+    }
+    .user-info {
+        gap: 10px;
+    }
+    .notification-icon,
+    .user-icon {
+        font-size: 20px;
+    }
+    .container {
+        padding: 0 15px;
+    }
+
+    /* BARU: PENDORONG KONTEN MOBILE KECIL */
+    main {
+        padding-top: 100px;
+    }
+}
