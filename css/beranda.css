@@ -287,6 +287,30 @@
   text-align: center;
 }
 
+.fab-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+}
+.fab {
+  background-color: var(--primary-orange);
+  color: var(--white);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+.fab:hover {
+  transform: scale(1.1);
+}
 
 /* ================================================
    6. ANIMASI KEYFRAMES
