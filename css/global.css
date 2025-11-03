@@ -1,206 +1,209 @@
 /* --- Global Stylesheet (Final Fixed Navbar + Mobile Bottom Nav) --- */
 
 :root {
-    --primary-orange: #f15a24;
-    --bg-light: #f9f9f9;
-    --text-dark: #333333;
-    --text-grey: #777777;
-    --white: #ffffff;
-    --border-color: #e0e0e0;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --border-radius: 12px;
+  --primary-orange: #f15a24;
+  --bg-light: #f9f9f9;
+  --text-dark: #333333;
+  --text-grey: #777777;
+  --white: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-light);
-    color: var(--text-dark);
-    line-height: 1.6;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
 }
 
-html, body {
-    overflow-x: hidden; 
+html,
+body {
+  overflow-x: hidden;
 }
 
-img, svg, iframe {
-    max-width: 100%;
-    height: auto;
-    display: block;
+img,
+svg,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
 /* ================================================
    1. NAVBAR ATAS (FIXED) - DIPERBESAR
    ================================================ */
 .navbar {
-    display: flex;
-    align-items: center;
-    padding: 15px 30px; /* DIUBAH: dari 10px */
-    background: var(--white);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    position: fixed; 
-    top: 0;
-    width: 100%;   
-    z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 15px 30px; /* DIUBAH: dari 10px */
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 /* Navigasi Teks (Desktop) */
 .navbar nav {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 20px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
 }
 
 nav a {
-    margin: 0 5px;
-    text-decoration: none;
-    color: var(--text-grey);
-    font-weight: 500;
-    padding: 8px 14px; /* DIUBAH: padding diperbesar */
-    border-radius: 6px;
-    background-color: transparent;
-    display: inline-block;
-    font-size: 0.9rem;
-    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+  margin: 0 5px;
+  text-decoration: none;
+  color: var(--text-grey);
+  font-weight: 500;
+  padding: 8px 14px; /* DIUBAH: padding diperbesar */
+  border-radius: 6px;
+  background-color: transparent;
+  display: inline-block;
+  font-size: 0.9rem;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
 }
 .nav-separator {
-    color: var(--text-grey);
-    font-weight: 500;
-    margin: 0 2px;
-    font-size: 0.9rem;
+  color: var(--text-grey);
+  font-weight: 500;
+  margin: 0 2px;
+  font-size: 0.9rem;
 }
 nav a:hover {
-    background-color: transparent;
-    color: var(--primary-orange);
-    transform: translateY(-2px); 
+  background-color: transparent;
+  color: var(--primary-orange);
+  transform: translateY(-2px);
 }
 nav a.active {
-    background-color: var(--primary-orange);
-    color: var(--white);
-    transform: translateY(0); 
+  background-color: var(--primary-orange);
+  color: var(--white);
+  transform: translateY(0);
 }
 nav a.active:hover {
-    background-color: #d13a0a; 
+  background-color: #d13a0a;
 }
 
 /* Logo (Kiri) */
 .navbar .logo {
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .logo img {
-    width: 40px; /* DIUBAH: dari 35px */
+  width: 40px; /* DIUBAH: dari 35px */
 }
 .logo h1 {
-    font-weight: 700;
-    color: var(--text-dark);
-    font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 1.25rem;
 }
 .logo .orange {
-    color: var(--primary-orange);
+  color: var(--primary-orange);
 }
 
 /* Info User (Kanan) */
 .navbar .user-info {
-    flex-shrink: 0;
-    margin-left: auto;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 .user-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-align: right;
-    margin-left: auto;
-    margin-right: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: right;
+  margin-left: auto;
+  margin-right: 0;
 }
 .notification-icon,
 .user-icon {
-    font-size: 20px;
-    color: var(--text-grey);
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.2s ease;
+  font-size: 20px;
+  color: var(--text-grey);
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 .user-icon {
-    font-size: 30px; /* DIUBAH: dari 28px */
-    color: var(--primary-orange);
+  font-size: 30px; /* DIUBAH: dari 28px */
+  color: var(--primary-orange);
 }
 .notification-icon:hover {
-    color: var(--primary-orange);
-    transform: scale(1.1) translateY(-1px); 
+  color: var(--primary-orange);
+  transform: scale(1.1) translateY(-1px);
 }
 .user-icon:hover {
-    color: #d13a0a;
-    transform: scale(1.1); 
+  color: #d13a0a;
+  transform: scale(1.1);
 }
 .user-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 0;
-    font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0;
+  font-size: 0.9rem;
 }
 .user-details .role {
-    font-size: 0.75rem;
-    color: var(--text-grey);
-    margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-grey);
+  margin: 0;
 }
 
 /* ================================================
    2. FOOTER
    ================================================ */
 footer {
-    background-color: var(--white);
-    padding: 25px 0;
-    margin-top: 60px; 
+  background-color: var(--white);
+  padding: 25px 0;
+  margin-top: 60px;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-    color: var(--text-grey);
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--text-grey);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
 /* ================================================
    3. KONTEN UTAMA & ANIMASI
    ================================================ */
 main {
-    /* DIUBAH: Disesuaikan untuk navbar atas yg lebih besar */
-    padding-top: 85px; 
-    animation: fadeIn 0.6s ease-out forwards;
+  /* DIUBAH: Disesuaikan untuk navbar atas yg lebih besar */
+  padding-top: 85px;
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px); 
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ================================================
@@ -210,71 +213,70 @@ main {
    4. NAVBAR BAWAH (MOBILE) - UKURAN KONSISTEN
    ================================================ */
 .mobile-nav {
-    display: none; 
-    position: fixed;
-    z-index: 1000;
-    
-    /* Ukuran dan Posisi */
-    bottom: 10px; 
-    left: 5px;   
-    right: 5px;  
-    width: auto;  
-    
-    background-color: var(--white);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    border-radius: 15px; 
-    padding: 3px; 
-    
-    justify-content: space-around; 
-    align-items: center;
+  display: none;
+  position: fixed;
+  z-index: 1000;
+
+  /* Ukuran dan Posisi */
+  bottom: 10px;
+  left: 5px;
+  right: 5px;
+  width: auto;
+
+  background-color: var(--white);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 3px;
+
+  justify-content: space-around;
+  align-items: center;
 }
 
 /* Gaya Tombol (Semua Tombol) */
 .mobile-nav a {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    
-    flex-basis: 0; 
-    flex-grow: 1;
-    min-height: 45px; 
-    
-    padding: 4px 6px; 
-    
-    border-radius: 10px; 
-    transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  flex-basis: 0;
+  flex-grow: 1;
+  min-height: 45px;
+
+  padding: 4px 6px;
+
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
 /* Teks (Semua Tombol) - Ukuran Tetap */
 .mobile-nav a span {
-    font-size: 0.75rem; /* DIUBAH: Ukuran tetap */
-    font-weight: 500;
-    margin-top: 2px; 
+  font-size: 0.75rem; /* DIUBAH: Ukuran tetap */
+  font-weight: 500;
+  margin-top: 2px;
 }
 
 /* Ikon (Semua Tombol) - Ukuran Tetap */
 .mobile-nav a i {
-    font-size: 1.2rem; /* DIUBAH: Ukuran tetap */
-    margin-bottom: 0;
+  font-size: 1.2rem; /* DIUBAH: Ukuran tetap */
+  margin-bottom: 0;
 }
 
 /* Gaya Tombol Inaktif (Default) */
 .mobile-nav a:not(.active) {
-    color: var(--text-grey);
-    background-color: transparent;
+  color: var(--text-grey);
+  background-color: transparent;
 }
 .mobile-nav a:not(.active):hover {
-    color: var(--text-dark); 
+  color: var(--text-dark);
 }
 
 /* Gaya Tombol Aktif (Hanya Ubah Warna) */
 .mobile-nav a.active {
-    background-color: var(--primary-orange);
-    color: var(--white);
+  background-color: var(--primary-orange);
+  color: var(--white);
 }
-
 
 /* ================================================
    5. RESPONSIVE
@@ -282,82 +284,82 @@ main {
 
 /* Tablet ( < 768px ) */
 @media (max-width: 768px) {
-    /* -- Navbar Atas -- */
-    .navbar {
-        padding: 10px 15px; /* Kembali ke padding mobile */
-        flex-wrap: nowrap; 
-    }
-    .navbar nav {
-        display: none; 
-    }
-    .user-info {
-        order: 2; 
-        margin-left: auto;
-        margin-right: 0;
-    }
-    .logo h1 {
-        display: none; 
-    }
-    .logo img {
-        width: 35px; /* Ukuran logo mobile */
-    }
-    .user-details {
-        display: none; 
-    }
-    .notification-icon,
-    .user-icon {
-        font-size: 24px;
-    }
+  /* -- Navbar Atas -- */
+  .navbar {
+    padding: 10px 15px; /* Kembali ke padding mobile */
+    flex-wrap: nowrap;
+  }
+  .navbar nav {
+    display: none;
+  }
+  .user-info {
+    order: 2;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .logo h1 {
+    display: none;
+  }
+  .logo img {
+    width: 35px; /* Ukuran logo mobile */
+  }
+  .user-details {
+    display: none;
+  }
+  .notification-icon,
+  .user-icon {
+    font-size: 24px;
+  }
 
-    /* -- Footer -- */
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-    
-    /* -- Pendorong Konten Atas -- */
-    main {
-        padding-top: 70px; /* Kembali ke 70px (karena navbar atas mobile tidak berubah) */
-    }
-    
-    /* -- Pendorong Konten Bawah (untuk mobile nav) -- */
-    body {
-        padding-bottom: 80px; /* DIUBAH: Disesuaikan untuk nav yg lebih kecil */
-    }
+  /* -- Footer -- */
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
 
-    /* -- Tampilkan Navbar Bawah -- */
-    .mobile-nav {
-        display: flex; 
-    }
+  /* -- Pendorong Konten Atas -- */
+  main {
+    padding-top: 70px; /* Kembali ke 70px (karena navbar atas mobile tidak berubah) */
+  }
+
+  /* -- Pendorong Konten Bawah (untuk mobile nav) -- */
+  body {
+    padding-bottom: 80px; /* DIUBAH: Disesuaikan untuk nav yg lebih kecil */
+  }
+
+  /* -- Tampilkan Navbar Bawah -- */
+  .mobile-nav {
+    display: flex;
+  }
 }
 
 /* Mobile ( < 480px ) */
 @media (max-width: 480px) {
-    .navbar {
-        padding: 8px 10px;
-    }
-    .logo img {
-        width: 30px; 
-    }
-    .user-info {
-        gap: 10px;
-    }
-    .notification-icon,
-    .user-icon {
-        font-size: 20px;
-    }
-    .container {
-        padding: 0 15px;
-    }
+  .navbar {
+    padding: 8px 10px;
+  }
+  .logo img {
+    width: 30px;
+  }
+  .user-info {
+    gap: 10px;
+  }
+  .notification-icon,
+  .user-icon {
+    font-size: 20px;
+  }
+  .container {
+    padding: 0 15px;
+  }
 
-    /* -- Pendorong Konten Atas -- */
-    main {
-        padding-top: 60px; /* Tetap 60px */
-    }
-    
-    /* -- Pendorong Konten Bawah -- */
-    body {
-        padding-bottom: 70px; /* DIUBAH: Disesuaikan untuk nav yg lebih kecil */
-    }
+  /* -- Pendorong Konten Atas -- */
+  main {
+    padding-top: 60px; /* Tetap 60px */
+  }
+
+  /* -- Pendorong Konten Bawah -- */
+  body {
+    padding-bottom: 70px; /* DIUBAH: Disesuaikan untuk nav yg lebih kecil */
+  }
 }
