@@ -222,7 +222,7 @@ main {
     
     background-color: var(--white);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    border-radius: 20px; 
+    border-radius: 15px; 
     padding: 3px; 
     
     justify-content: space-around; 
@@ -241,7 +241,7 @@ main {
     flex-grow: 1;
     min-height: 45px; 
     
-    padding: 4px 2px; 
+    padding: 4px 6px; 
     
     border-radius: 10px; 
     transition: all 0.3s ease;
