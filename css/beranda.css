@@ -9,7 +9,7 @@
   position: relative;
 
   /* Mendorong konten ke bawah navbar desktop */
-  padding-top: 80px;
+  padding-top: 80px
 }
 
 .hero-container {
@@ -286,6 +286,7 @@
   flex-direction: column;
   text-align: center;
 }
+
 
 /* ================================================
    6. ANIMASI KEYFRAMES
