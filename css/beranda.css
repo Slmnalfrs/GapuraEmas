@@ -203,6 +203,7 @@
   font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 3px;
+  text-align: center;
 }
 .app-info p {
   font-size: 0.9rem;
