@@ -8,6 +8,7 @@
   color: var(--text-dark);
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 15px;
+  font-family: poppins, sans-serif;
 }
 
 /* Base Card (Konsisten dengan halaman lain) */

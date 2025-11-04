@@ -8,6 +8,7 @@
   color: var(--text-dark);
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 15px;
+  font-family: poppins, sans-serif;
 
   /* Animasi fade-in */
   animation: fadeIn 0.5s ease-out forwards;
@@ -24,7 +25,8 @@
 
   /* Animasi fade-in (sedikit delay) */
   animation: fadeIn 0.5s ease-out 0.1s forwards;
-  opacity: 0; /* Mulai transparan untuk animasi */
+  opacity: 0;
+  /* Mulai transparan untuk animasi */
 }
 
 .content-card h2 {
@@ -33,6 +35,7 @@
   margin-bottom: 20px;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 15px;
+  font-family: poppins, sans-serif;
 }
 
 /* === Bagian Profil === */
@@ -77,6 +80,7 @@
   color: var(--text-grey);
   border: 1px solid var(--border-color);
 }
+
 .form-group small {
   display: block;
   margin-top: 8px;
@@ -104,7 +108,8 @@
 .profile-photo .avatar {
   width: 150px;
   height: 150px;
-  border-radius: 8px; /* Kotak */
+  border-radius: 8px;
+  /* Kotak */
   object-fit: cover;
   margin-bottom: 15px;
   border: 3px solid var(--border-color);
@@ -132,42 +137,62 @@
   transition: background-color 0.3s ease, color 0.3s ease,
     border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .btn-primary {
   background-color: var(--primary-orange);
   color: var(--white);
 }
+
 .btn-primary:hover {
   background-color: #d13a0a;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(241, 90, 36, 0.2);
 }
+
 .btn-secondary {
   background-color: var(--white);
   color: var(--primary-orange);
   border: 1px solid var(--primary-orange);
 }
+
 .btn-secondary:hover {
   background-color: #fff7f0;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(241, 90, 36, 0.15);
 }
+
+.btn-success {
+  background-color: #28a745;
+  color: var(--white);
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+}
+
 .btn-tertiary {
   background-color: transparent;
   color: var(--text-grey);
   padding: 10px;
 }
+
 .btn-tertiary:hover {
   color: var(--primary-orange);
   transform: translateY(-2px);
 }
+
 .btn-danger {
   background-color: var(--white);
-  color: #be0e0eff; /* Merah */
-  border: 1px solid #be0e0eff;
+  color: #c12e00;
+  /* Merah */
+  border: 1px solid #c12e00;
   padding: 10px 20px;
 }
+
 .btn-danger:hover {
-  background-color: #be0e0eff;
+  background-color: #c12e00;
   color: var(--white);
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(190, 14, 14, 0.2);
@@ -184,14 +209,17 @@
   grid-template-columns: 1fr 1fr;
   gap: 30px;
 }
+
 .telegram-cara {
   border-right: 1px solid var(--border-color);
   padding-right: 30px;
 }
+
 .telegram-cara:last-child {
   border-right: none;
   padding-right: 0;
 }
+
 .telegram-cara h3 {
   font-size: 1.2rem;
   font-weight: 600;
@@ -199,25 +227,41 @@
   padding-bottom: 0;
   border-bottom: none;
 }
-.telegram-cara h3 span {
+
+/* [PERBAIKAN] Mengganti warna link video agar konsisten */
+.telegram-cara h3 a {
+  text-decoration: none;
   font-weight: 500;
-  color: var(--text-grey);
   font-size: 1rem;
+  color: var(--text-grey); /* Warna abu-abu */
+  transition: color 0.3s ease;
 }
+.telegram-cara h3 a:hover {
+  color: var(--primary-orange);
+}
+.telegram-cara h3 a span {
+  color: #56CD87;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 .telegram-cara ol {
   margin-left: 20px;
   margin-bottom: 20px;
 }
+
 .telegram-cara ol li {
   margin-bottom: 10px;
   line-height: 1.6;
   color: var(--text-dark);
 }
+
 .telegram-cara ol li a {
-  color: var(--primary-orange);
+  color: #12A4EC; /* [PERBAIKAN] Link diubah jadi oranye */
   text-decoration: none;
   font-weight: 500;
 }
+
 .telegram-cara ol li a:hover {
   text-decoration: underline;
 }
@@ -227,11 +271,12 @@
   height: 150px;
   border: 1px solid var(--border-color);
   display: block;
-  margin-top: 0;
+  margin-top: 20px;
   margin-bottom: 0;
   /* Transisi 'Zoom' */
   transition: transform 0.3s ease;
 }
+
 .qr-code:hover {
   transform: scale(1.03);
 }
@@ -239,11 +284,13 @@
 .qr-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Default rata tengah untuk desktop */
   margin-top: 10px;
 }
 
-.qr-wrapper .btn-secondary {
+.qr-wrapper .btn-secondary,
+.qr-wrapper .btn-success {
+  /* Menargetkan kedua tombol */
   margin-bottom: 20px;
 }
 
@@ -261,6 +308,7 @@
   gap: 10px;
   margin-top: 20px;
 }
+
 .telegram-input input {
   flex-grow: 1;
   padding: 10px 15px;
@@ -280,36 +328,22 @@
   box-shadow: 0 0 0 3px rgba(241, 90, 36, 0.15);
 }
 
+/* === [BARU] Helper Class untuk Rata Tengah === */
+.text-center {
+  text-align: center;
+}
+.text-center .qr-code {
+  margin-left: auto;
+  margin-right: auto;
+}
+.text-center .qr-caption {
+  text-align: center;
+}
+
 /* === Teks Placeholder === */
 ::placeholder {
   color: var(--text-grey);
   opacity: 1;
-}
-
-/* === Floating Action Button (FAB) === */
-.fab-container {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 100;
-}
-.fab {
-  background-color: var(--primary-orange);
-  color: var(--white);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease;
-}
-.fab:hover {
-  transform: scale(1.1);
 }
 
 /* === Animasi Keyframes === */
@@ -318,6 +352,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -330,36 +365,46 @@
     flex-direction: column;
     gap: 30px;
   }
+
   .profile-photo {
     order: -1;
     margin-top: 0;
     text-align: center;
   }
+
   .telegram-content {
     grid-template-columns: 1fr;
   }
+
   .telegram-cara {
     border-right: none;
     padding-right: 0;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 30px;
   }
+
   .telegram-cara:last-child {
     border-bottom: none;
     padding-bottom: 0;
   }
+
+  /* Mengubah .qr-wrapper untuk rata tengah */
   .qr-wrapper {
-    display: block;
+    display: flex; /* Menggunakan flex */
+    flex-direction: column; /* Tumpuk vertikal */
+    align-items: center; /* Rata tengah horizontal */
     margin-left: 0;
   }
+
   .qr-code {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: auto; /* Memastikan rata tengah (jika flex gagal) */
+    margin-right: auto;
   }
+
   .qr-caption {
     margin-left: 0;
     margin-right: 0;
-    text-align: left;
+    text-align: center; /* Rata tengah caption */
   }
 }
 
@@ -367,12 +412,15 @@
   .content-card {
     padding: 20px;
   }
+
   .page-title {
     font-size: 1.5rem;
   }
+
   .telegram-input {
     flex-direction: column;
   }
+
   .telegram-input input,
   .telegram-input button {
     width: 100%;

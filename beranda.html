@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GAPURA EMAS - Kabupaten Pasuruan</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/beranda.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/beranda.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <!-- Header -->
     <header class="navbar">
-        <div class="logo">
-            <img src="assets/gapura.png" alt="Logo Gapura Emas" class="logo-image">
-            <h1><span class="orange">GAPURA</span>EMAS</h1>
-        </div>
-    <nav>
+      <div class="logo">
+        <img
+          src="assets/gapura.png"
+          alt="Logo Gapura Emas"
+          class="logo-image"
+        />
+        <!-- [PERBAIKAN] Diubah ke H1 agar konsisten dengan global.css -->
+        <h1><span class="orange">GAPURA</span>EMAS</h1>
+      </div>
+      <nav>
         <a href="beranda.html" class="active">Beranda</a>
         <span class="nav-separator">|</span>
         <a href="personalisasi.html">Personalisasi</a>
@@ -26,268 +36,175 @@
         <a href="keamanan.html">Keamanan</a>
         <span class="nav-separator">|</span>
         <a href="riwayat.html">Riwayat</a>
-    </nav>
-        <div class="user-info">
-            <i class="fas fa-bell notification-icon"></i>
-            <div class="user-details">
-                <span>Nama Pengguna</span>
-                <p class="role">Role Pengguna</p>
-            </div>
-            <i class="fas fa-user-circle user-icon"></i>
+      </nav>
+      <div class="user-info">
+        <i class="fas fa-bell notification-icon"></i>
+        <div class="user-details">
+          <span>Nama Pengguna</span>
+          <p class="role">Role Pengguna</p>
         </div>
+        <i class="fas fa-user-circle user-icon"></i>
+      </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- [PERBAIKAN] <main> sekarang membungkus SEMUA konten halaman -->
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
         <div class="container hero-container">
-            <div class="hero-text">
-                <h2>Satu <span class="orange">Akses</span></h2>
-                <p>Untuk Semua Layanan Digital</p> 
-                <p>Kabupaten Pasuruan.</p>
-            </div>
-            <div class="hero-image">
-                <div class="orange-circle"></div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Lambang_Kabupaten_Pasuruan.png"
-                    alt="Lambang Kabupaten Pasuruan" class="logo-pasuruan">
-            </div>
+          <div class="hero-text">
+            <h2>Satu <span class="orange">Akses</span></h2>
+            <!-- [PERBAIKAN] Menggabungkan <p> agar rapi di mobile -->
+            <p>Untuk Semua Layanan Digital<br />Kabupaten Pasuruan.</p>
+          </div>
+          <div class="hero-image">
+            <div class="orange-circle"></div>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Lambang_Kabupaten_Pasuruan.png"
+              alt="Lambang Kabupaten Pasuruan"
+              class="logo-pasuruan"
+            />
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Banner -->
-    <section class="banner-section">
+      <!-- Banner -->
+      <section class="banner-section">
         <div class="banner">
-            <img src="assets/iklan1.jpeg" alt="Banner 1">
+          <img src="assets/banner.jpg" alt="Banner 1" />
         </div>
         <div class="banner">
-            <img src="assets/iklan1.jpeg" alt="Banner 2">
+          <img src="assets/banner.jpg" alt="Banner 2" />
         </div>
         <div class="banner">
-            <img src="assets/iklan1.jpeg" alt="Banner 3">
+          <img src="assets/banner.jpg" alt="Banner 3" />
         </div>
-    </section>
+      </section>
 
-    <section class="app-section container">
-    
+      <!-- App Section -->
+      <section class="app-section container">
         <div class="app-navigation">
-            <div class="app-tabs">
-                <button class="tab-link active">Semua Aplikasi</button>
-                <button class="tab-link">Aplikasi Terbaru</button>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Cari Aplikasi">
-                <i class="fas fa-search search-icon"></i>
-            </div>
+          <div class="app-tabs">
+            <button class="tab-link active">Semua Aplikasi</button>
+            <button class="tab-link">Aplikasi Terbaru</button>
+          </div>
+          <div class="search-bar">
+            <input type="text" placeholder="Cari Aplikasi" />
+            <i class="fas fa-search search-icon"></i>
+          </div>
         </div>
-    
-        <div class="app-grid">
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/smart.png"App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>SMART Perizinan</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-soon">Segera Hadir</a>
-            </div>
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/sepakat.png" alt="App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>Sepakat Kabupaten Pasuruan</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-open">Buka</a>
-            </div>
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/sakti.png" alt="App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>SAKTI</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-open">Buka</a>
-            </div>
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/apik.png" alt="App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>APIK UMKM</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-soon">Segera Hadir</a>
-            </div>
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/hallo.png" alt="App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>Hallo Fish</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-soon">Segera Hadir</a>
-            </div>
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/saraswati.png" alt="App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>SARASWATI</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-soon">Segera Hadir</a>
-            </div>
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/spbe.png" alt="App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>SPBE</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-open">Buka</a>
-            </div>
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/sikap.png" alt="App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>Sikap Baja</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-soon">Segera Hadir</a>
-            </div>
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/sapa.png" alt="App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>Sapa Warga</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-soon">Segera Hadir</a>
-            </div>
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/majestik.png" alt="App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>Majestik</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-soon">Segera Hadir</a>
-            </div>
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/butam.png" alt="App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>Buku Tamu</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-soon">Segera Hadir</a>
-            </div>
-    
-            <div class="app-card">
-                <div class="card-main">
-                    <img src="assets/anjab.png" alt="App Icon" class="app-logo-placeholder">
-                    <div class="app-info">
-                        <h3>Anjab (Development)</h3>
-                        <p>Deskripsi</p>
-                    </div>
-                </div>
-                <a href="#" class="app-status status-soon">Segera Hadir</a>
-            </div>
-        </div>
-               <div class="fab-container">
-      <button class="fab">
-        <i class="fas fa-universal-access"></i>
-      </button>
-    </div>
 
-       <div class="fab-container">
-      <button class="fab">
-        <i class="fas fa-universal-access"></i>
-      </button>
-    </div>
-    
-    </section>
+        <div class="app-grid">
+          <!-- (Contoh Kartu) -->
+          <div class="app-card">
+            <div class="card-main">
+              <img
+                src="assets/smart.png"
+                alt="App Icon"
+                class="app-logo-placeholder"
+              />
+              <div class="app-info">
+                <h3>SMART Perizinan</h3>
+                <p>Aplikasi perizinan online kapan saja dan dimana saja</p>
+              </div>
+            </div>
+            <a href="#" class="app-status status-soon">Segera Hadir</a>
+          </div>
+          <div class="app-card">
+            <div class="card-main">
+              <img
+                src="assets/sepakat.png"
+                alt="App Icon"
+                class="app-logo-placeholder"
+              />
+              <div class="app-info">
+                <h3>Sepakat Kabupaten Pasuruan</h3>
+                <p>Aplikasi jmhgfhhbgfjhgfhkukiyfyktykuk</p>
+              </div>
+            </div>
+            <a href="#" class="app-status status-open">Buka</a>
+          </div>
+          <div class="app-card">
+            <div class="card-main">
+              <img
+                src="assets/sakti.png"
+                alt="App Icon"
+                class="app-logo-placeholder"
+              />
+              <div class="app-info">
+                <h3>SAKTI</h3>
+                <p>Apliaksi ajnjehuhcnnaiwnwn diufewn ncaiehhfk fjsjidfa</p>
+              </div>
+            </div>
+            <a href="#" class="app-status status-open">Buka</a>
+          </div>
+          <!-- (Tambahkan kartu lainnya di sini) -->
+        </div>
+      </section>
     </main>
+    
+    <div class="fab-container">
+        <button class="fab">
+          <i class="fas fa-universal-access"></i>
+        </button>
+      </div>
 
     <footer>
-        <div class="container footer-content">
-            <p class="copyright">COPYRIGHT © 2022–2025 Diskominfo Kabupaten Pasuruan</p>
-            <p class="gov-text">Pemerintah Daerah Kabupaten Pasuruan</p>
-        </div>
+      <div class="container footer-content">
+        <p class="copyright">
+          COPYRIGHT © 2022–2025 Diskominfo Kabupaten Pasuruan
+        </p>
+        <p class="gov-text">Pemerintah Daerah Kabupaten Pasuruan</p>
+      </div>
     </footer>
 
     <nav class="mobile-nav">
-        <a href="beranda.html" class="active">
-            <i class="fas fa-home"></i>
-            <span>Beranda</span>
-        </a>
-        <a href="personalisasi.html">
-            <i class="fas fa-user-cog"></i>
-            <span>Personalisasi</span>
-        </a>
-        <a href="keamanan.html">
-            <i class="fas fa-shield-alt"></i>
-            <span>Keamanan</span>
-        </a>
-        <a href="riwayat.html">
-            <i class="fas fa-history"></i>
-            <span>Riwayat</span>
-        </a>
+      <a href="beranda.html" class="active">
+        <i class="fas fa-home"></i>
+        <span>Beranda</span>
+      </a>
+      <a href="personalisasi.html">
+        <i class="fas fa-user-cog"></i>
+        <span>Personalisasi</span>
+      </a>
+      <a href="keamanan.html">
+        <i class="fas fa-shield-alt"></i>
+        <span>Keamanan</span>
+      </a>
+      <a href="riwayat.html">
+        <i class="fas fa-history"></i>
+        <span>Riwayat</span>
+      </a>
     </nav>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabLinks = document.querySelectorAll('.tab-link');
-            const appCards = document.querySelectorAll('.app-card');
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabLinks = document.querySelectorAll(".tab-link");
+        const appCards = document.querySelectorAll(".app-card");
 
-            tabLinks.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Remove active class from all tabs
-                    tabLinks.forEach(t => t.classList.remove('active'));
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-
-                    const tabText = this.textContent.trim();
-
-                    if (tabText === 'Semua Aplikasi') {
-                        // Show all cards
-                        appCards.forEach(card => {
-                            card.style.display = 'block';
-                        });
-                    } else if (tabText === 'Aplikasi Terbaru') {
-                        // Show only cards with status-open
-                        appCards.forEach(card => {
-                            const status = card.querySelector('.app-status');
-                            if (status && status.classList.contains('status-open')) {
-                                card.style.display = 'block';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    }
-                });
-            });
+        tabLinks.forEach((tab) => {
+          tab.addEventListener("click", function () {
+            tabLinks.forEach((t) => t.classList.remove("active"));
+            this.classList.add("active");
+            const tabText = this.textContent.trim();
+            if (tabText === "Semua Aplikasi") {
+              appCards.forEach((card) => {
+                // [PERBAIKAN] Kartu app-card menggunakan display: flex
+                card.style.display = "flex";
+              });
+            } else if (tabText === "Aplikasi Terbaru") {
+              appCards.forEach((card) => {
+                const status = card.querySelector(".app-status");
+                if (status && status.classList.contains("status-open")) {
+                  card.style.display = "flex";
+                } else {
+                  card.style.display = "none";
+                }
+              });
+            }
+          });
         });
+      });
     </script>
-
-    </body>
+  </body>
 </html>

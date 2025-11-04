@@ -7,14 +7,12 @@
   background-color: var(--white);
   padding: 40px 0 40px;
   position: relative;
-
-  /* Mendorong konten ke bawah navbar desktop */
-  padding-top: 80px;
+  /* [DIHAPUS] padding-top (Pindah ke body) */
 }
 
 .hero-container {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   position: relative;
   z-index: 2;
@@ -23,13 +21,12 @@
 .hero-text {
   flex: 1;
   z-index: 2;
-  /* Animasi fade-in dari global.css */
 }
 
 .hero-text h2 {
   font-size: 64px;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: var(--text-dark);
 }
 
@@ -45,6 +42,11 @@
 }
 
 /* Dekorasi Lingkaran Oranye & Logo */
+.hero-image {
+  position: relative;
+  flex-shrink: 0;
+}
+
 .orange-circle {
   position: absolute;
   right: -200px;
@@ -53,7 +55,7 @@
   height: 550px;
   background-color: var(--primary-orange);
   border-radius: 50%;
-  z-index: 1; /* Di belakang konten hero */
+  z-index: 1;
 }
 
 .hero-image .logo-pasuruan {
@@ -76,24 +78,20 @@
   gap: 15px;
   padding: 20px 0;
   position: relative;
-  z-index: 3; /* Di atas segalanya */
-  margin-top: -30px; /* Tumpang tindih dengan hero */
+  z-index: 3;
+  margin-top: -30px;
 }
 
-/* Wrapper untuk setiap banner (untuk animasi) */
 .banner {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-/* Efek "Timbul" saat hover */
 .banner:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
-
 .banner img {
   width: 380px;
   display: block;
@@ -103,7 +101,7 @@
    3. APP SECTION (Navigasi & Pencarian)
    ================================================ */
 .app-section {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 .app-navigation {
@@ -113,7 +111,6 @@
   margin-bottom: 30px;
 }
 
-/* Tombol Tab Aplikasi (Semua, Terbaru, dll.) */
 .app-tabs .tab-link {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
@@ -127,12 +124,10 @@
   color: var(--text-grey);
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
-
 .app-tabs .tab-link:hover {
   color: var(--primary-orange);
   transform: translateY(-2px);
 }
-
 .app-tabs .tab-link.active {
   background-color: var(--primary-orange);
   color: var(--white);
@@ -142,11 +137,9 @@
   background-color: #d13a0a;
 }
 
-/* Search Bar */
 .search-bar {
   position: relative;
 }
-
 .search-bar input {
   font-family: "Poppins", sans-serif;
   width: 300px;
@@ -156,14 +149,12 @@
   box-shadow: var(--shadow);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 .search-bar input:focus {
   border-color: var(--primary-orange);
   outline: none;
   box-shadow: 0 0 0 3px rgba(241, 90, 36, 0.15);
 }
-
-.search-bar .fa-search {
+.search-bar .search-icon {
   position: absolute;
   right: 15px;
   top: 50%;
@@ -178,11 +169,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  animation: fadeIn 0.8s ease-out 0.2s forwards; /* Delay 0.2s */
-  opacity: 0; /* Mulai transparan untuk animasi */
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+  opacity: 0;
 }
 
-/* Kartu Aplikasi Individual */
 .app-card {
   background-color: var(--white);
   border: 1px solid var(--border-color);
@@ -191,10 +181,10 @@
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; /* Mendorong tombol ke bawah (Desktop) */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* [PERBAIKAN] Aktifkan untuk tombol mobile */
 }
-
 .app-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -202,201 +192,212 @@
 
 .card-main {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
+  align-items: center; /* Logo & teks rata tengah vertikal (Desktop) */
+  margin-bottom: 20px; /* Jarak ke tombol (Desktop) */
 }
-
 .app-info {
   flex-grow: 1;
-  margin-right: 15px;
 }
-
 .app-info h3 {
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-dark);
+  margin-bottom: 3px;
 }
-
 .app-info p {
   font-size: 0.9rem;
   color: var(--text-grey);
+  line-height: 1.4;
 }
-
 .app-logo-placeholder {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border-radius: 10px;
   flex-shrink: 0;
-  object-fit: cover;
-  align-self: flex-start;
+  object-fit: contain;
+  align-self: center;
+  margin-right: 20px; /* Jarak logo & teks (Desktop) */
 }
 
-/* Tombol Status (Buka / Segera) */
 .app-status {
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
-  padding: 6px 14px;
+  padding: 8px 18px;
   border-radius: 8px;
   text-align: center;
-  margin-left: auto;
+  margin-left: auto; /* Tombol rata kanan (Desktop) */
   width: fit-content;
   display: block;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .app-status:hover {
   transform: translateY(-2px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 .app-status.status-soon {
   background-color: #f0f0f0;
   color: var(--text-grey);
 }
-
 .app-status.status-open {
   background-color: #fff7f0;
   color: var(--primary-orange);
 }
 
 /* ================================================
-   5. HIGHLIGHT APP (Kartu Spesial)
+   5. FAB (FLOATING ACTION BUTTON)
    ================================================ */
-.highlight-app {
-  grid-column: span 2;
-  background-color: #fff7f0;
-  border: 2px solid var(--primary-orange);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.highlight-app:hover {
-  transform: scale(1.02) translateY(-5px);
-}
-
-.app-logo-large {
-  width: 400px;
-  height: 400px;
-  border-radius: 20px;
-  object-fit: cover;
-}
-
-.highlight-app .card-main {
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-.fab-container {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 100;
-}
-.fab {
-  background-color: var(--primary-orange);
-  color: var(--white);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease;
-}
-.fab:hover {
-  transform: scale(1.1);
-}
+/* (Kode FAB Anda ada di global.css) */
 
 /* ================================================
-   6. ANIMASI KEYFRAMES
-   ================================================ */
-
-/* Dihapus: @keyframes fadeIn sudah ada di global.css */
-
-/* ================================================
-   7. RESPONSIVE
+   6. RESPONSIVE
    ================================================ */
 
 /* Tablet ( < 992px ) */
 @media (max-width: 992px) {
   /* -- Hero -- */
-  .hero-container {
-    flex-direction: column;
-    text-align: center;
-  }
   .hero-text h2 {
     font-size: 48px;
   }
+  .hero-text p {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
   .orange-circle {
-    position: relative;
-    right: auto;
-    top: auto;
     width: 400px;
     height: 400px;
-    margin: 0 auto;
+    right: -150px;
+    top: -100px;
   }
   .hero-image .logo-pasuruan {
-    width: 220px;
+    width: 180px;
+    right: -20px;
   }
 
   /* -- App Grid -- */
   .app-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  /* -- Highlight App -- */
-  .highlight-app {
-    grid-column: span 1;
-  }
-  .app-logo-large {
-    width: 80px;
-    height: 80px;
+  .app-logo-placeholder {
+    width: 100px;
+    height: 100px;
   }
 
   /* -- Banner -- */
   .banner img {
-    width: 30vw; /* 30% dari lebar layar */
+    width: 30vw;
   }
 }
 
-/* Mobile ( < 768px ) - BLOK GABUNGAN */
+/* Mobile ( < 768px ) */
 @media (max-width: 768px) {
-  /* -- Hero -- */
+  /* -- Hero (Layout 2 kolom kecil) -- */
   .hero {
-    /* PERBAIKAN: Menambahkan padding-top untuk navbar mobile */
-    padding-top: 110px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    overflow: hidden;
+  }
+  .hero-container {
+    align-items: flex-start;
+  }
+  .hero-text h2 {
+    font-size: 32px;
+    margin-bottom: 5px;
+  }
+  .hero-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .orange-circle {
+    width: 220px;
+    height: 220px;
+    top: 0px;
+    right: -80px;
+  }
+  .hero-image .logo-pasuruan {
+    width: 100px;
+    right: -5px;
+    top: 35px;
   }
 
-  /* -- App Nav -- */
+  /* -- App Section (Jarak Atas Diperkecil) -- */
+  .app-section {
+    padding-top: 20px;
+  }
+
+  /* -- App Nav (Search di atas tabs) -- */
   .app-navigation {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: stretch;
+    gap: 15px;
+    margin-bottom: 25px;
   }
   .app-tabs {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    justify-content: flex-start;
+    margin-bottom: 0;
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+  .app-tabs .tab-link {
+    flex-shrink: 0;
+  }
+  .search-bar {
+    width: 100%;
   }
   .search-bar input {
     width: 100%;
   }
 
-  /* -- App Grid -- */
+  /* -- [PERBAIKAN] App Grid (1 kolom, tombol di kanan atas) -- */
   .app-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: 1fr; /* [DIUBAH] 1 kolom */
+    gap: 15px; /* Jarak antar kartu */
   }
   .app-card {
-    padding: 15px;
+    padding: 15px; /* Padding di dalam kartu */
+  }
+  .app-logo-placeholder {
+    width: 70px; /* Ukuran logo mobile */
+    height: 70px;
+    align-self: center;
+    margin-right: 15px; /* Jarak logo & teks */
+  }
+  .card-main {
+    flex-direction: row;
+    align-items: center; /* Rata tengah vertikal */
+    margin-bottom: 0; /* Hapus margin-bottom */
+    /* Beri ruang agar teks tidak tertimpa tombol */
+    padding-right: 90px;
+  }
+  .app-info {
+    margin-right: 0;
+    text-align: left; /* Teks rata kiri */
   }
   .app-info h3 {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2px;
   }
+  .app-info p {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-grey);
+    margin-top: 0;
+    line-height: 1.3;
+  }
+
+  .app-status {
+    /* [PERBAIKAN] Pindah ke pojok kanan atas */
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    margin: 0; /* Hapus margin */
+    padding: 4px 8px; /* Perkecil tombol */
+    font-size: 0.75rem; /* Perkecil font tombol */
+  }
+  /* Akhir Perbaikan App Grid */
 
   /* -- Banner (Geser Kanan-Kiri) -- */
   .banner-section {
@@ -410,15 +411,12 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-
   .banner-section::-webkit-scrollbar {
     display: none;
   }
-
   .banner {
     flex-shrink: 0;
   }
-
   .banner img {
     width: 80vw;
   }
@@ -426,14 +424,28 @@
 
 /* Mobile Kecil ( < 480px ) */
 @media (max-width: 480px) {
-  /* -- Hero -- */
-  .hero {
-    /* PERBAIKAN: Menambahkan padding-top untuk navbar mobile kecil */
-    padding-top: 100px;
+  /* -- Hero (Lebih kecil lagi) -- */
+  .hero-text h2 {
+    font-size: 28px;
+  }
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+  .orange-circle {
+    width: 180px;
+    height: 180px;
+    top: -45px;
+    right: -60px;
+  }
+  .hero-image .logo-pasuruan {
+    top: -2px;
+    width: 80px;
+    right: -5px;
   }
 
-  /* -- App Grid -- */
-  .app-grid {
-    grid-template-columns: 1fr; /* 1 kolom */
+  .app-tabs {
+    justify-content: center; /* Tengahkan tabs jika muat */
   }
+
+  /* [DIHAPUS] Aturan .app-grid (sudah 1 kolom dari 768px) */
 }
