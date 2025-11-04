@@ -33,7 +33,8 @@
   display: flex;
   gap: 20px;
   position: relative;
-  padding-bottom: 25px; /* Jarak antar item */
+  padding-bottom: 25px;
+  /* Jarak antar item */
 }
 
 .history-item:last-child {
@@ -86,7 +87,8 @@
   font-size: 0.9rem;
   color: var(--text-grey);
   line-height: 1.6;
-  overflow-wrap: break-word; /* [PERBAIKAN] Lebih baik dari break-all */
+  overflow-wrap: break-word;
+  /* [PERBAIKAN] Lebih baik dari break-all */
 }
 
 .history-meta.location {
@@ -102,7 +104,8 @@
 
 .history-meta.location:hover {
   color: var(--primary-orange);
-  transform: translateX(2px); /* Animasi geser kecil */
+  transform: translateX(2px);
+  /* Animasi geser kecil */
 }
 
 /* ================================================
@@ -115,6 +118,7 @@
     padding: 20px;
   }
 }
+
 @media (max-width: 480px) {
   .page-title {
     font-size: 1.5rem;

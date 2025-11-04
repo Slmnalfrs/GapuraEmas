@@ -233,14 +233,17 @@
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  color: var(--text-grey); /* Warna abu-abu */
+  color: var(--text-grey);
+  /* Warna abu-abu */
   transition: color 0.3s ease;
 }
+
 .telegram-cara h3 a:hover {
   color: var(--primary-orange);
 }
+
 .telegram-cara h3 a span {
-  color: #56CD87;
+  color: #56cd87;
   font-size: inherit;
   font-weight: inherit;
 }
@@ -257,7 +260,8 @@
 }
 
 .telegram-cara ol li a {
-  color: #12A4EC; /* [PERBAIKAN] Link diubah jadi oranye */
+  color: #12a4ec;
+  /* [PERBAIKAN] Link diubah jadi oranye */
   text-decoration: none;
   font-weight: 500;
 }
@@ -284,7 +288,8 @@
 .qr-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Default rata tengah untuk desktop */
+  align-items: center;
+  /* Default rata tengah untuk desktop */
   margin-top: 10px;
 }
 
@@ -332,10 +337,12 @@
 .text-center {
   text-align: center;
 }
+
 .text-center .qr-code {
   margin-left: auto;
   margin-right: auto;
 }
+
 .text-center .qr-caption {
   text-align: center;
 }
@@ -390,21 +397,26 @@
 
   /* Mengubah .qr-wrapper untuk rata tengah */
   .qr-wrapper {
-    display: flex; /* Menggunakan flex */
-    flex-direction: column; /* Tumpuk vertikal */
-    align-items: center; /* Rata tengah horizontal */
+    display: flex;
+    /* Menggunakan flex */
+    flex-direction: column;
+    /* Tumpuk vertikal */
+    align-items: center;
+    /* Rata tengah horizontal */
     margin-left: 0;
   }
 
   .qr-code {
-    margin-left: auto; /* Memastikan rata tengah (jika flex gagal) */
+    margin-left: auto;
+    /* Memastikan rata tengah (jika flex gagal) */
     margin-right: auto;
   }
 
   .qr-caption {
     margin-left: 0;
     margin-right: 0;
-    text-align: center; /* Rata tengah caption */
+    text-align: center;
+    /* Rata tengah caption */
   }
 }
 

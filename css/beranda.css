@@ -88,10 +88,12 @@
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .banner:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
 .banner img {
   width: 380px;
   display: block;
@@ -124,15 +126,18 @@
   color: var(--text-grey);
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
+
 .app-tabs .tab-link:hover {
   color: var(--primary-orange);
   transform: translateY(-2px);
 }
+
 .app-tabs .tab-link.active {
   background-color: var(--primary-orange);
   color: var(--white);
   transform: translateY(0);
 }
+
 .app-tabs .tab-link.active:hover {
   background-color: #d13a0a;
 }
@@ -140,6 +145,7 @@
 .search-bar {
   position: relative;
 }
+
 .search-bar input {
   font-family: "Poppins", sans-serif;
   width: 300px;
@@ -149,11 +155,13 @@
   box-shadow: var(--shadow);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 .search-bar input:focus {
   border-color: var(--primary-orange);
   outline: none;
   box-shadow: 0 0 0 3px rgba(241, 90, 36, 0.15);
 }
+
 .search-bar .search-icon {
   position: absolute;
   right: 15px;
@@ -181,10 +189,13 @@
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Mendorong tombol ke bawah (Desktop) */
+  justify-content: space-between;
+  /* Mendorong tombol ke bawah (Desktop) */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative; /* [PERBAIKAN] Aktifkan untuk tombol mobile */
+  position: relative;
+  /* [PERBAIKAN] Aktifkan untuk tombol mobile */
 }
+
 .app-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -192,12 +203,16 @@
 
 .card-main {
   display: flex;
-  align-items: center; /* Logo & teks rata tengah vertikal (Desktop) */
-  margin-bottom: 20px; /* Jarak ke tombol (Desktop) */
+  align-items: center;
+  /* Logo & teks rata tengah vertikal (Desktop) */
+  margin-bottom: 20px;
+  /* Jarak ke tombol (Desktop) */
 }
+
 .app-info {
   flex-grow: 1;
 }
+
 .app-info h3 {
   font-size: 1.15rem;
   font-weight: 600;
@@ -205,11 +220,13 @@
   margin-bottom: 3px;
   text-align: center;
 }
+
 .app-info p {
   font-size: 0.9rem;
   color: var(--text-grey);
   line-height: 1.4;
 }
+
 .app-logo-placeholder {
   width: 100px;
   height: 100px;
@@ -217,7 +234,8 @@
   flex-shrink: 0;
   object-fit: contain;
   align-self: center;
-  margin-right: 20px; /* Jarak logo & teks (Desktop) */
+  margin-right: 20px;
+  /* Jarak logo & teks (Desktop) */
 }
 
 .app-status {
@@ -227,19 +245,23 @@
   padding: 8px 18px;
   border-radius: 8px;
   text-align: center;
-  margin-left: auto; /* Tombol rata kanan (Desktop) */
+  margin-left: auto;
+  /* Tombol rata kanan (Desktop) */
   width: fit-content;
   display: block;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .app-status:hover {
   transform: translateY(-2px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .app-status.status-soon {
   background-color: #f0f0f0;
   color: var(--text-grey);
 }
+
 .app-status.status-open {
   background-color: #fff7f0;
   color: var(--primary-orange);
@@ -260,16 +282,19 @@
   .hero-text h2 {
     font-size: 48px;
   }
+
   .hero-text p {
     font-size: 1.1rem;
     max-width: 100%;
   }
+
   .orange-circle {
     width: 400px;
     height: 400px;
     right: -150px;
     top: -100px;
   }
+
   .hero-image .logo-pasuruan {
     width: 180px;
     right: -20px;
@@ -279,6 +304,7 @@
   .app-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .app-logo-placeholder {
     width: 100px;
     height: 100px;
@@ -298,23 +324,28 @@
     padding-bottom: 30px;
     overflow: hidden;
   }
+
   .hero-container {
     align-items: flex-start;
   }
+
   .hero-text h2 {
     font-size: 32px;
     margin-bottom: 5px;
   }
+
   .hero-text p {
     font-size: 1rem;
     line-height: 1.5;
   }
+
   .orange-circle {
     width: 220px;
     height: 220px;
     top: 0px;
     right: -80px;
   }
+
   .hero-image .logo-pasuruan {
     width: 100px;
     right: -5px;
@@ -333,6 +364,7 @@
     gap: 15px;
     margin-bottom: 25px;
   }
+
   .app-tabs {
     display: flex;
     justify-content: flex-start;
@@ -340,46 +372,63 @@
     overflow-x: auto;
     padding-bottom: 5px;
   }
+
   .app-tabs .tab-link {
     flex-shrink: 0;
   }
+
   .search-bar {
     width: 100%;
   }
+
   .search-bar input {
     width: 100%;
   }
 
   /* -- [PERBAIKAN] App Grid (1 kolom, tombol di kanan atas) -- */
   .app-grid {
-    grid-template-columns: 1fr; /* [DIUBAH] 1 kolom */
-    gap: 15px; /* Jarak antar kartu */
+    grid-template-columns: 1fr;
+    /* [DIUBAH] 1 kolom */
+    gap: 15px;
+    /* Jarak antar kartu */
   }
+
   .app-card {
-    padding: 15px; /* Padding di dalam kartu */
+    padding: 15px;
+    /* Padding di dalam kartu */
   }
+
   .app-logo-placeholder {
-    width: 70px; /* Ukuran logo mobile */
+    width: 70px;
+    /* Ukuran logo mobile */
     height: 70px;
     align-self: center;
-    margin-right: 15px; /* Jarak logo & teks */
+    margin-right: 15px;
+    /* Jarak logo & teks */
   }
+
   .card-main {
     flex-direction: row;
-    align-items: center; /* Rata tengah vertikal */
-    margin-bottom: 0; /* Hapus margin-bottom */
+    align-items: center;
+    /* Rata tengah vertikal */
+    margin-bottom: 0;
+    /* Hapus margin-bottom */
     /* Beri ruang agar teks tidak tertimpa tombol */
     padding-right: 90px;
   }
+
   .app-info {
     margin-right: 0;
-    text-align: left; /* Teks rata kiri */
+    text-align: left;
+    /* Teks rata kiri */
   }
+
   .app-info h3 {
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 2px;
   }
+
   .app-info p {
     display: block;
     font-size: 0.8rem;
@@ -394,10 +443,14 @@
     bottom: 10px;
     right: 10px;
 
-    margin: 0; /* Hapus margin */
-    padding: 4px 8px; /* Perkecil tombol */
-    font-size: 0.75rem; /* Perkecil font tombol */
+    margin: 0;
+    /* Hapus margin */
+    padding: 4px 8px;
+    /* Perkecil tombol */
+    font-size: 0.75rem;
+    /* Perkecil font tombol */
   }
+
   /* Akhir Perbaikan App Grid */
 
   /* -- Banner (Geser Kanan-Kiri) -- */
@@ -412,12 +465,15 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
   .banner-section::-webkit-scrollbar {
     display: none;
   }
+
   .banner {
     flex-shrink: 0;
   }
+
   .banner img {
     width: 80vw;
   }
@@ -429,15 +485,18 @@
   .hero-text h2 {
     font-size: 28px;
   }
+
   .hero-text p {
     font-size: 0.9rem;
   }
+
   .orange-circle {
     width: 180px;
     height: 180px;
     top: -45px;
     right: -60px;
   }
+
   .hero-image .logo-pasuruan {
     top: -2px;
     width: 80px;
@@ -445,7 +504,8 @@
   }
 
   .app-tabs {
-    justify-content: center; /* Tengahkan tabs jika muat */
+    justify-content: center;
+    /* Tengahkan tabs jika muat */
   }
 
   /* [DIHAPUS] Aturan .app-grid (sudah 1 kolom dari 768px) */
