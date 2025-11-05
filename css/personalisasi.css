@@ -1,5 +1,3 @@
-/* --- CSS Khusus untuk personalisasi.html --- */
-
 /* Judul Halaman */
 .page-title {
   font-size: 2rem;
@@ -9,8 +7,6 @@
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 15px;
   font-family: poppins, sans-serif;
-
-  /* Animasi fade-in */
   animation: fadeIn 0.5s ease-out forwards;
 }
 
@@ -22,11 +18,8 @@
   box-shadow: var(--shadow);
   padding: 30px;
   margin-bottom: 30px;
-
-  /* Animasi fade-in (sedikit delay) */
   animation: fadeIn 0.5s ease-out 0.1s forwards;
   opacity: 0;
-  /* Mulai transparan untuk animasi */
 }
 
 .content-card h2 {
@@ -184,11 +177,9 @@
 }
 
 .btn-danger {
-  background-color: var(--white);
-  color: #c12e00;
-  /* Merah */
-  border: 1px solid #c12e00;
-  padding: 10px 20px;
+  background-color: #8c1007;
+  color: var(--white);
+  border: none;
 }
 
 .btn-danger:hover {
@@ -228,13 +219,11 @@
   border-bottom: none;
 }
 
-/* [PERBAIKAN] Mengganti warna link video agar konsisten */
 .telegram-cara h3 a {
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
   color: var(--text-grey);
-  /* Warna abu-abu */
   transition: color 0.3s ease;
 }
 
@@ -261,7 +250,6 @@
 
 .telegram-cara ol li a {
   color: #12a4ec;
-  /* [PERBAIKAN] Link diubah jadi oranye */
   text-decoration: none;
   font-weight: 500;
 }
@@ -277,7 +265,6 @@
   display: block;
   margin-top: 20px;
   margin-bottom: 0;
-  /* Transisi 'Zoom' */
   transition: transform 0.3s ease;
 }
 
@@ -289,13 +276,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Default rata tengah untuk desktop */
   margin-top: 10px;
 }
 
 .qr-wrapper .btn-secondary,
 .qr-wrapper .btn-success {
-  /* Menargetkan kedua tombol */
   margin-bottom: 20px;
 }
 
@@ -324,7 +309,6 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* === Interaksi Form (Focus State) === */
 .form-group input[type="text"]:focus,
 .form-group textarea:focus,
 .telegram-input input:focus {
@@ -333,7 +317,6 @@
   box-shadow: 0 0 0 3px rgba(241, 90, 36, 0.15);
 }
 
-/* === [BARU] Helper Class untuk Rata Tengah === */
 .text-center {
   text-align: center;
 }
@@ -398,17 +381,13 @@
   /* Mengubah .qr-wrapper untuk rata tengah */
   .qr-wrapper {
     display: flex;
-    /* Menggunakan flex */
     flex-direction: column;
-    /* Tumpuk vertikal */
     align-items: center;
-    /* Rata tengah horizontal */
     margin-left: 0;
   }
 
   .qr-code {
     margin-left: auto;
-    /* Memastikan rata tengah (jika flex gagal) */
     margin-right: auto;
   }
 
@@ -416,7 +395,6 @@
     margin-left: 0;
     margin-right: 0;
     text-align: center;
-    /* Rata tengah caption */
   }
 }
 

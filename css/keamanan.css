@@ -1,9 +1,3 @@
-/* --- CSS Khusus untuk Halaman Keamanan (Model Fade-In) --- */
-
-/* ================================================
-   BAGIAN 1: GAYA DASAR (SHARED)
-   ================================================ */
-
 .page-title {
   font-size: 2rem;
   font-weight: 600;
@@ -111,7 +105,6 @@
 
 .btn-danger {
   background-color: #8c1007;
-  /* Warna merah kustom Anda */
   color: var(--white);
   border: none;
 }
@@ -213,15 +206,11 @@
   padding: 15px 20px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  /* [PERBAIKAN] Teks "Layanan yang anda gunakan..." */
   margin-top: 20px;
-  /* Memberi sedikit jarak dari paragraf di atasnya */
 }
 
-/* [PERBAIKAN] Jarak paragraf "Layanan yang anda gunakan..." */
 .content-card p {
   margin-bottom: 10px;
-  /* Kurangi jarak bawah paragraf */
 }
 
 .linked-avatar {
@@ -249,7 +238,6 @@
 .linked-account .btn-danger {
   margin-left: auto;
   flex-shrink: 0;
-  /* Mencegah tombol mengecil/turun */
 }
 
 /* ================================================
@@ -312,9 +300,7 @@
   display: block;
   width: fit-content;
   margin-left: auto;
-  /* Rata tengah */
   margin-right: auto;
-  /* Rata tengah */
 }
 
 .btn-terapkan:hover {
@@ -406,7 +392,6 @@
    BAGIAN 7: RESPONSif
    ================================================ */
 @media (max-width: 768px) {
-  /* -- Aturan Panel Akun -- */
   .input-with-button {
     flex-direction: column;
   }
@@ -414,57 +399,39 @@
   /* [PERBAIKAN MOBILE BARU] Akun yang Terhubung */
   .linked-account {
     flex-direction: column;
-    /* Tumpuk secara vertikal */
     align-items: center;
-    /* Rata tengah horizontal */
     text-align: center;
-    /* Teks juga rata tengah */
     gap: 15px;
-    /* Jarak antar elemen */
     padding: 20px;
-    /* Padding yang lebih pas */
   }
 
   .linked-avatar {
     width: 60px;
-    /* Ukuran avatar sedikit lebih besar dari sebelumnya di mobile */
     height: 60px;
     border-radius: 8px;
-    /* [PERBAIKAN] Kotak */
     margin-right: 0;
-    /* Hapus margin kanan agar rata tengah */
     margin-bottom: 10px;
-    /* Beri jarak bawah avatar ke info */
   }
 
   .linked-info {
     flex-grow: unset;
-    /* Jangan biarkan tumbuh terlalu besar */
     margin-bottom: 15px;
-    /* Jarak antara info dan tombol */
   }
 
   .linked-info strong {
     font-size: 1.1rem;
-    /* Sedikit lebih besar */
   }
 
   .linked-info span {
     font-size: 0.95rem;
-    /* Ukuran email/text */
   }
 
   .linked-account .btn-danger {
     width: 100%;
-    /* Tombol memenuhi lebar */
     margin-left: auto;
-    /* Pastikan rata tengah */
     margin-right: auto;
-    /* Pastikan rata tengah */
     padding: 10px 15px;
-    /* Ukuran tombol normal */
     font-size: 0.9rem;
-    /* Ukuran font normal */
   }
 
   /* -- Aturan Panel 2FA -- */

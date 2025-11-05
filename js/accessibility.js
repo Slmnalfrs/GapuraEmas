@@ -12,7 +12,8 @@ function initAccessibilityFeatures() {
     if (!fabContainer.querySelector('.fab-menu')) {
         fabContainer.innerHTML = `
             <button class="fab" aria-haspopup="true" aria-expanded="false" aria-label="Menu Aksesibilitas">
-                <i class="fas fa-universal-access"></i>
+                <i class="fas fa-universal-access main-icon" aria-hidden="true"></i>
+                <span class="fab-close-icon" aria-hidden="true">&times;</span>
             </button>
 
             <div class="fab-menu" role="menu" aria-hidden="true">
@@ -62,22 +63,22 @@ function initAccessibilityFeatures() {
             console.warn('Speech Synthesis tidak didukung di browser ini');
             return;
         }
-        
+
         try {
             if (interrupt) {
                 window.speechSynthesis.cancel();
             }
-            
+
             // Clean text from unnecessary characters
             const cleanText = text.replace(/\s+/g, ' ').trim();
             if (!cleanText) return;
-            
+
             const utterance = new SpeechSynthesisUtterance(cleanText);
             utterance.lang = 'id-ID';
             utterance.rate = 1.0; // Normal speed with slight boost
             utterance.pitch = 1;
             utterance.volume = 1;
-            
+
             window.speechSynthesis.speak(utterance);
         } catch (err) {
             console.warn('Speech error:', err);
@@ -118,7 +119,7 @@ function initAccessibilityFeatures() {
             const isActive = fabMenu.classList.toggle('active');
             fabMenu.setAttribute('aria-hidden', isActive ? 'false' : 'true');
             fabButton.setAttribute('aria-expanded', isActive ? 'true' : 'false');
-            
+
             if (isActive && voiceSwitch.classList.contains('on')) {
                 speak('Menu aksesibilitas dibuka');
             }
@@ -134,7 +135,7 @@ function initAccessibilityFeatures() {
         });
 
         // Close on Escape key
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && fabMenu.classList.contains('active')) {
                 fabMenu.classList.remove('active');
                 fabMenu.setAttribute('aria-hidden', 'true');
@@ -146,11 +147,11 @@ function initAccessibilityFeatures() {
 
     // Voice mode toggle
     if (voiceSwitch) {
-        voiceSwitch.addEventListener('click', function() {
+        voiceSwitch.addEventListener('click', function () {
             const enabled = !this.classList.contains('on');
             setSwitch(this, enabled);
             localStorage.setItem('pref_voice', enabled);
-            
+
             if (enabled) {
                 speak('Mode suara diaktifkan. Arahkan kursor ke teks untuk mendengarkan pembacaan.');
                 enableSmartVoiceReading();
@@ -183,14 +184,14 @@ function initAccessibilityFeatures() {
     }
 
     if (decreaseText) {
-        decreaseText.addEventListener('click', function() {
+        decreaseText.addEventListener('click', function () {
             if (currentFontSize > 12) {  // Minimum size
                 currentFontSize -= 2;
                 document.documentElement.style.fontSize = currentFontSize + 'px';
                 localStorage.setItem('pref_font_size', currentFontSize);
                 updateTextSizeLabel(currentFontSize);
                 updateButtonStates();
-                
+
                 if (voiceSwitch && voiceSwitch.classList.contains('on')) {
                     speak(`Ukuran teks ${textSizeLabel.textContent}`);
                 }
@@ -199,14 +200,14 @@ function initAccessibilityFeatures() {
     }
 
     if (increaseText) {
-        increaseText.addEventListener('click', function() {
+        increaseText.addEventListener('click', function () {
             if (currentFontSize < 24) {  // Maximum size
                 currentFontSize += 2;
                 document.documentElement.style.fontSize = currentFontSize + 'px';
                 localStorage.setItem('pref_font_size', currentFontSize);
                 updateTextSizeLabel(currentFontSize);
                 updateButtonStates();
-                
+
                 if (voiceSwitch && voiceSwitch.classList.contains('on')) {
                     speak(`Ukuran teks ${textSizeLabel.textContent}`);
                 }
@@ -216,12 +217,12 @@ function initAccessibilityFeatures() {
 
     // Bold text toggle
     if (boldSwitch) {
-        boldSwitch.addEventListener('click', function() {
+        boldSwitch.addEventListener('click', function () {
             const enabled = !this.classList.contains('on');
             setSwitch(this, enabled);
             document.body.classList.toggle('bold-mode', enabled);
             localStorage.setItem('pref_bold', enabled);
-            
+
             if (voiceSwitch && voiceSwitch.classList.contains('on')) {
                 speak(enabled ? 'Huruf tebal diaktifkan' : 'Huruf tebal dinonaktifkan');
             }
@@ -246,43 +247,43 @@ function initSmartVoiceReader() {
 
 function enableSmartVoiceReading() {
     if (!window.smartVoiceReader) return;
-    
+
     window.smartVoiceReader.isEnabled = true;
-    
+
     // Add hover listeners to all readable elements
     const readableElements = getReadableElements();
-    
+
     readableElements.forEach(element => {
         element.addEventListener('mouseenter', handleElementHover);
         element.addEventListener('mouseleave', handleElementLeave);
     });
-    
+
     // Mark as initialized
     document.body.setAttribute('data-voice-reader', 'enabled');
 }
 
 function disableSmartVoiceReading() {
     if (!window.smartVoiceReader) return;
-    
+
     window.smartVoiceReader.isEnabled = false;
-    
+
     // Stop any ongoing speech
     if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
     }
-    
+
     // Remove hover listeners
     const readableElements = getReadableElements();
     readableElements.forEach(element => {
         element.removeEventListener('mouseenter', handleElementHover);
         element.removeEventListener('mouseleave', handleElementLeave);
     });
-    
+
     // Clear timeout if any
     if (window.smartVoiceReader.hoverTimeout) {
         clearTimeout(window.smartVoiceReader.hoverTimeout);
     }
-    
+
     document.body.removeAttribute('data-voice-reader');
 }
 
@@ -295,38 +296,38 @@ function getReadableElements() {
         '.card-title', '.card-text', '.text-content',
         '[role="heading"]', '[role="article"]'
     ];
-    
+
     const elements = document.querySelectorAll(selectors.join(', '));
-    
+
     // Filter out elements that shouldn't be read
     return Array.from(elements).filter(el => {
         // Skip if inside FAB menu
         if (el.closest('.fab-menu, .fab-container')) return false;
-        
+
         // Skip if no visible text
         const text = getCleanText(el);
         if (!text || text.length < 2) return false;
-        
+
         // Skip if hidden
         if (el.offsetParent === null) return false;
-        
+
         return true;
     });
 }
 
 function handleElementHover(event) {
     if (!window.smartVoiceReader.isEnabled) return;
-    
+
     const element = event.currentTarget;
-    
+
     // Add visual indicator class (speaker icon only)
     element.classList.add('voice-readable-element');
-    
+
     // Clear previous timeout
     if (window.smartVoiceReader.hoverTimeout) {
         clearTimeout(window.smartVoiceReader.hoverTimeout);
     }
-    
+
     // Set new timeout to read after delay
     window.smartVoiceReader.hoverTimeout = setTimeout(() => {
         window.smartVoiceReader.currentElement = element;
@@ -336,10 +337,10 @@ function handleElementHover(event) {
 
 function handleElementLeave(event) {
     const element = event.currentTarget;
-    
+
     // Remove visual indicator
     element.classList.remove('voice-readable-element');
-    
+
     // Clear timeout if user moves away quickly
     if (window.smartVoiceReader.hoverTimeout) {
         clearTimeout(window.smartVoiceReader.hoverTimeout);
@@ -348,13 +349,13 @@ function handleElementLeave(event) {
 
 function readElementText(element) {
     if (!('speechSynthesis' in window)) return;
-    
+
     const text = getCleanText(element);
     if (!text) return;
-    
+
     // Cancel any ongoing speech
     window.speechSynthesis.cancel();
-    
+
     // Speak the text with normal speed
     try {
         const utterance = new SpeechSynthesisUtterance(text);
@@ -362,7 +363,7 @@ function readElementText(element) {
         utterance.rate = 1.0; // Normal speed
         utterance.pitch = 1;
         utterance.volume = 1;
-        
+
         window.speechSynthesis.speak(utterance);
     } catch (err) {
         console.warn('Error reading text:', err);
@@ -372,22 +373,22 @@ function readElementText(element) {
 function getCleanText(element) {
     // Clone element to avoid modifying original
     const clone = element.cloneNode(true);
-    
+
     // Remove script and style elements
     const excludedTags = clone.querySelectorAll('script, style, svg, img, canvas, video, audio, iframe');
     excludedTags.forEach(tag => tag.remove());
-    
+
     // Remove icon elements
     const icons = clone.querySelectorAll('.fa, .fas, .far, .fab, .fal, [class*="icon-"]');
     icons.forEach(icon => icon.remove());
-    
+
     // Get only direct text, not from children if element is a container
     let text = '';
-    
+
     // For headings, paragraphs, buttons, links - read full text
     if (element.matches('h1, h2, h3, h4, h5, h6, p, button, a, label, legend')) {
         text = clone.textContent || '';
-    } 
+    }
     // For list items, table cells - read full text
     else if (element.matches('li, td, th')) {
         text = clone.textContent || '';
@@ -396,32 +397,32 @@ function getCleanText(element) {
     else {
         text = clone.textContent || '';
     }
-    
+
     // Clean up the text
     text = text
         .replace(/\s+/g, ' ') // Replace multiple spaces with single space
         .replace(/[\n\r\t]/g, ' ') // Remove newlines and tabs
         .trim();
-    
+
     // Remove common non-readable patterns
     text = text
         .replace(/^[•\-\*\>\#]+\s*/g, '') // Remove bullet points
         .replace(/^\d+\.\s*/g, '') // Remove numbered list markers
         .replace(/\[.*?\]/g, '') // Remove bracketed content
         .replace(/\{.*?\}/g, ''); // Remove braced content
-    
+
     return text;
 }
 
 // Keyboard navigation support
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     // Alt + A to toggle menu
     if (e.altKey && e.key === 'a') {
         e.preventDefault();
         const fabButton = document.querySelector('.fab');
         if (fabButton) fabButton.click();
     }
-    
+
     // Alt + V to toggle voice mode
     if (e.altKey && e.key === 'v') {
         e.preventDefault();

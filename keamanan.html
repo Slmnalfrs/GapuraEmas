@@ -395,8 +395,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // --- BAGIAN 1: LOGIKA TAB FADE-IN ---
-        // ... (Logika tab Anda ada di sini) ...
+        // ... (Logika tab) ...
         const tabButtons = document.querySelectorAll(
           ".security-tabs .tab-link"
         );
@@ -421,7 +420,6 @@
         }
 
         // --- BAGIAN 2: LOGIKA MODAL KONFIRMASI ---
-        // ... (Logika modal Anda ada di sini) ...
         const modal = document.getElementById("konfirmasi-modal");
         const endSessionButtons = document.querySelectorAll(".btn-akhiri-sesi");
         const btnModalCancel = document.getElementById("btn-modal-cancel");
@@ -463,8 +461,6 @@
           profileDropdown &&
           profileCloseBtn
         ) {
-          // [DIUBAH]
-
           // 1. Klik Lonceng
           notifIcon.addEventListener("click", function (event) {
             event.stopPropagation();
