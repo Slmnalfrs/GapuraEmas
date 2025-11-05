@@ -258,8 +258,11 @@
 }
 
 .app-status.status-soon {
-  background-color: #f0f0f0;
+  background-color: transparent;
   color: var(--text-grey);
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.8;
 }
 
 .app-status.status-open {
@@ -451,6 +454,14 @@
     /* Perkecil font tombol */
   }
 
+  .app-status.status-soon {
+    padding: 4px 8px;
+    background-color: transparent; /* Jadi teks biasa */
+    color: var(--text-grey);
+    opacity: 1;
+    pointer-events: none;
+    cursor: default;
+  }
   /* Akhir Perbaikan App Grid */
 
   /* -- Banner (Geser Kanan-Kiri) -- */

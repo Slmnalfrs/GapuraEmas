@@ -2,7 +2,7 @@
 
 :root {
   --primary-orange: #f15a24;
-  --bg-light: #f9f9f9;
+  --bg-light: #ffffff; /* Latar belakang abu-abu muda */
   --text-dark: #333333;
   --text-grey: #777777;
   --white: #ffffff;
@@ -20,12 +20,12 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #ffffff;
+  background-color: var(--bg-light); /* [PERBAIKAN] Kembali ke abu-abu muda */
   color: var(--text-dark);
   line-height: 1.6;
 
-  /* [PERBAIKAN LOMPATAN] Padding dipindah ke BODY */
-  padding-top: 85px; /* Sesuai tinggi navbar desktop (diperbesar) */
+  /* [PERBAIKAN LOMPATAN] Padding untuk navbar atas ada di sini */
+  padding-top: 85px;
 }
 
 html,
@@ -48,12 +48,12 @@ iframe {
 }
 
 /* ================================================
-   1. NAVBAR ATAS (FIXED) - DIPERBESAR
+   1. NAVBAR ATAS (FIXED)
    ================================================ */
 .navbar {
   display: flex;
   align-items: center;
-  padding: 15px 30px; /* Diperbesar dari 10px */
+  padding: 15px 30px;
   background: var(--white);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: fixed;
@@ -75,7 +75,7 @@ nav a {
   text-decoration: none;
   color: var(--text-grey);
   font-weight: 500;
-  padding: 8px 14px; /* Diperbesar */
+  padding: 8px 14px;
   border-radius: 6px;
   background-color: transparent;
   display: inline-block;
@@ -112,7 +112,7 @@ nav a.active:hover {
   gap: 10px;
 }
 .logo img {
-  width: 40px; /* Diperbesar */
+  width: 40px;
 }
 .logo h1 {
   font-weight: 700;
@@ -135,6 +135,7 @@ nav a.active:hover {
   text-align: right;
   margin-left: auto;
   margin-right: 0;
+  position: relative; /* [TAMBAHKAN INI] Agar dropdown bisa diposisikan */
 }
 .notification-icon,
 .user-icon {
@@ -144,7 +145,7 @@ nav a.active:hover {
   transition: color 0.3s ease, transform 0.2s ease;
 }
 .user-icon {
-  font-size: 30px; /* Diperbesar */
+  font-size: 30px;
   color: var(--primary-orange);
 }
 .notification-icon:hover {
@@ -192,7 +193,7 @@ footer {
    3. KONTEN UTAMA & ANIMASI
    ================================================ */
 main {
-  /* [DIHAPUS] padding-top: 85px; (Sudah pindah ke body) */
+  /* padding-top: 85px; (Sudah pindah ke body) */
   animation: fadeIn 0.6s ease-out forwards;
 }
 
@@ -208,7 +209,7 @@ main {
 }
 
 /* ================================================
-   4. NAVBAR BAWAH (MOBILE) - UKURAN KONSISTEN
+   4. NAVBAR BAWAH (MOBILE)
    ================================================ */
 .mobile-nav {
   display: none;
@@ -260,6 +261,63 @@ main {
 }
 
 /* ================================================
+   4.5 GAYA TOMBOL GLOBAL (BARU)
+   ================================================ */
+.btn {
+  font-family: "Poppins", sans-serif;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-orange);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background-color: #d13a0a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(241, 90, 36, 0.2);
+}
+
+.btn-secondary {
+  background-color: var(--white);
+  color: var(--primary-orange);
+  border: 1px solid var(--primary-orange);
+}
+.btn-secondary:hover {
+  background-color: #fff7f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(241, 90, 36, 0.15);
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: var(--white);
+}
+.btn-success:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+}
+
+.btn-danger {
+  background-color: #8c1007; /* Merah kustom dari keamanan.css */
+  color: var(--white);
+  border: none;
+}
+.btn-danger:hover {
+  background-color: #c82333;
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.2);
+}
+/* ================================================
    5. FAB (FLOATING ACTION BUTTON)
    ================================================ */
 .fab-container {
@@ -297,13 +355,13 @@ main {
 @media (max-width: 768px) {
   /* -- Body -- */
   body {
-    padding-top: 76px; /* [PERBAIKAN] Disesuaikan navbar mobile */
+    padding-top: 76px; /* Disesuaikan navbar mobile */
     padding-bottom: 80px; /* Pendorong untuk nav bawah */
   }
 
   /* -- Navbar Atas (Mobile Diperbesar) -- */
   .navbar {
-    padding: 12px 15px; /* [PERBAIKAN] Atas/bawah lebih besar */
+    padding: 12px 15px;
     flex-wrap: nowrap;
   }
   .navbar nav {
@@ -318,7 +376,7 @@ main {
     display: none;
   }
   .logo img {
-    width: 40px; /* [PERBAIKAN] Logo lebih besar */
+    width: 40px;
   }
   .user-details {
     display: none;
@@ -337,7 +395,7 @@ main {
 
   /* -- Konten Utama -- */
   main {
-    /* [DIHAPUS] padding-top: 70px; (Pindah ke body) */
+    /* padding-top: 70px; (Pindah ke body) */
   }
 
   /* -- Tampilkan Navbar Bawah -- */
@@ -356,19 +414,19 @@ main {
 @media (max-width: 480px) {
   /* -- Body -- */
   body {
-    padding-top: 66px; /* [PERBAIKAN] Disesuaikan navbar mobile */
+    padding-top: 66px; /* Disesuaikan navbar mobile */
     padding-bottom: 70px; /* Pendorong untuk nav bawah */
   }
 
   /* -- Navbar Atas (Mobile Diperbesar) -- */
   .navbar {
-    padding: 10px 10px; /* [PERBAIKAN] Atas/bawah lebih besar */
+    padding: 10px 10px;
   }
   .logo img {
-    width: 40px; /* [PERBAIKAN] Logo lebih besar */
+    width: 35px; /* [PERBAIKAN] Dikecilkan sedikit */
   }
   .user-info {
-    gap: 15px;
+    gap: 10px; /* [PERBAIKAN] Didekatkan */
   }
   .notification-icon,
   .user-icon {
@@ -380,12 +438,220 @@ main {
 
   /* -- Konten Utama -- */
   main {
-    /* [DIHAPUS] padding-top: 60px; (Pindah ke body) */
+    /* padding-top: 60px; (Pindah ke body) */
   }
 
   /* -- Posisi FAB di Mobile Kecil -- */
   .fab-container {
     bottom: 66px;
     right: 20px;
+  }
+}
+
+/* ================================================
+   7. PANEL NOTIFIKASI (PERBAIKAN FINAL)
+   ================================================ */
+.notification-panel {
+  position: fixed;
+  top: 75px;
+  right: 30px;
+  width: 340px;
+  max-width: 90vw;
+  background-color: var(--white); /* Latar belakang PUTIH */
+  border-radius: var(--border-radius);
+  border: 1px solid #dcdcdc; /* Border agar terlihat */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+/* Status aktif (terlihat) */
+.notification-panel.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+}
+
+/* Wrapper untuk Judul dan Tombol X */
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Judul */
+.notification-panel h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+  color: var(--text-dark);
+}
+
+/* Tombol Close (X) */
+.notification-close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--text-grey);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.notification-close-btn:hover {
+  color: var(--primary-orange);
+  transform: scale(1.1);
+}
+
+/* Daftar Notifikasi */
+.notification-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* [PERBAIKAN] Item Notifikasi sebagai Teks Biasa */
+.notification-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+  text-decoration: none;
+  color: var(--text-dark);
+  cursor: default; /* Membuatnya terlihat seperti teks biasa */
+  /* Transisi dan text-decoration dihapus */
+}
+
+/* [DIHAPUS] .notification-item:hover { ... } */
+/* Efek hover dihapus agar tidak terasa seperti tombol */
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+/* [PERBAIKAN] Membuat SEMUA dot berwarna hijau */
+.notification-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #28a745; /* HIJAU */
+  flex-shrink: 0;
+}
+
+/* [DIHAPUS] .notification-item.unread .notification-dot tidak perlu lagi */
+
+.notification-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+.notification-footer {
+  padding: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Tombol footer sekarang menggunakan .btn-secondary */
+.notification-footer .btn-secondary {
+  width: 100%;
+  text-align: center;
+}
+
+/* Penyesuaian Posisi Notifikasi di Mobile */
+@media (max-width: 768px) {
+  .notification-panel {
+    top: 82px;
+    right: 15px;
+  }
+}
+@media (max-width: 480px) {
+  .notification-panel {
+    top: 72px;
+  }
+}
+
+/* ================================================
+   8. DROPDOWN PROFIL (BARU)
+   ================================================ */
+.profile-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 160px;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+
+  padding: 0; /* [DIUBAH] Padding sekarang diatur oleh header/body */
+
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+/* Status aktif (terlihat) */
+.profile-dropdown.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+}
+
+/* [BARU] Header untuk tombol X */
+.profile-dropdown-header {
+  display: flex;
+  justify-content: flex-end; /* Pindahkan X ke kanan */
+  padding: 5px 5px 0 0; /* Padding kecil */
+}
+
+/* [BARU] Tombol Close (X) untuk Profil */
+.profile-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem; /* Sedikit lebih kecil dari notifikasi */
+  font-weight: 400;
+  color: var(--text-grey);
+  cursor: pointer;
+  padding: 0 5px;
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.profile-close-btn:hover {
+  color: var(--primary-orange);
+  transform: scale(1.1);
+}
+
+/* [BARU] Body untuk tombol Logout */
+.profile-dropdown-body {
+  padding: 5px 10px 10px 10px; /* Padding di sekitar tombol */
+}
+
+/* [DIUBAH] Tombol Logout dengan Ikon */
+.profile-dropdown .btn-danger {
+  width: 100%;
+  text-align: center;
+  display: flex; /* Menggunakan flex untuk ikon + teks */
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Jarak antara ikon dan teks */
+}
+
+/* Penyesuaian Posisi di Mobile */
+@media (max-width: 768px) {
+  .profile-dropdown {
+    top: 66px;
+    right: 0;
   }
 }

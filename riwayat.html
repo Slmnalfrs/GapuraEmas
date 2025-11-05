@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/riwayat.css" />
+    <link rel="stylesheet" href="css/fab.css" />
+    <script src="js/accessibility.js" defer></script>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
@@ -43,9 +45,52 @@
           <span>Nama Pengguna</span>
           <p class="role">Role Pengguna</p>
         </div>
-        <i class="fas fa-user-circle user-icon"></i>
+        <i class="fas fa-user-circle user-icon" id="user-icon-btn"></i>
+        <div class="profile-dropdown" id="profile-dropdown">
+          <div class="profile-dropdown-header">
+            <button class="profile-close-btn" id="profile-close-btn">
+              &times;
+            </button>
+          </div>
+          <div class="profile-dropdown-body">
+            <a href="#" class="btn btn-danger">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </a>
+          </div>
+        </div>
       </div>
     </header>
+
+    <div class="notification-panel" id="notification-panel">
+      <div class="notification-header">
+        <h2>Notifikasi</h2>
+        <button class="notification-close-btn" id="notification-close-btn">
+          &times;
+        </button>
+      </div>
+      <div class="notification-list">
+        <a href="#" class="notification-item unread">
+          <span class="notification-dot"></span>
+          <p class="notification-text">Akun anda terblokir</p>
+        </a>
+        <a href="#" class="notification-item unread">
+          <span class="notification-dot"></span>
+          <p class="notification-text">
+            Anda mendapatkan izin akses masuk Sepakat Kabupaten Pasuruan
+          </p>
+        </a>
+        <a href="#" class="notification-item">
+          <span class="notification-dot"></span>
+          <p class="notification-text">Password anda berhasil diubah.</p>
+        </a>
+      </div>
+      <div class="notification-footer">
+        <button class="btn btn-secondary" id="clear-notifications">
+          Bersihkan semua notifikasi
+        </button>
+      </div>
+    </div>
 
     <main>
       <div class="container" style="padding-bottom: 30px">
@@ -285,7 +330,12 @@
     </main>
 
     <div class="fab-container">
-      <button class="fab">
+      <button
+        class="fab"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-label="Aksesibilitas"
+      >
         <i class="fas fa-universal-access"></i>
       </button>
     </div>
@@ -317,5 +367,82 @@
         <span>Riwayat</span>
       </a>
     </nav>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- LOGIKA DROPDOWN (NOTIFIKASI & PROFIL) ---
+        const notifIcon = document.querySelector(".notification-icon");
+        const notifPanel = document.getElementById("notification-panel");
+        const notifCloseBtn = document.getElementById("notification-close-btn");
+
+        const userIconBtn = document.getElementById("user-icon-btn");
+        const profileDropdown = document.getElementById("profile-dropdown");
+        const profileCloseBtn = document.getElementById("profile-close-btn"); // [BARU]
+
+        if (
+          notifIcon &&
+          notifPanel &&
+          notifCloseBtn &&
+          userIconBtn &&
+          profileDropdown &&
+          profileCloseBtn
+        ) {
+          // [DIUBAH]
+
+          // 1. Klik Lonceng
+          notifIcon.addEventListener("click", function (event) {
+            event.stopPropagation();
+            notifPanel.classList.toggle("active");
+            profileDropdown.classList.remove("active"); // Tutup profil
+          });
+
+          // 2. Klik Tombol 'X' Notifikasi
+          notifCloseBtn.addEventListener("click", function () {
+            notifPanel.classList.remove("active");
+          });
+
+          // 3. Klik Ikon Profil
+          userIconBtn.addEventListener("click", function (event) {
+            event.stopPropagation();
+            profileDropdown.classList.toggle("active");
+            notifPanel.classList.remove("active"); // Tutup notifikasi
+          });
+
+          // 4. [BARU] Klik Tombol 'X' Profil
+          profileCloseBtn.addEventListener("click", function () {
+            profileDropdown.classList.remove("active");
+          });
+
+          // 5. Klik di Luar Panel
+          document.addEventListener("click", function (event) {
+            // Cek notifikasi
+            if (
+              notifPanel.classList.contains("active") &&
+              !notifPanel.contains(event.target) &&
+              !notifIcon.contains(event.target)
+            ) {
+              notifPanel.classList.remove("active");
+            }
+            // Cek profil
+            if (
+              profileDropdown.classList.contains("active") &&
+              !profileDropdown.contains(event.target) &&
+              !userIconBtn.contains(event.target)
+            ) {
+              profileDropdown.classList.remove("active");
+            }
+          });
+
+          // 6. (Opsional) Tutup panel saat menekan tombol "Escape"
+          document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+              notifPanel.classList.remove("active");
+              profileDropdown.classList.remove("active");
+            }
+          });
+        }
+        // --- AKHIR LOGIKA DROPDOWN ---
+      });
+    </script>
   </body>
 </html>
