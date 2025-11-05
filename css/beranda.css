@@ -124,7 +124,9 @@
   margin-right: 10px;
   background-color: var(--white);
   color: var(--text-grey);
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .app-tabs .tab-link:hover {
@@ -132,10 +134,31 @@
   transform: translateY(-2px);
 }
 
+.app-tabs .tab-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-orange);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.app-tabs .tab-link:hover::after {
+  width: 80%;
+}
+
 .app-tabs .tab-link.active {
   background-color: var(--primary-orange);
   color: var(--white);
   transform: translateY(0);
+}
+
+.app-tabs .tab-link.active::after {
+  width: 100%;
+  background-color: var(--white);
 }
 
 .app-tabs .tab-link.active:hover {
@@ -173,12 +196,23 @@
 /* ================================================
    4. APP GRID (Daftar Kartu Aplikasi)
    ================================================ */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .app-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  animation: fadeIn 0.8s ease-out 0.2s forwards;
   opacity: 0;
+  animation: fadeSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .app-card {
@@ -266,8 +300,9 @@
 }
 
 .app-status.status-open {
-  background-color: #fff7f0;
+  background-color: #ffffff;
   color: var(--primary-orange);
+  border: 1px solid var(--primary-orange);
 }
 
 /* ================================================
@@ -456,12 +491,14 @@
 
   .app-status.status-soon {
     padding: 4px 8px;
-    background-color: transparent; /* Jadi teks biasa */
+    background-color: transparent;
+    /* Jadi teks biasa */
     color: var(--text-grey);
     opacity: 1;
     pointer-events: none;
     cursor: default;
   }
+
   /* Akhir Perbaikan App Grid */
 
   /* -- Banner (Geser Kanan-Kiri) -- */

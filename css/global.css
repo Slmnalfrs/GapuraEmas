@@ -2,7 +2,8 @@
 
 :root {
   --primary-orange: #f15a24;
-  --bg-light: #ffffff; /* Latar belakang abu-abu muda */
+  --bg-light: #ffffff;
+  /* Latar belakang abu-abu muda */
   --text-dark: #333333;
   --text-grey: #777777;
   --white: #ffffff;
@@ -20,7 +21,8 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: var(--bg-light); /* [PERBAIKAN] Kembali ke abu-abu muda */
+  background-color: var(--bg-light);
+  /* [PERBAIKAN] Kembali ke abu-abu muda */
   color: var(--text-dark);
   line-height: 1.6;
 
@@ -70,6 +72,7 @@ iframe {
   align-items: center;
   padding-right: 20px;
 }
+
 nav a {
   margin: 0 5px;
   text-decoration: none;
@@ -82,22 +85,26 @@ nav a {
   font-size: 0.9rem;
   transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
 }
+
 .nav-separator {
   color: var(--text-grey);
   font-weight: 500;
   margin: 0 2px;
   font-size: 0.9rem;
 }
+
 nav a:hover {
   background-color: transparent;
   color: var(--primary-orange);
   transform: translateY(-2px);
 }
+
 nav a.active {
   background-color: var(--primary-orange);
   color: var(--white);
   transform: translateY(0);
 }
+
 nav a.active:hover {
   background-color: #d13a0a;
 }
@@ -106,19 +113,23 @@ nav a.active:hover {
 .navbar .logo {
   flex-shrink: 0;
 }
+
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .logo img {
   width: 40px;
 }
+
 .logo h1 {
   font-weight: 700;
   color: var(--text-dark);
   font-size: 1.25rem;
 }
+
 .logo .orange {
   color: var(--primary-orange);
 }
@@ -128,6 +139,7 @@ nav a.active:hover {
   flex-shrink: 0;
   margin-left: auto;
 }
+
 .user-info {
   display: flex;
   align-items: center;
@@ -135,8 +147,10 @@ nav a.active:hover {
   text-align: right;
   margin-left: auto;
   margin-right: 0;
-  position: relative; /* [TAMBAHKAN INI] Agar dropdown bisa diposisikan */
+  position: relative;
+  /* [TAMBAHKAN INI] Agar dropdown bisa diposisikan */
 }
+
 .notification-icon,
 .user-icon {
   font-size: 20px;
@@ -144,18 +158,22 @@ nav a.active:hover {
   cursor: pointer;
   transition: color 0.3s ease, transform 0.2s ease;
 }
+
 .user-icon {
   font-size: 30px;
   color: var(--primary-orange);
 }
+
 .notification-icon:hover {
   color: var(--primary-orange);
   transform: scale(1.1) translateY(-1px);
 }
+
 .user-icon:hover {
   color: #d13a0a;
   transform: scale(1.1);
 }
+
 .user-details {
   display: flex;
   flex-direction: column;
@@ -163,6 +181,7 @@ nav a.active:hover {
   margin: 0;
   font-size: 0.9rem;
 }
+
 .user-details .role {
   font-size: 0.75rem;
   color: var(--text-grey);
@@ -202,6 +221,7 @@ main {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -226,6 +246,7 @@ main {
   justify-content: space-around;
   align-items: center;
 }
+
 .mobile-nav a {
   display: flex;
   flex-direction: column;
@@ -239,22 +260,27 @@ main {
   border-radius: 15px;
   transition: all 0.3s ease;
 }
+
 .mobile-nav a span {
   font-size: 0.75rem;
   font-weight: 500;
   margin-top: 2px;
 }
+
 .mobile-nav a i {
   font-size: 1.2rem;
   margin-bottom: 0;
 }
+
 .mobile-nav a:not(.active) {
   color: var(--text-grey);
   background-color: transparent;
 }
+
 .mobile-nav a:not(.active):hover {
   color: var(--text-dark);
 }
+
 .mobile-nav a.active {
   background-color: var(--primary-orange);
   color: var(--white);
@@ -279,6 +305,7 @@ main {
   background-color: var(--primary-orange);
   color: var(--white);
 }
+
 .btn-primary:hover {
   background-color: #d13a0a;
   transform: translateY(-2px);
@@ -290,6 +317,7 @@ main {
   color: var(--primary-orange);
   border: 1px solid var(--primary-orange);
 }
+
 .btn-secondary:hover {
   background-color: #fff7f0;
   transform: translateY(-2px);
@@ -300,6 +328,7 @@ main {
   background-color: #28a745;
   color: var(--white);
 }
+
 .btn-success:hover {
   background-color: #218838;
   transform: translateY(-2px);
@@ -307,16 +336,19 @@ main {
 }
 
 .btn-danger {
-  background-color: #8c1007; /* Merah kustom dari keamanan.css */
+  background-color: #8c1007;
+  /* Merah kustom dari keamanan.css */
   color: var(--white);
   border: none;
 }
+
 .btn-danger:hover {
-  background-color: #c82333;
+  background-color: #680901;
   color: var(--white);
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(220, 53, 69, 0.2);
 }
+
 /* ================================================
    5. FAB (FLOATING ACTION BUTTON)
    ================================================ */
@@ -355,8 +387,10 @@ main {
 @media (max-width: 768px) {
   /* -- Body -- */
   body {
-    padding-top: 76px; /* Disesuaikan navbar mobile */
-    padding-bottom: 80px; /* Pendorong untuk nav bawah */
+    padding-top: 76px;
+    /* Disesuaikan navbar mobile */
+    padding-bottom: 80px;
+    /* Pendorong untuk nav bawah */
   }
 
   /* -- Navbar Atas (Mobile Diperbesar) -- */
@@ -364,23 +398,29 @@ main {
     padding: 12px 15px;
     flex-wrap: nowrap;
   }
+
   .navbar nav {
     display: none;
   }
+
   .user-info {
     order: 2;
     margin-left: auto;
     margin-right: 0;
   }
+
   .logo h1 {
     display: none;
   }
+
   .logo img {
     width: 40px;
   }
+
   .user-details {
     display: none;
   }
+
   .notification-icon,
   .user-icon {
     font-size: 24px;
@@ -414,24 +454,32 @@ main {
 @media (max-width: 480px) {
   /* -- Body -- */
   body {
-    padding-top: 66px; /* Disesuaikan navbar mobile */
-    padding-bottom: 70px; /* Pendorong untuk nav bawah */
+    padding-top: 66px;
+    /* Disesuaikan navbar mobile */
+    padding-bottom: 70px;
+    /* Pendorong untuk nav bawah */
   }
 
   /* -- Navbar Atas (Mobile Diperbesar) -- */
   .navbar {
     padding: 10px 10px;
   }
+
   .logo img {
-    width: 35px; /* [PERBAIKAN] Dikecilkan sedikit */
+    width: 35px;
+    /* [PERBAIKAN] Dikecilkan sedikit */
   }
+
   .user-info {
-    gap: 10px; /* [PERBAIKAN] Didekatkan */
+    gap: 10px;
+    /* [PERBAIKAN] Didekatkan */
   }
+
   .notification-icon,
   .user-icon {
     font-size: 20px;
   }
+
   .container {
     padding: 0 15px;
   }
@@ -457,9 +505,11 @@ main {
   right: 30px;
   width: 340px;
   max-width: 90vw;
-  background-color: var(--white); /* Latar belakang PUTIH */
+  background-color: var(--white);
+  /* Latar belakang PUTIH */
   border-radius: var(--border-radius);
-  border: 1px solid #dcdcdc; /* Border agar terlihat */
+  border: 1px solid #dcdcdc;
+  /* Border agar terlihat */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   z-index: 1001;
 
@@ -528,7 +578,8 @@ main {
   border-bottom: 1px solid var(--border-color);
   text-decoration: none;
   color: var(--text-dark);
-  cursor: default; /* Membuatnya terlihat seperti teks biasa */
+  cursor: default;
+  /* Membuatnya terlihat seperti teks biasa */
   /* Transisi dan text-decoration dihapus */
 }
 
@@ -544,7 +595,8 @@ main {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #28a745; /* HIJAU */
+  background-color: #28a745;
+  /* HIJAU */
   flex-shrink: 0;
 }
 
@@ -574,6 +626,7 @@ main {
     right: 15px;
   }
 }
+
 @media (max-width: 480px) {
   .notification-panel {
     top: 72px;
@@ -594,7 +647,8 @@ main {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   z-index: 1001;
 
-  padding: 0; /* [DIUBAH] Padding sekarang diatur oleh header/body */
+  padding: 0;
+  /* [DIUBAH] Padding sekarang diatur oleh header/body */
 
   opacity: 0;
   transform: translateY(-10px) scale(0.95);
@@ -612,15 +666,18 @@ main {
 /* [BARU] Header untuk tombol X */
 .profile-dropdown-header {
   display: flex;
-  justify-content: flex-end; /* Pindahkan X ke kanan */
-  padding: 5px 5px 0 0; /* Padding kecil */
+  justify-content: flex-end;
+  /* Pindahkan X ke kanan */
+  padding: 5px 5px 0 0;
+  /* Padding kecil */
 }
 
 /* [BARU] Tombol Close (X) untuk Profil */
 .profile-close-btn {
   background: none;
   border: none;
-  font-size: 1.5rem; /* Sedikit lebih kecil dari notifikasi */
+  font-size: 1.5rem;
+  /* Sedikit lebih kecil dari notifikasi */
   font-weight: 400;
   color: var(--text-grey);
   cursor: pointer;
@@ -628,6 +685,7 @@ main {
   line-height: 1;
   transition: color 0.2s ease, transform 0.2s ease;
 }
+
 .profile-close-btn:hover {
   color: var(--primary-orange);
   transform: scale(1.1);
@@ -635,17 +693,20 @@ main {
 
 /* [BARU] Body untuk tombol Logout */
 .profile-dropdown-body {
-  padding: 5px 10px 10px 10px; /* Padding di sekitar tombol */
+  padding: 5px 10px 10px 10px;
+  /* Padding di sekitar tombol */
 }
 
 /* [DIUBAH] Tombol Logout dengan Ikon */
 .profile-dropdown .btn-danger {
   width: 100%;
   text-align: center;
-  display: flex; /* Menggunakan flex untuk ikon + teks */
+  display: flex;
+  /* Menggunakan flex untuk ikon + teks */
   align-items: center;
   justify-content: center;
-  gap: 8px; /* Jarak antara ikon dan teks */
+  gap: 8px;
+  /* Jarak antara ikon dan teks */
 }
 
 /* Penyesuaian Posisi di Mobile */
