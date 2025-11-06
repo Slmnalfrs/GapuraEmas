@@ -168,7 +168,7 @@
 
 .search-bar input {
   font-family: "Poppins", sans-serif;
-  width: 300px;
+  width: 500px;
   padding: 10px 40px 10px 15px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
@@ -366,14 +366,14 @@
   .orange-circle {
     width: 220px;
     height: 220px;
-    top: 0px;
+    top: -70px;
     right: -80px;
   }
 
   .hero-image .logo-pasuruan {
     width: 100px;
     right: -5px;
-    top: 35px;
+    top: -15px;
   }
 
   /* -- App Section -- */
@@ -384,7 +384,7 @@
   /* -- App Nav -- */
   .app-navigation {
     flex-direction: column-reverse;
-    align-items: stretch;
+    align-items: center;
     gap: 15px;
     margin-bottom: 25px;
   }
@@ -542,7 +542,11 @@
 .popup-icon-wrapper {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--primary-orange, #ff0000ff), #ff8c5a);
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange, #ff0000ff),
+    #ff8c5a
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -565,7 +569,7 @@
 }
 
 .popup-title {
-  font-size: 1.5rem; 
+  font-size: 1.5rem;
   font-weight: 700;
   color: #333;
   margin: 0 0 15px 0;
@@ -609,8 +613,8 @@
   transition: background-color 0.2s, transform 0.2s;
 }
 .btn-primary-popup:hover {
-  background-color: #d13a0a; 
-  transform: scale(1.0);
+  background-color: #d13a0a;
+  transform: scale(1);
 }
 
 /* Keyframe untuk animasi denyut */
