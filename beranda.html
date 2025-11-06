@@ -116,13 +116,13 @@
       <!-- Banner -->
       <section class="banner-section">
         <div class="banner">
-          <img src="assets/banner3.png" alt="Banner 1" />
+          <img src="assets/banner.jpg" alt="Banner 1" />
         </div>
         <div class="banner">
-          <img src="assets/banner2.png" alt="Banner 2" />
+          <img src="assets/banner.jpg" alt="Banner 2" />
         </div>
         <div class="banner">
-          <img src="assets/banner1.png" alt="Banner 3" />
+          <img src="assets/banner.jpg" alt="Banner 3" />
         </div>
       </section>
 
@@ -314,26 +314,34 @@
       </section>
     </main>
 
-    <!-- Popup Notifikasi Modern Shopee/Glass Style -->
-    <!-- Popup Notifikasi Shopee / Glass Style -->
+    <!-- Popup Notifikasi Modern Glass Alert -->
     <div id="popup-overlay" class="popup-overlay">
       <div class="popup-modal">
-        <div class="popup-header">
-          <div class="popup-center">
-            <div class="popup-icon">
-              <i class="fas fa-bell"></i>
-            </div>
-            <h3 class="popup-title">PENGUMUMAN</h3>
-          </div>
-          <button class="popup-close-btn" id="popup-close-btn">&times;</button>
+        <div class="popup-icon-wrapper">
+          <i class="fas fa-exclamation-triangle"></i>
         </div>
 
-        <div class="popup-body">
-          <p>
-            Selamat datang di <b>GAPURA EMAS</b>, portal layanan digital
-            Kabupaten Pasuruan. Jelajahi berbagai aplikasi dan layanan yang
-            tersedia.
-          </p>
+        <div class="popup-content">
+          <h3 class="popup-title"><strong>Pemberitahuan Penting!!</strong></h3>
+
+          <div class="popup-body">
+            <p>
+              Sehubungan dengan adanya perubahan mekanisme pada perusahaan yang
+              menaungi WhatsApp API Business, bersama ini disampaikan bahwa
+              fitur notifikasi WhatsApp pada beberapa aplikasi mulai tanggal
+              <b>7 Agustus 2025 DIHENTIKAN</b>.
+            </p>
+            <p>
+              Selanjutnya, fitur notifikasi tersebut akan dialihkan ke
+              <b>Aplikasi TELEGRAM</b>.
+            </p>
+          </div>
+        </div>
+
+        <div class="popup-footer">
+          <button class="btn-primary-popup" id="popup-understand-btn">
+            Saya Mengerti
+          </button>
         </div>
       </div>
     </div>
@@ -385,7 +393,7 @@
         if (tabLinks.length > 0 && appCards.length > 0) {
           tabLinks.forEach((tab) => {
             tab.addEventListener("click", function () {
-              // ... (logika tab Anda) ...
+              // ... (logika tab) ...
               tabLinks.forEach((t) => t.classList.remove("active"));
               this.classList.add("active");
               const tabText = this.textContent.trim();
@@ -424,13 +432,12 @@
           profileDropdown &&
           profileCloseBtn
         ) {
-          // [DIUBAH]
 
           // 1. Klik Lonceng
           notifIcon.addEventListener("click", function (event) {
             event.stopPropagation();
             notifPanel.classList.toggle("active");
-            profileDropdown.classList.remove("active"); // Tutup profil
+            profileDropdown.classList.remove("active");
           });
 
           // 2. Klik Tombol 'X' Notifikasi
@@ -445,14 +452,13 @@
             notifPanel.classList.remove("active"); // Tutup notifikasi
           });
 
-          // 4. [BARU] Klik Tombol 'X' Profil
+          // 4. Klik Tombol 'X' Profil
           profileCloseBtn.addEventListener("click", function () {
             profileDropdown.classList.remove("active");
           });
 
           // 5. Klik di Luar Panel
           document.addEventListener("click", function (event) {
-            // Cek notifikasi
             if (
               notifPanel.classList.contains("active") &&
               !notifPanel.contains(event.target) &&
@@ -460,7 +466,6 @@
             ) {
               notifPanel.classList.remove("active");
             }
-            // Cek profil
             if (
               profileDropdown.classList.contains("active") &&
               !profileDropdown.contains(event.target) &&
@@ -471,32 +476,34 @@
           });
         }
 
-        // --- BAGIAN 3: LOGIKA POPUP NOTIFIKASI ---
         const popupOverlay = document.getElementById("popup-overlay");
-        const popupCloseBtn = document.getElementById("popup-close-btn");
+        const closeBtnUnderstand = document.getElementById(
+          "popup-understand-btn"
+        );
 
-        if (popupOverlay && popupCloseBtn) {
-          // Cek apakah popup sudah pernah ditampilkan dalam sesi ini
+        // Fungsi untuk menutup popup
+        function closePopup() {
+          if (popupOverlay) {
+            popupOverlay.classList.remove("active");
+          }
+        }
+
+        if (popupOverlay && closeBtnUnderstand) {
           const popupShown = sessionStorage.getItem("popupShown");
 
           if (!popupShown) {
-            // Tampilkan popup saat halaman load (hanya sekali per sesi)
             setTimeout(() => {
               popupOverlay.classList.add("active");
-              // Set flag bahwa popup sudah ditampilkan
               sessionStorage.setItem("popupShown", "true");
-            }, 1000); // Delay 1 detik agar halaman stabil
+            }, 1000);
           }
 
-          // Tutup popup saat klik tombol close
-          popupCloseBtn.addEventListener("click", function () {
-            popupOverlay.classList.remove("active");
-          });
+          closeBtnUnderstand.addEventListener("click", closePopup);
 
           // Tutup popup saat klik overlay (di luar modal)
           popupOverlay.addEventListener("click", function (event) {
             if (event.target === popupOverlay) {
-              popupOverlay.classList.remove("active");
+              closePopup();
             }
           });
         }
