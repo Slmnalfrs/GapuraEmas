@@ -13,7 +13,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -421,6 +420,7 @@ main {
 
   /* -- Konten Utama -- */
   main {
+    margin-top: -38px;
   }
   /* -- Tampilkan Navbar Bawah -- */
   .mobile-nav {
@@ -464,6 +464,7 @@ main {
   }
 
   main {
+    margin-top: -38px;
   }
   .fab-container {
     bottom: 66px;
