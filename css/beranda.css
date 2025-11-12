@@ -29,7 +29,7 @@
   color: #313131ff;
   max-width: 700px;
   line-height: 1.5;
-  margin-bottom: 90px;
+  margin-bottom: 115px;
 }
 
 /* Dekorasi Lingkaran Oranye & Logo */
@@ -228,7 +228,6 @@
 .card-main {
   display: flex;
   align-items: center;
-  /* [PERUBAHAN] Hapus margin-bottom agar justify-content berfungsi */
 }
 
 .app-info {
@@ -240,7 +239,6 @@
   font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 3px;
-  /* [PERUBAHAN] Teks H3 tidak lagi di tengah */
   text-align: left;
 }
 
@@ -271,7 +269,6 @@
   width: fit-content;
   display: block;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  /* [PERUBAHAN] Tambah margin-top untuk tombol "Segera Hadir" */
   margin-top: 15px;
 }
 
@@ -310,11 +307,11 @@
   margin-left: 10px;
   flex-shrink: 0;
   width: auto;
-  margin-top: 0; /* [PENTING] Hapus margin-top bawaan */
+  margin-top: 0;
 }
 
 .last-access-text {
-  font-size: 0.75rem; /* 12px */
+  font-size: 0.75rem;
   color: var(--text-grey);
   margin: 0;
   font-weight: 400;
@@ -339,13 +336,11 @@
 /* Tablet ( < 992px ) */
 @media (max-width: 992px) {
   /* -- Hero -- */
-  .hero-text h2 {
-    font-size: 48px;
-  }
 
   .hero-text p {
     font-size: 1.1rem;
     max-width: 100%;
+    padding-right: 20px;
   }
 
   .orange-circle {
@@ -360,63 +355,12 @@
     right: -20px;
   }
 
-  /* -- App Grid -- */
-  .app-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .app-logo-placeholder {
-    width: 100px;
-    height: 100px;
-  }
-
   /* -- Banner -- */
   .banner img {
     width: 30vw;
   }
-}
 
-/* Mobile ( < 768px ) */
-@media (max-width: 768px) {
-  .hero {
-    padding-top: 20px;
-    padding-bottom: 30px;
-    overflow: hidden;
-  }
-
-  .hero-container {
-    align-items: flex-start;
-  }
-
-  .hero-text h2 {
-    font-size: 1.3rem;
-    margin-bottom: 5px;
-  }
-
-  .hero-text p {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  .orange-circle {
-    width: 210px;
-    height: 210px;
-    top: -75px;
-    right: -80px;
-  }
-
-  .hero-image .logo-pasuruan {
-    width: 95px;
-    right: -5px;
-    top: -15px;
-  }
-
-  /* -- App Section -- */
-  .app-section {
-    padding-top: 20px;
-  }
-
-  /* -- App Nav -- */
+  /* -- [PERUBAHAN] App Nav ditata di sini -- */
   .app-navigation {
     flex-direction: column-reverse;
     align-items: center;
@@ -447,6 +391,74 @@
   /* -- App Grid -- */
   .app-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .app-logo-placeholder {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Aturan Last Access & Tombol (Tablet + Mobile) */
+  .app-status {
+    display: none !important;
+  }
+  .app-card-footer {
+    text-align: center;
+    margin-top: 10px;
+    align-self: stretch;
+    width: 100%;
+    justify-content: center;
+  }
+  .last-access-text {
+    text-align: center;
+    white-space: normal;
+  }
+  .app-card-footer .app-status {
+    display: none !important;
+  }
+}
+
+/* Mobile ( < 768px ) */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    overflow: hidden;
+  }
+
+  .hero-container {
+    align-items: flex-start;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-right: 30px;
+  }
+
+  .orange-circle {
+    width: 210px;
+    height: 210px;
+    top: -75px;
+    right: -80px;
+  }
+
+  .hero-image .logo-pasuruan {
+    width: 95px;
+    right: -5px;
+    top: -15px;
+  }
+
+  /* -- App Section -- */
+  .app-section {
+    padding-top: 20px;
+  }
+
+  /* -- [DIHAPUS] Aturan App Nav dipindahkan ke blok 992px -- */
+
+  /* -- App Grid -- */
+  .app-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 
@@ -457,7 +469,6 @@
     align-items: center;
     text-align: center;
     justify-content: space-between;
-    /* [PERUBAHAN] Ganti height: 180px menjadi min-height */
     min-height: 180px;
     height: auto;
   }
@@ -487,35 +498,11 @@
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 2px;
-    text-align: center; /* [PERUBAHAN] Kembalikan ke tengah di mobile */
+    text-align: center;
   }
 
   .app-info p {
     display: none;
-  }
-
-  .app-status {
-    /* [PERMINTAAN BARU] Sembunyikan SEMUA tombol di mobile */
-    display: none !important;
-  }
-
-  /* Style mobile untuk footer card (last access + tombol) */
-  .app-card-footer {
-    /* [PERUBAHAN] Tidak lagi column, hanya center-kan teks */
-    text-align: center;
-    margin-top: 10px;
-    align-self: stretch;
-    width: 100%;
-  }
-
-  .last-access-text {
-    text-align: center;
-    white-space: normal;
-  }
-
-  /* [PERMINTAAN BARU] Pastikan tombol di dalam footer juga tersembunyi */
-  .app-card-footer .app-status {
-    display: none !important;
   }
 
   /* -- Banner (Geser Kanan-Kiri) -- */
@@ -530,19 +517,21 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
   .banner-section::-webkit-scrollbar {
     display: none;
   }
+
   .banner {
     flex-shrink: 0;
   }
+
   .banner img {
     width: 80vw;
   }
 }
 
 /* ======== DESAIN POPUP ======== */
-/* (Kode popup notifikasi Anda... tetap sama) */
 .popup-overlay {
   position: fixed;
   inset: 0;
@@ -555,10 +544,12 @@
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
 .popup-overlay.active {
   opacity: 1;
   visibility: visible;
 }
+
 .popup-modal {
   background: var(--white, #ffffff);
   border-radius: 16px;
@@ -573,10 +564,12 @@
   backdrop-filter: none;
   border: none;
 }
+
 .popup-overlay.active .popup-modal {
   transform: translateY(0) scale(1);
   opacity: 1;
 }
+
 .popup-icon-wrapper {
   width: 80px;
   height: 80px;
@@ -599,27 +592,33 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   animation: pulseAlert 2s ease-in-out infinite;
 }
+
 .popup-content {
   padding: 10px 20px;
   text-align: center;
 }
+
 .popup-title {
   font-size: 1.5rem;
   font-weight: 700;
   color: #333;
   margin: 0 0 15px 0;
 }
+
 .popup-body {
   font-size: 1rem;
   color: #555;
   line-height: 1.7;
 }
+
 .popup-body p {
   margin-bottom: 15px;
 }
+
 .popup-body p:last-child {
   margin-bottom: 0;
 }
+
 .popup-footer {
   padding: 10px 20px;
   background-color: #ffffffff;
@@ -628,6 +627,7 @@
   border-bottom-right-radius: 16px;
   text-align: center;
 }
+
 .btn-primary-popup {
   background-color: var(--primary-orange, #f15a24);
   color: var(--white, #ffffff);
@@ -640,64 +640,77 @@
   cursor: pointer;
   transition: background-color 0.2s, transform 0.2s;
 }
+
 .btn-primary-popup:hover {
   background-color: #d13a0a;
   transform: scale(1);
 }
+
 @keyframes pulseAlert {
   0% {
     transform: translateX(-50%) scale(1);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
+
   50% {
     transform: translateX(-50%) scale(1.05);
     box-shadow: 0 6px 20px rgba(241, 90, 36, 0.4);
   }
+
   100% {
     transform: translateX(-50%) scale(1);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
 }
+
 @keyframes ringBell {
   0% {
     transform: rotate(0deg);
   }
+
   15% {
     transform: rotate(10deg);
   }
+
   30% {
     transform: rotate(-8deg);
   }
+
   45% {
     transform: rotate(6deg);
   }
+
   60% {
     transform: rotate(-4deg);
   }
+
   100% {
     transform: rotate(0deg);
   }
 }
+
 @media (max-width: 480px) {
   .popup-modal {
     border-radius: 16px;
     max-width: 90%;
   }
+
   .popup-icon {
     width: 44px;
     height: 44px;
     font-size: 20px;
   }
+
   .popup-title {
     font-size: 1.3rem;
   }
+
   .popup-body p {
     font-size: 0.9rem;
   }
 }
 
 /* ======== DESAIN POPUP APP DETAIL UNTUK MOBILE ======== */
-/* (Kode popup app detail Anda... tetap sama) */
 .app-popup-overlay {
   position: fixed;
   inset: 0;
@@ -705,15 +718,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10001; /* Lebih tinggi dari popup notifikasi */
+  z-index: 10001;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
 .app-popup-overlay.active {
   opacity: 1;
   visibility: visible;
 }
+
 .app-popup-modal {
   background: var(--white, #ffffff);
   border-radius: 16px;
@@ -728,10 +743,12 @@
   backdrop-filter: none;
   border: none;
 }
+
 .app-popup-overlay.active .app-popup-modal {
   transform: translateY(0) scale(1);
   opacity: 1;
 }
+
 .app-popup-close-btn {
   position: absolute;
   top: 10px;
@@ -744,9 +761,11 @@
   z-index: 10;
   transition: color 0.2s ease;
 }
+
 .app-popup-close-btn:hover {
   color: var(--primary-orange);
 }
+
 .app-popup-icon-wrapper {
   width: 70px;
   height: 70px;
@@ -757,32 +776,39 @@
   margin: 0 auto 20px;
   overflow: hidden;
 }
+
 .app-popup-icon-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
+
 .app-popup-content {
   text-align: center;
   margin-bottom: 20px;
 }
+
 .app-popup-title {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-dark);
   margin: 0 0 15px 0;
 }
+
 .app-popup-body {
   font-size: 1rem;
   color: var(--text-grey);
   line-height: 1.6;
 }
+
 .app-popup-body p {
   margin: 0;
 }
+
 .app-popup-footer {
   text-align: center;
 }
+
 .app-popup-action-btn {
   background-color: var(--primary-orange);
   color: var(--white);
@@ -796,10 +822,12 @@
   transition: background-color 0.2s, transform 0.2s;
   width: 100%;
 }
+
 .app-popup-action-btn:hover:not(.disabled) {
   background-color: #d13a0a;
   transform: scale(1.02);
 }
+
 .app-popup-action-btn.disabled {
   background-color: var(--text-grey);
   cursor: not-allowed;
@@ -812,17 +840,21 @@
     max-width: 95%;
     padding: 15px;
   }
+
   .app-popup-icon-wrapper {
     width: 70px;
     height: 70px;
     margin-bottom: 15px;
   }
+
   .app-popup-title {
     font-size: 1.3rem;
   }
+
   .app-popup-body p {
     font-size: 0.9rem;
   }
+
   .app-popup-action-btn {
     padding: 10px 25px;
     font-size: 0.9rem;

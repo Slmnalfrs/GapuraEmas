@@ -94,13 +94,13 @@
 
       <section class="banner-section">
         <div class="banner">
-          <img src="assets/banner.jpg" alt="Banner 1" />
+          <img src="assets/banner3.png" alt="Banner 1" />
         </div>
         <div class="banner">
-          <img src="assets/banner.jpg" alt="Banner 2" />
+          <img src="assets/banner2.png" alt="Banner 2" />
         </div>
         <div class="banner">
-          <img src="assets/banner.jpg" alt="Banner 3" />
+          <img src="assets/banner1.png" alt="Banner 3" />
         </div>
       </section>
 
@@ -162,7 +162,7 @@
               />
               <div class="app-info">
                 <h3>SAKTI</h3>
-                <p>Aplikasi perizinan online kapan saja dan dimana saja</p>
+                <p>Deskripsi Aplikasi</p>
               </div>
             </div>
             <a
@@ -181,7 +181,7 @@
               />
               <div class="app-info">
                 <h3>APIK</h3>
-                <p>Aplikasi umkm online kapan saja dan dimana saja</p>
+                <p>Deskripsi Aplikasi</p>
               </div>
             </div>
             <a href="#" class="app-status status-soon">Segera Hadir</a>
@@ -195,7 +195,7 @@
               />
               <div class="app-info">
                 <h3>Hallo Fish</h3>
-                <p>Aplikasi perizinan online kapan saja dan dimana saja</p>
+                <p>Deskripsi Aplikasi</p>
               </div>
             </div>
             <a href="#" class="app-status status-soon">Segera Hadir</a>
@@ -209,7 +209,7 @@
               />
               <div class="app-info">
                 <h3>Saraswati</h3>
-                <p>Aplikasi perizinan online kapan saja dan dimana saja</p>
+                <p>Deskripsi Aplikasi</p>
               </div>
             </div>
             <a href="#" class="app-status status-soon">Segera Hadir</a>
@@ -223,7 +223,7 @@
               />
               <div class="app-info">
                 <h3>SPBE</h3>
-                <p>Aplikasi perizinan online kapan saja dan dimana saja</p>
+                <p>Deskripsi Aplikasi</p>
               </div>
             </div>
             <a href="#" class="app-status status-open">Buka</a>
@@ -237,7 +237,7 @@
               />
               <div class="app-info">
                 <h3>Sikap Baja</h3>
-                <p>Aplikasi perizinan online kapan saja dan dimana saja</p>
+                <p>Deskripsi Aplikasi</p>
               </div>
             </div>
             <a href="#" class="app-status status-soon">Segera Hadir</a>
@@ -251,7 +251,7 @@
               />
               <div class="app-info">
                 <h3>Sapa Warga</h3>
-                <p>Aplikasi perizinan online kapan saja dan dimana saja</p>
+                <p>Deskripsi Aplikasi</p>
               </div>
             </div>
             <a href="#" class="app-status status-soon">Segera Hadir</a>
@@ -265,7 +265,7 @@
               />
               <div class="app-info">
                 <h3>Majestik</h3>
-                <p>Aplikasi perizinan online kapan saja dan dimana saja</p>
+                <p>Deskripsi Aplikasi</p>
               </div>
             </div>
             <a href="#" class="app-status status-soon">Segera Hadir</a>
@@ -279,7 +279,7 @@
               />
               <div class="app-info">
                 <h3>Buku Tamu</h3>
-                <p>Aplikasi perizinan online kapan saja dan dimana saja</p>
+                <p>Deskripsi Aplikasi</p>
               </div>
             </div>
             <a href="#" class="app-status status-soon">Segera Hadir</a>
@@ -293,7 +293,7 @@
               />
               <div class="app-info">
                 <h3>Anjab (Development)</h3>
-                <p>Aplikasi perizinan online kapan saja dan dimana saja</p>
+                <p>Deskripsi Aplikasi</p>
               </div>
             </div>
             <a href="#" class="app-status status-soon">Segera Hadir</a>
@@ -394,8 +394,6 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // --- [BARU] FUNGSI HELPER UNTUK LAST ACCESS ---
-
-        // Helper 1: Menambahkan '0' di depan angka < 10
         function padZero(num) {
           return num < 10 ? "0" + num : num;
         }
@@ -545,39 +543,44 @@
           });
         }
 
-        // --- BAGIAN 4: LOGIKA MENAMPILKAN LAST ACCESS (DI DALAM APP-CARD) ---
+        //BAGIAN 4: LOGIKA MENAMPILKAN LAST ACCESS ---
         try {
           const accessTimes =
             JSON.parse(localStorage.getItem("appAccessTimes")) || {};
           const allAppCards = document.querySelectorAll(".app-card");
 
           allAppCards.forEach((card) => {
-            const button = card.querySelector(".app-status.status-open");
             const appNameElement = card.querySelector(".app-info h3");
+            const statusElement = card.querySelector(".app-status"); 
 
-            if (button && appNameElement) {
-              const appName = appNameElement.textContent.trim();
-              const lastAccessString = accessTimes[appName];
-
-              let formattedText;
-              if (lastAccessString) {
-                const lastAccessDate = new Date(lastAccessString);
-                // [PERMINTAAN BARU] Gunakan format DD.MM.YYYY HH:MM
-                formattedText = formatDateForDisplay(lastAccessDate);
-              } else {
-                formattedText = "<i>Belum pernah dibuka</i>";
-              }
-
-              const footer = document.createElement("div");
-              footer.className = "app-card-footer";
-              const lastAccessElement = document.createElement("p");
-              lastAccessElement.className = "last-access-text";
-              lastAccessElement.innerHTML = formattedText;
-
-              footer.appendChild(lastAccessElement);
-              footer.appendChild(button);
-              card.appendChild(footer);
+            if (!appNameElement || !statusElement) {
+              return; 
             }
+
+            const appName = appNameElement.textContent.trim();
+            const footer = document.createElement("div");
+            footer.className = "app-card-footer";
+
+            const lastAccessElement = document.createElement("p");
+            lastAccessElement.className = "last-access-text";
+
+            let formattedText;
+
+            // [LOGIKA BARU] Periksa HANYA localStorage
+            const lastAccessString = accessTimes[appName];
+
+            if (lastAccessString) {
+
+              formattedText = formatDateForDisplay(new Date(lastAccessString));
+            } else {
+              formattedText = "<i>Belum Diakses</i>";
+            }
+
+            // Atur teks dan pindahkan elemen
+            lastAccessElement.innerHTML = formattedText;
+            footer.appendChild(lastAccessElement);
+            footer.appendChild(statusElement);
+            card.appendChild(footer);
           });
         } catch (e) {
           console.error("Gagal menampilkan Last Access (App Card):", e);
@@ -597,7 +600,7 @@
 
         let currentAppHref = "#";
         let currentAppName = "";
-        let currentCard = null; // [BARU] Simpan elemen kartu yg aktif
+        let currentCard = null;
 
         function openAppPopup(card) {
           const iconSrc = card.querySelector(".app-logo-placeholder").src;
@@ -612,7 +615,7 @@
 
           currentAppHref = statusElement.href || "#";
           currentAppName = title.trim();
-          currentCard = card; // [BARU] Simpan kartu saat ini
+          currentCard = card;
 
           appPopupIcon.src = iconSrc;
           appPopupTitle.textContent = title;
@@ -632,15 +635,13 @@
 
         function closeAppPopup() {
           appPopupOverlay.classList.remove("active");
-          currentCard = null; // Hapus referensi kartu
+          currentCard = null;
         }
 
         const appCardsPopup = document.querySelectorAll(".app-card");
         appCardsPopup.forEach((card) => {
           card.addEventListener("click", function (event) {
             if (window.innerWidth < 768) {
-              // [PERMINTAAN BARU] Popup akan selalu terbuka saat klik kartu
-              // karena tombol 'Buka' tersembunyi
               event.preventDefault();
               openAppPopup(this);
             }

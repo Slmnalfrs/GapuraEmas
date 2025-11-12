@@ -375,8 +375,9 @@ main {
    6. RESPONSIVE
    ================================================ */
 
-/* Tablet ( < 768px ) */
-@media (max-width: 480px) {
+/* [PERUBAHAN] Aturan ini sekarang berlaku untuk TABLET & MOBILE */
+/* Mengganti breakpoint 480px menjadi 992px */
+@media (max-width: 992px) {
   /* -- Body -- */
   body {
     padding-top: 66px;
@@ -390,6 +391,7 @@ main {
   }
 
   .navbar nav {
+    /* [PERUBAHAN] Sembunyikan navigasi atas di tablet */
     display: none;
   }
 
@@ -399,7 +401,7 @@ main {
     margin-right: 0;
   }
 
-  /* [UPDATE] Tampilkan teks "gapuraemas" di samping logo pada mode mobile */
+  /* [UPDATE] Tampilkan teks "gapuraemas" di samping logo */
   .logo h1 {
     display: block;
     font-size: 1rem;
@@ -411,6 +413,7 @@ main {
   }
 
   .user-details {
+    /* [PERUBAHAN] Sembunyikan detail pengguna di tablet */
     display: none;
   }
 
@@ -436,7 +439,6 @@ main {
     display: flex;
   }
 
-  /* -- Posisi FAB di Mobile -- */
   .fab-container {
     bottom: 71px;
     right: 20px;
@@ -444,6 +446,7 @@ main {
 }
 
 /* Mobile ( < 480px ) */
+/* Aturan ini HANYA untuk penyesuaian layar yang SANGAT KECIL */
 @media (max-width: 480px) {
   body {
     padding-top: 56px;
@@ -595,7 +598,7 @@ main {
 }
 
 /* Penyesuaian Posisi Notifikasi di Mobile */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .notification-panel {
     top: 82px;
     right: 15px;
@@ -676,7 +679,8 @@ main {
 }
 
 /* Penyesuaian Posisi di Mobile */
-@media (max-width: 768px) {
+/* [PERUBAHAN] Menggunakan breakpoint 992px */
+@media (max-width: 992px) {
   .profile-dropdown {
     top: 66px;
     right: 0;
