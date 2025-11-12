@@ -20,22 +20,16 @@
   z-index: 2;
 }
 
-.hero-text h2 {
-  font-size: 64px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: var(--text-dark);
-}
-
 .hero-text .orange {
   color: var(--primary-orange);
 }
 
 .hero-text p {
-  font-size: 22px;
-  color: #555;
-  max-width: 520px;
-  line-height: 1.6;
+  font-size: 3rem;
+  color: #313131ff;
+  max-width: 700px;
+  line-height: 1.5;
+  margin-bottom: 90px;
 }
 
 /* Dekorasi Lingkaran Oranye & Logo */
@@ -234,7 +228,7 @@
 .card-main {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  /* [PERUBAHAN] Hapus margin-bottom agar justify-content berfungsi */
 }
 
 .app-info {
@@ -246,7 +240,8 @@
   font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 3px;
-  text-align: center;
+  /* [PERUBAHAN] Teks H3 tidak lagi di tengah */
+  text-align: left;
 }
 
 .app-info p {
@@ -276,6 +271,8 @@
   width: fit-content;
   display: block;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* [PERUBAHAN] Tambah margin-top untuk tombol "Segera Hadir" */
+  margin-top: 15px;
 }
 
 .app-status:hover {
@@ -295,6 +292,44 @@
   background-color: #ffffff;
   color: var(--primary-orange);
   border: 1px solid var(--primary-orange);
+}
+
+/* ================================================
+   5. APP CARD FOOTER (Style untuk Teks Last Access)
+   ================================================ */
+
+.app-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.app-card-footer .app-status {
+  margin-left: 10px;
+  flex-shrink: 0;
+  width: auto;
+  margin-top: 0; /* [PENTING] Hapus margin-top bawaan */
+}
+
+.last-access-text {
+  font-size: 0.75rem; /* 12px */
+  color: var(--text-grey);
+  margin: 0;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.last-access-text b {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.last-access-text i {
+  opacity: 0.8;
 }
 
 /* ================================================
@@ -354,7 +389,7 @@
   }
 
   .hero-text h2 {
-    font-size: 32px;
+    font-size: 1.3rem;
     margin-bottom: 5px;
   }
 
@@ -364,14 +399,14 @@
   }
 
   .orange-circle {
-    width: 220px;
-    height: 220px;
-    top: -70px;
+    width: 210px;
+    height: 210px;
+    top: -75px;
     right: -80px;
   }
 
   .hero-image .logo-pasuruan {
-    width: 100px;
+    width: 95px;
     right: -5px;
     top: -15px;
   }
@@ -411,64 +446,76 @@
 
   /* -- App Grid -- */
   .app-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 
   .app-card {
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    /* [PERUBAHAN] Ganti height: 180px menjadi min-height */
+    min-height: 180px;
+    height: auto;
+  }
+
+  .card-main {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    width: 100%;
   }
 
   .app-logo-placeholder {
     width: 70px;
     height: 70px;
-    align-self: center;
-    margin-right: 15px;
-  }
-
-  .card-main {
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 0;
-    padding-right: 90px;
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 
   .app-info {
     margin-right: 0;
-    text-align: left;
+    text-align: center;
+    width: 100%;
   }
 
   .app-info h3 {
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 2px;
+    text-align: center; /* [PERUBAHAN] Kembalikan ke tengah di mobile */
   }
 
   .app-info p {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--text-grey);
-    margin-top: 0;
-    line-height: 1.3;
+    display: none;
   }
 
   .app-status {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    margin: 0;
-    padding: 4px 8px;
-    font-size: 0.75rem;
+    /* [PERMINTAAN BARU] Sembunyikan SEMUA tombol di mobile */
+    display: none !important;
   }
 
-  .app-status.status-soon {
-    padding: 4px 8px;
-    background-color: transparent;
-    /* Jadi teks biasa */
-    color: var(--text-grey);
-    opacity: 1;
-    pointer-events: none;
-    cursor: default;
+  /* Style mobile untuk footer card (last access + tombol) */
+  .app-card-footer {
+    /* [PERUBAHAN] Tidak lagi column, hanya center-kan teks */
+    text-align: center;
+    margin-top: 10px;
+    align-self: stretch;
+    width: 100%;
+  }
+
+  .last-access-text {
+    text-align: center;
+    white-space: normal;
+  }
+
+  /* [PERMINTAAN BARU] Pastikan tombol di dalam footer juga tersembunyi */
+  .app-card-footer .app-status {
+    display: none !important;
   }
 
   /* -- Banner (Geser Kanan-Kiri) -- */
@@ -477,28 +524,25 @@
     overflow-x: auto;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    margin-top: 20px;
+    margin-top: -90px;
     padding-left: 15px;
     padding-right: 15px;
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-
   .banner-section::-webkit-scrollbar {
     display: none;
   }
-
   .banner {
     flex-shrink: 0;
   }
-
   .banner img {
     width: 80vw;
   }
 }
 
 /* ======== DESAIN POPUP ======== */
-
+/* (Kode popup notifikasi Anda... tetap sama) */
 .popup-overlay {
   position: fixed;
   inset: 0;
@@ -511,17 +555,14 @@
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-
 .popup-overlay.active {
   opacity: 1;
   visibility: visible;
 }
-
 .popup-modal {
   background: var(--white, #ffffff);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  /* DIMODIFIKASI: Dikecilkan */
   max-width: 450px;
   width: 90%;
   position: relative;
@@ -532,13 +573,10 @@
   backdrop-filter: none;
   border: none;
 }
-
 .popup-overlay.active .popup-modal {
   transform: translateY(0) scale(1);
   opacity: 1;
 }
-
-/* Wrapper untuk Ikon di atas */
 .popup-icon-wrapper {
   width: 80px;
   height: 80px;
@@ -561,45 +599,35 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   animation: pulseAlert 2s ease-in-out infinite;
 }
-
-/* Konten di dalam modal */
 .popup-content {
   padding: 10px 20px;
   text-align: center;
 }
-
 .popup-title {
   font-size: 1.5rem;
   font-weight: 700;
   color: #333;
   margin: 0 0 15px 0;
 }
-
 .popup-body {
   font-size: 1rem;
   color: #555;
   line-height: 1.7;
 }
-
 .popup-body p {
   margin-bottom: 15px;
 }
 .popup-body p:last-child {
   margin-bottom: 0;
 }
-
-/* Footer untuk tombol aksi */
 .popup-footer {
   padding: 10px 20px;
   background-color: #ffffffff;
   border-top: 1px solid #eee;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
-  /* DIMODIFIKASI: Tombol di tengah */
   text-align: center;
 }
-
-/* Tombol Aksi Utama */
 .btn-primary-popup {
   background-color: var(--primary-orange, #f15a24);
   color: var(--white, #ffffff);
@@ -616,8 +644,6 @@
   background-color: #d13a0a;
   transform: scale(1);
 }
-
-/* Keyframe untuk animasi denyut */
 @keyframes pulseAlert {
   0% {
     transform: translateX(-50%) scale(1);
@@ -632,7 +658,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
 }
-
 @keyframes ringBell {
   0% {
     transform: rotate(0deg);
@@ -653,45 +678,153 @@
     transform: rotate(0deg);
   }
 }
-
-.popup-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--primary-orange);
-  margin: 0;
-  letter-spacing: 0.5px;
-}
-
-.popup-body {
-  padding: 20px;
-  text-align: center;
-}
-
-.popup-body p {
-  font-size: 1rem;
-  color: var(--text-dark);
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Responsif Mobile */
 @media (max-width: 480px) {
   .popup-modal {
     border-radius: 16px;
     max-width: 90%;
   }
-
   .popup-icon {
     width: 44px;
     height: 44px;
     font-size: 20px;
   }
-
   .popup-title {
     font-size: 1.3rem;
   }
-
   .popup-body p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ======== DESAIN POPUP APP DETAIL UNTUK MOBILE ======== */
+/* (Kode popup app detail Anda... tetap sama) */
+.app-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10001; /* Lebih tinggi dari popup notifikasi */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.app-popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.app-popup-modal {
+  background: var(--white, #ffffff);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  padding: 20px;
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0;
+  backdrop-filter: none;
+  border: none;
+}
+.app-popup-overlay.active .app-popup-modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+.app-popup-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-grey);
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s ease;
+}
+.app-popup-close-btn:hover {
+  color: var(--primary-orange);
+}
+.app-popup-icon-wrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  overflow: hidden;
+}
+.app-popup-icon-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.app-popup-content {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.app-popup-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 15px 0;
+}
+.app-popup-body {
+  font-size: 1rem;
+  color: var(--text-grey);
+  line-height: 1.6;
+}
+.app-popup-body p {
+  margin: 0;
+}
+.app-popup-footer {
+  text-align: center;
+}
+.app-popup-action-btn {
+  background-color: var(--primary-orange);
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  width: 100%;
+}
+.app-popup-action-btn:hover:not(.disabled) {
+  background-color: #d13a0a;
+  transform: scale(1.02);
+}
+.app-popup-action-btn.disabled {
+  background-color: var(--text-grey);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@media (max-width: 480px) {
+  .app-popup-modal {
+    border-radius: 16px;
+    max-width: 95%;
+    padding: 15px;
+  }
+  .app-popup-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+  }
+  .app-popup-title {
+    font-size: 1.3rem;
+  }
+  .app-popup-body p {
+    font-size: 0.9rem;
+  }
+  .app-popup-action-btn {
+    padding: 10px 25px;
     font-size: 0.9rem;
   }
 }

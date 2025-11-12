@@ -31,7 +31,7 @@
         <h1><span class="orange">GAPURA</span>EMAS</h1>
       </div>
       <nav>
-        <a href="beranda.html">Beranda</a>
+        <a href="index.html">Beranda</a>
         <span class="nav-separator">|</span>
         <a href="personalisasi.html">Personalisasi</a>
         <span class="nav-separator">|</span>
@@ -375,7 +375,7 @@
     </footer>
 
     <nav class="mobile-nav">
-      <a href="beranda.html">
+      <a href="index.html">
         <i class="fas fa-home"></i>
         <span>Beranda</span>
       </a>
@@ -395,7 +395,8 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // ... (Logika tab) ...
+        // --- BAGIAN 1: LOGIKA TAB FADE-IN ---
+        // ... (Logika tab Anda ada di sini) ...
         const tabButtons = document.querySelectorAll(
           ".security-tabs .tab-link"
         );
@@ -420,6 +421,7 @@
         }
 
         // --- BAGIAN 2: LOGIKA MODAL KONFIRMASI ---
+        // ... (Logika modal Anda ada di sini) ...
         const modal = document.getElementById("konfirmasi-modal");
         const endSessionButtons = document.querySelectorAll(".btn-akhiri-sesi");
         const btnModalCancel = document.getElementById("btn-modal-cancel");
@@ -461,6 +463,8 @@
           profileDropdown &&
           profileCloseBtn
         ) {
+          // [DIUBAH]
+
           // 1. Klik Lonceng
           notifIcon.addEventListener("click", function (event) {
             event.stopPropagation();

@@ -17,17 +17,21 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  font-display: swap;
   background-color: var(--bg-light);
   color: var(--text-dark);
   line-height: 1.6;
   padding-top: 85px;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
-img, svg, iframe {
+img,
+svg,
+iframe {
   max-width: 100%;
   height: auto;
   display: block;
@@ -107,7 +111,7 @@ nav a.active:hover {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0px;
 }
 
 .logo img {
@@ -201,7 +205,8 @@ footer {
    3. KONTEN UTAMA & ANIMASI
    ================================================ */
 main {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: fadeIn 1s ease-out forwards;
+  -webkit-animation: fadeIn 1s ease-out forwards;
 }
 
 @keyframes fadeIn {
@@ -250,7 +255,7 @@ main {
 }
 
 .mobile-nav a span {
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-weight: 500;
   margin-top: 2px;
 }
@@ -394,8 +399,11 @@ main {
     margin-right: 0;
   }
 
+  /* [UPDATE] Tampilkan teks "gapuraemas" di samping logo pada mode mobile */
   .logo h1 {
-    display: none;
+    display: block;
+    font-size: 1rem;
+    margin-left: 5px;
   }
 
   .logo img {
@@ -422,6 +430,7 @@ main {
   main {
     margin-top: -38px;
   }
+
   /* -- Tampilkan Navbar Bawah -- */
   .mobile-nav {
     display: flex;
@@ -466,6 +475,7 @@ main {
   main {
     margin-top: -38px;
   }
+
   .fab-container {
     bottom: 66px;
     right: 20px;
