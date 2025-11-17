@@ -40,18 +40,26 @@
 
 .orange-circle {
   position: absolute;
-  right: -200px;
-  top: -150px;
-  width: 550px;
-  height: 550px;
-  background-color: var(--primary-orange);
+  right: -190px;
+  top: -160px;
+  width: 510px;
+  height: 510px;
+  background: radial-gradient(circle at 35% 35%, #ffb66b, var(--primary-orange));
   border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.88;
   z-index: 1;
+  box-shadow:
+    0 0 120px rgba(255, 132, 75, 0.5),
+    inset -60px -60px 120px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 .hero-image .logo-pasuruan {
   position: relative;
   z-index: 2;
+  top: -40px;
   right: -40px;
   width: 220px;
   height: auto;
@@ -439,7 +447,7 @@
   .orange-circle {
     width: 210px;
     height: 210px;
-    top: -75px;
+    top: -50px;
     right: -80px;
   }
 
