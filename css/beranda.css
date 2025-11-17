@@ -1,59 +1,42 @@
 /* ================================================
-   1. HERO SECTION (Selamat Datang) - REDESIGNED
+   1. HERO SECTION (Selamat Datang) - ALTERNATIVE DESIGN
    ================================================ */
 .hero {
-  background: linear-gradient(135deg, #fff5f0 0%, #ffffff 50%, #fff8f5 100%);
-  padding: 60px 0 80px;
+  background: #ffffff;
+  padding: 80px 0 60px;
   position: relative;
   overflow: hidden;
 }
 
-/* Dekorasi Geometris Modern */
+/* Dekorasi Wave Pattern */
 .hero::before {
   content: "";
   position: absolute;
-  top: -100px;
-  right: -50px;
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(135deg, rgba(255, 182, 107, 0.3), rgba(241, 90, 36, 0.4));
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  filter: blur(60px);
-  animation: morphShape 8s ease-in-out infinite;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(135deg, #fff8f5 0%, #fff0e8 100%);
+  clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
   z-index: 1;
 }
 
+/* Accent Dots */
 .hero::after {
   content: "";
   position: absolute;
-  bottom: -80px;
-  left: -80px;
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(225deg, rgba(255, 140, 90, 0.2), rgba(241, 90, 36, 0.3));
-  border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
-  filter: blur(50px);
-  animation: morphShape 10s ease-in-out infinite reverse;
+  top: 50px;
+  right: 100px;
+  width: 12px;
+  height: 12px;
+  background: var(--primary-orange);
+  border-radius: 50%;
+  box-shadow: 
+    -80px 40px 0 -2px rgba(241, 90, 36, 0.3),
+    -150px -30px 0 -2px rgba(241, 90, 36, 0.4),
+    60px 120px 0 -2px rgba(241, 90, 36, 0.2),
+    -200px 100px 0 -2px rgba(241, 90, 36, 0.3);
   z-index: 1;
-}
-
-@keyframes morphShape {
-  0%, 100% {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    transform: rotate(0deg) scale(1);
-  }
-  25% {
-    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
-    transform: rotate(45deg) scale(1.1);
-  }
-  50% {
-    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
-    transform: rotate(90deg) scale(1.05);
-  }
-  75% {
-    border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
-    transform: rotate(135deg) scale(1.08);
-  }
 }
 
 .hero-container {
@@ -62,174 +45,66 @@
   justify-content: space-between;
   position: relative;
   z-index: 2;
-  gap: 40px;
+  gap: 60px;
 }
 
 .hero-text {
   flex: 1;
   z-index: 2;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .hero-text .orange {
   color: var(--primary-orange);
   position: relative;
-  display: inline-block;
-}
-
-.hero-text .orange::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary-orange), transparent);
-  border-radius: 2px;
+  font-weight: 700;
 }
 
 .hero-text p {
   font-size: 3rem;
   color: #313131ff;
   max-width: 700px;
-  line-height: 1.5;
-  margin-bottom: 115px;
+  line-height: 1.4;
+  margin-bottom: 100px;
   font-weight: 600;
-  letter-spacing: -0.5px;
 }
 
-/* Dekorasi Logo dengan Efek Floating Card */
+/* Card Container untuk Logo */
 .hero-image {
   position: relative;
   flex-shrink: 0;
-  animation: fadeInRight 0.8s ease-out 0.2s both;
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  z-index: 2;
 }
 
 .orange-circle {
   position: absolute;
-  right: -190px;
-  top: -120px;
-  width: 450px;
-  height: 450px;
-  background: linear-gradient(135deg, #ffffff 0%, #fff5f0 100%);
-  border: 3px solid rgba(241, 90, 36, 0.15);
-  border-radius: 20% 80% 60% 40% / 50% 70% 30% 50%;
-  box-shadow:
-    0 20px 60px rgba(241, 90, 36, 0.15),
-    inset 0 0 80px rgba(255, 182, 107, 0.1);
+  right: -120px;
+  top: -60px;
+  width: 420px;
+  height: 420px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 
+    0 30px 90px rgba(0, 0, 0, 0.08),
+    0 10px 30px rgba(241, 90, 36, 0.1);
   z-index: 1;
-  animation: floatShape 6s ease-in-out infinite;
-}
-
-@keyframes floatShape {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-    border-radius: 20% 80% 60% 40% / 50% 70% 30% 50%;
-  }
-  50% {
-    transform: translateY(-20px) rotate(5deg);
-    border-radius: 40% 60% 70% 30% / 60% 40% 60% 40%;
-  }
-}
-
-/* Dekorasi Aksen */
-.orange-circle::before {
-  content: "";
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  right: 30px;
-  bottom: 30px;
-  border: 2px dashed rgba(241, 90, 36, 0.2);
-  border-radius: inherit;
-  animation: rotate360 20s linear infinite;
-}
-
-@keyframes rotate360 {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Dots Pattern */
-.orange-circle::after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: var(--primary-orange);
-  border-radius: 50%;
-  top: 50px;
-  right: 80px;
-  box-shadow:
-    40px 60px 0 rgba(241, 90, 36, 0.4),
-    -30px 80px 0 rgba(241, 90, 36, 0.3),
-    60px -40px 0 rgba(241, 90, 36, 0.5),
-    -50px -30px 0 rgba(241, 90, 36, 0.3);
-  animation: twinkle 3s ease-in-out infinite;
-}
-
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: scale(0.8);
-  }
+  transform: rotate(-5deg);
 }
 
 .hero-image .logo-pasuruan {
   position: relative;
   z-index: 2;
-  top: -40px;
-  right: -40px;
-  width: 220px;
+  top: -20px;
+  right: -20px;
+  width: 240px;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
   margin-top: 10px;
   transition: transform 0.3s ease;
-  animation: floatLogo 4s ease-in-out infinite;
-}
-
-@keyframes floatLogo {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
 }
 
 .hero-image .logo-pasuruan:hover {
-  transform: scale(1.05) !important;
+  transform: scale(1.03);
 }
 
 /* ================================================
@@ -509,40 +384,31 @@
 @media (max-width: 992px) {
   /* -- Hero -- */
   .hero {
-    padding: 40px 0 60px;
+    padding: 50px 0 50px;
+  }
+
+  .hero::before {
+    width: 50%;
+    clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
   }
 
   .hero-text p {
     font-size: 1.8rem;
     max-width: 100%;
     padding-right: 20px;
-    margin-bottom: 80px;
-  }
-
-  .hero::before {
-    width: 300px;
-    height: 300px;
-    top: -50px;
-    right: -30px;
-  }
-
-  .hero::after {
-    width: 200px;
-    height: 200px;
-    bottom: -50px;
-    left: -50px;
+    margin-bottom: 70px;
   }
 
   .orange-circle {
-    width: 350px;
-    height: 350px;
-    right: -150px;
-    top: -80px;
+    width: 340px;
+    height: 340px;
+    right: -100px;
+    top: -50px;
   }
 
   .hero-image .logo-pasuruan {
-    width: 180px;
-    right: -20px;
+    width: 190px;
+    right: -10px;
   }
 
   /* -- Banner -- */
@@ -616,17 +482,15 @@
   }
 
   .hero::before {
-    width: 200px;
-    height: 200px;
-    top: -30px;
-    right: -20px;
+    width: 60%;
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 20% 100%);
   }
 
   .hero::after {
-    width: 150px;
-    height: 150px;
-    bottom: -30px;
-    left: -30px;
+    top: 30px;
+    right: 50px;
+    width: 8px;
+    height: 8px;
   }
 
   .hero-container {
@@ -642,21 +506,17 @@
   }
 
   .orange-circle {
-    width: 200px;
-    height: 200px;
-    top: -40px;
-    right: -70px;
-  }
-
-  .orange-circle::before,
-  .orange-circle::after {
-    display: none;
+    width: 190px;
+    height: 190px;
+    top: -30px;
+    right: -60px;
+    border-radius: 16px;
   }
 
   .hero-image .logo-pasuruan {
     width: 100px;
     right: -5px;
-    top: -15px;
+    top: -10px;
   }
 
   /* -- App Section -- */
@@ -1050,3 +910,21 @@
   }
 
   .app-popup-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+  }
+
+  .app-popup-title {
+    font-size: 1.3rem;
+  }
+
+  .app-popup-body p {
+    font-size: 0.9rem;
+  }
+
+  .app-popup-action-btn {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+}
