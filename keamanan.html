@@ -28,7 +28,7 @@
           alt="Logo Gapura Emas"
           class="logo-image"
         />
-        <h1><span class="orange">GAPURA</span>EMAS</h1>
+        <h1>GAPURA<span class="orange">EMAS</span></h1>
       </div>
       <nav>
         <a href="index.html">Beranda</a>
@@ -72,18 +72,8 @@
       <div class="notification-list">
         <a href="#" class="notification-item unread">
           <span class="notification-dot"></span>
-          <p class="notification-text">Akun anda terblokir</p>
-        </a>
-        <a href="#" class="notification-item unread">
-          <span class="notification-dot"></span>
-          <p class="notification-text">
-            Anda mendapatkan izin akses masuk Sepakat Kabupaten Pasuruan
-          </p>
-        </a>
-        <a href="#" class="notification-item">
-          <span class="notification-dot"></span>
-          <p class="notification-text">Password anda berhasil diubah.</p>
-        </a>
+          <p class="notification-text"></p
+        ></a>
       </div>
       <div class="notification-footer">
         <button class="btn btn-secondary" id="clear-notifications">
@@ -395,8 +385,9 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // --- BAGIAN 1: LOGIKA TAB FADE-IN ---
-        // ... (Logika tab Anda ada di sini) ...
+        // ============================================================
+        // === BAGIAN 1: LOGIKA TAB FADE-IN ===========================
+        // ============================================================
         const tabButtons = document.querySelectorAll(
           ".security-tabs .tab-link"
         );
@@ -409,19 +400,18 @@
               const targetId = button.getAttribute("data-tab");
               tabButtons.forEach((btn) => btn.classList.remove("active"));
               button.classList.add("active");
-              tabContents.forEach((content) => {
-                content.classList.remove("active");
-              });
+              tabContents.forEach((content) =>
+                content.classList.remove("active")
+              );
               const targetContent = document.getElementById(targetId);
-              if (targetContent) {
-                targetContent.classList.add("active");
-              }
+              if (targetContent) targetContent.classList.add("active");
             });
           });
         }
 
-        // --- BAGIAN 2: LOGIKA MODAL KONFIRMASI ---
-        // ... (Logika modal Anda ada di sini) ...
+        // ============================================================
+        // === BAGIAN 2: LOGIKA MODAL KONFIRMASI ======================
+        // ============================================================
         const modal = document.getElementById("konfirmasi-modal");
         const endSessionButtons = document.querySelectorAll(".btn-akhiri-sesi");
         const btnModalCancel = document.getElementById("btn-modal-cancel");
@@ -438,22 +428,27 @@
           btnModalConfirm.addEventListener("click", () => {
             console.log("Sesi diakhiri!");
             modal.classList.remove("active");
+
+            // 🔔 TAMBAH NOTIFIKASI: contoh penggunaan
+            addNotification("Anda telah mengakhiri sesi login.");
           });
           modal.addEventListener("click", (e) => {
-            if (e.target === modal) {
-              modal.classList.remove("active");
-            }
+            if (e.target === modal) modal.classList.remove("active");
           });
         }
 
-        // --- BAGIAN 3: LOGIKA DROPDOWN (NOTIFIKASI & PROFIL) ---
+        // ============================================================
+        // === BAGIAN 3: LOGIKA DROPDOWN (NOTIFIKASI & PROFIL) =======
+        // ============================================================
         const notifIcon = document.querySelector(".notification-icon");
         const notifPanel = document.getElementById("notification-panel");
         const notifCloseBtn = document.getElementById("notification-close-btn");
+        const clearBtn = document.getElementById("clear-notifications");
+        const notifList = document.querySelector(".notification-list");
 
         const userIconBtn = document.getElementById("user-icon-btn");
         const profileDropdown = document.getElementById("profile-dropdown");
-        const profileCloseBtn = document.getElementById("profile-close-btn"); // [BARU]
+        const profileCloseBtn = document.getElementById("profile-close-btn");
 
         if (
           notifIcon &&
@@ -463,35 +458,32 @@
           profileDropdown &&
           profileCloseBtn
         ) {
-          // [DIUBAH]
-
-          // 1. Klik Lonceng
-          notifIcon.addEventListener("click", function (event) {
+          // === Klik Lonceng ===
+          notifIcon.addEventListener("click", (event) => {
             event.stopPropagation();
             notifPanel.classList.toggle("active");
-            profileDropdown.classList.remove("active"); // Tutup profil
-          });
-
-          // 2. Klik Tombol 'X' Notifikasi
-          notifCloseBtn.addEventListener("click", function () {
-            notifPanel.classList.remove("active");
-          });
-
-          // 3. Klik Ikon Profil
-          userIconBtn.addEventListener("click", function (event) {
-            event.stopPropagation();
-            profileDropdown.classList.toggle("active");
-            notifPanel.classList.remove("active"); // Tutup notifikasi
-          });
-
-          // 4. [BARU] Klik Tombol 'X' Profil
-          profileCloseBtn.addEventListener("click", function () {
             profileDropdown.classList.remove("active");
           });
 
-          // 5. Klik di Luar Panel
-          document.addEventListener("click", function (event) {
-            // Cek notifikasi
+          // === Klik Tombol 'X' di Panel Notifikasi ===
+          notifCloseBtn.addEventListener("click", () => {
+            notifPanel.classList.remove("active");
+          });
+
+          // === Klik Ikon Profil ===
+          userIconBtn.addEventListener("click", (event) => {
+            event.stopPropagation();
+            profileDropdown.classList.toggle("active");
+            notifPanel.classList.remove("active");
+          });
+
+          // === Klik Tombol 'X' di Profil ===
+          profileCloseBtn.addEventListener("click", () => {
+            profileDropdown.classList.remove("active");
+          });
+
+          // === Klik di luar panel ===
+          document.addEventListener("click", (event) => {
             if (
               notifPanel.classList.contains("active") &&
               !notifPanel.contains(event.target) &&
@@ -499,7 +491,6 @@
             ) {
               notifPanel.classList.remove("active");
             }
-            // Cek profil
             if (
               profileDropdown.classList.contains("active") &&
               !profileDropdown.contains(event.target) &&
@@ -509,6 +500,80 @@
             }
           });
         }
+
+        // ============================================================
+        // === BAGIAN 4: SISTEM NOTIFIKASI (BARU) =====================
+        // ============================================================
+
+        /** Render daftar notifikasi ke panel */
+        function renderNotifications() {
+          const saved = JSON.parse(localStorage.getItem("notifikasiApp")) || [];
+          notifList.innerHTML = "";
+
+          if (saved.length === 0) {
+            const empty = document.createElement("p");
+            empty.style.padding = "15px 20px";
+            empty.style.textAlign = "center";
+            empty.style.color = "#777";
+            empty.textContent = "Tidak ada notifikasi baru.";
+            notifList.appendChild(empty);
+            clearBtn.disabled = true;
+            clearBtn.textContent = "Tidak ada notifikasi";
+          } else {
+            saved.forEach((n) => {
+              const item = document.createElement("a");
+              item.href = "#";
+              item.className = "notification-item";
+              item.innerHTML = `
+            <span class="notification-dot"></span>
+            <p class="notification-text">${n.text}</p>
+          `;
+              notifList.appendChild(item);
+            });
+            clearBtn.disabled = false;
+            clearBtn.textContent = "Bersihkan semua notifikasi";
+          }
+        }
+
+        /** Tambahkan notifikasi baru */
+        window.addNotification = function (message) {
+          const date = new Date();
+          const waktu = `${date.getDate()}-${
+            date.getMonth() + 1
+          }-${date.getFullYear()} ${date
+            .getHours()
+            .toString()
+            .padStart(2, "0")}:${date
+            .getMinutes()
+            .toString()
+            .padStart(2, "0")}`;
+
+          const textContent = `${message} (${waktu})`;
+
+          const saved = JSON.parse(localStorage.getItem("notifikasiApp")) || [];
+          saved.unshift({ waktu, text: textContent });
+
+          // batasi maksimal 20 notifikasi
+          if (saved.length > 20) saved.pop();
+
+          localStorage.setItem("notifikasiApp", JSON.stringify(saved));
+
+          renderNotifications();
+
+          // tampilkan panel sementara
+          notifPanel.classList.add("active");
+          setTimeout(() => notifPanel.classList.remove("active"), 4000);
+        };
+
+        /** Tombol 'Bersihkan semua notifikasi' */
+        clearBtn?.addEventListener("click", () => {
+          localStorage.removeItem("notifikasiApp");
+          renderNotifications();
+          setTimeout(() => notifPanel.classList.remove("active"), 1000);
+        });
+
+        // Render awal saat halaman dimuat
+        renderNotifications();
       });
     </script>
   </body>

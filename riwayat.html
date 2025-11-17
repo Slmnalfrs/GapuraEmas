@@ -28,7 +28,7 @@
           alt="Logo Gapura Emas"
           class="logo-image"
         />
-        <h1><span class="orange">GAPURA</span>EMAS</h1>
+        <h1>GAPURA<span class="orange">EMAS</span></h1>
       </div>
       <nav>
         <a href="index.html">Beranda</a>
@@ -370,14 +370,18 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // --- LOGIKA DROPDOWN (NOTIFIKASI & PROFIL) ---
+        // ============================================================
+        // === LOGIKA DROPDOWN (NOTIFIKASI & PROFIL) ==================
+        // ============================================================
         const notifIcon = document.querySelector(".notification-icon");
         const notifPanel = document.getElementById("notification-panel");
         const notifCloseBtn = document.getElementById("notification-close-btn");
+        const notifList = document.querySelector(".notification-list");
+        const clearBtn = document.getElementById("clear-notifications");
 
         const userIconBtn = document.getElementById("user-icon-btn");
         const profileDropdown = document.getElementById("profile-dropdown");
-        const profileCloseBtn = document.getElementById("profile-close-btn"); // [BARU]
+        const profileCloseBtn = document.getElementById("profile-close-btn");
 
         if (
           notifIcon &&
@@ -387,35 +391,32 @@
           profileDropdown &&
           profileCloseBtn
         ) {
-          // [DIUBAH]
-
-          // 1. Klik Lonceng
+          // === 1. Klik Lonceng ===
           notifIcon.addEventListener("click", function (event) {
             event.stopPropagation();
             notifPanel.classList.toggle("active");
             profileDropdown.classList.remove("active"); // Tutup profil
           });
 
-          // 2. Klik Tombol 'X' Notifikasi
+          // === 2. Klik Tombol 'X' Notifikasi ===
           notifCloseBtn.addEventListener("click", function () {
             notifPanel.classList.remove("active");
           });
 
-          // 3. Klik Ikon Profil
+          // === 3. Klik Ikon Profil ===
           userIconBtn.addEventListener("click", function (event) {
             event.stopPropagation();
             profileDropdown.classList.toggle("active");
             notifPanel.classList.remove("active"); // Tutup notifikasi
           });
 
-          // 4. [BARU] Klik Tombol 'X' Profil
+          // === 4. Klik Tombol 'X' Profil ===
           profileCloseBtn.addEventListener("click", function () {
             profileDropdown.classList.remove("active");
           });
 
-          // 5. Klik di Luar Panel
+          // === 5. Klik di Luar Panel ===
           document.addEventListener("click", function (event) {
-            // Cek notifikasi
             if (
               notifPanel.classList.contains("active") &&
               !notifPanel.contains(event.target) &&
@@ -423,7 +424,6 @@
             ) {
               notifPanel.classList.remove("active");
             }
-            // Cek profil
             if (
               profileDropdown.classList.contains("active") &&
               !profileDropdown.contains(event.target) &&
@@ -433,7 +433,7 @@
             }
           });
 
-          // 6. (Opsional) Tutup panel saat menekan tombol "Escape"
+          // === 6. Tutup Panel Saat Tekan Escape ===
           document.addEventListener("keydown", function (event) {
             if (event.key === "Escape") {
               notifPanel.classList.remove("active");
@@ -441,7 +441,89 @@
             }
           });
         }
-        // --- AKHIR LOGIKA DROPDOWN ---
+
+        // ============================================================
+        // === SISTEM NOTIFIKASI (BARU DITAMBAHKAN) ===================
+        // ============================================================
+
+        /** Render daftar notifikasi dari localStorage */
+        function renderNotifications() {
+          const saved = JSON.parse(localStorage.getItem("notifikasiApp")) || [];
+          notifList.innerHTML = "";
+
+          if (saved.length === 0) {
+            const empty = document.createElement("p");
+            empty.style.padding = "15px 20px";
+            empty.style.textAlign = "center";
+            empty.style.color = "#777";
+            empty.textContent = "Tidak ada notifikasi baru.";
+            notifList.appendChild(empty);
+            if (clearBtn) {
+              clearBtn.disabled = true;
+              clearBtn.textContent = "Tidak ada notifikasi";
+            }
+          } else {
+            saved.forEach((n) => {
+              const item = document.createElement("a");
+              item.href = "#";
+              item.className = "notification-item";
+              item.innerHTML = `
+            <span class="notification-dot"></span>
+            <p class="notification-text">${n.text}</p>
+          `;
+              notifList.appendChild(item);
+            });
+            if (clearBtn) {
+              clearBtn.disabled = false;
+              clearBtn.textContent = "Bersihkan semua notifikasi";
+            }
+          }
+
+          // (opsional) badge jumlah notifikasi di ikon lonceng
+          const badge = document.querySelector(".notification-badge");
+          if (badge) {
+            badge.textContent = saved.length > 0 ? saved.length : "";
+          }
+        }
+
+        /** Tambahkan notifikasi baru */
+        window.addNotification = function (message) {
+          const date = new Date();
+          const waktu = `${date.getDate()}-${
+            date.getMonth() + 1
+          }-${date.getFullYear()} ${date
+            .getHours()
+            .toString()
+            .padStart(2, "0")}:${date
+            .getMinutes()
+            .toString()
+            .padStart(2, "0")}`;
+
+          const textContent = `${message} (${waktu})`;
+
+          const saved = JSON.parse(localStorage.getItem("notifikasiApp")) || [];
+          saved.unshift({ waktu, text: textContent });
+
+          // batasi maksimal 20 notifikasi
+          if (saved.length > 20) saved.pop();
+
+          localStorage.setItem("notifikasiApp", JSON.stringify(saved));
+          renderNotifications();
+
+          // tampilkan panel notifikasi sementara
+          notifPanel.classList.add("active");
+          setTimeout(() => notifPanel.classList.remove("active"), 4000);
+        };
+
+        /** Tombol 'Bersihkan semua notifikasi' */
+        clearBtn?.addEventListener("click", () => {
+          localStorage.removeItem("notifikasiApp");
+          renderNotifications();
+          setTimeout(() => notifPanel.classList.remove("active"), 1000);
+        });
+
+        // === Render notifikasi awal saat halaman dimuat ===
+        renderNotifications();
       });
     </script>
   </body>
