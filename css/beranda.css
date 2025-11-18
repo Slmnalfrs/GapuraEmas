@@ -11,6 +11,7 @@
   position: relative;
   overflow: hidden;
   min-height: 650px;
+  margin-top: -10px;
 }
 
 /* Waves Bottom */
@@ -65,7 +66,7 @@
 
 .hero-text {
   flex: 1;
-  color: #000000; /* <<< TEKS HITAM */
+  color: #000000; 
 }
 
 .tagline {
@@ -243,6 +244,7 @@
 
 .search-bar {
   position: relative;
+  z-index: 2;
 }
 
 .search-bar input {
@@ -305,9 +307,54 @@
   position: relative;
 }
 
+.app-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    var(--primary-orange, #ff6b35) 0%, 
+    #ff8c42 50%, 
+    #ffa726 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+/* Subtle Glow Effect */
+.app-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, 
+    rgba(255, 107, 53, 0.03) 0%, 
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* Main Hover Effect */
 .app-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.12),
+    0 10px 20px rgba(255, 107, 53, 0.08),
+    0 0 0 1px rgba(255, 107, 53, 0.1);
+  border-color: rgba(255, 107, 53, 0.3);
+}
+
+.app-card:hover::before {
+  transform: scaleX(1);
+}
+
+.app-card:hover::after {
+  opacity: 1;
 }
 
 .card-main {
@@ -437,12 +484,13 @@
 
   .hero-text h1 {
     font-size: 2.8rem;
+    margin-left: 10px;
   }
 
   .hero-text p {
     font-size: 1.5rem;
     max-width: 100%;
-    padding-right: 0;
+    margin-left: 10px;
     margin-bottom: 40px; 
   }
 

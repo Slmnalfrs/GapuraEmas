@@ -201,6 +201,18 @@ footer {
   padding: 0 30px;
 }
 
+.footer-link {
+  color: #12a4ec;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #12a4ec;
+  text-decoration: underline;
+}
+
 /* ================================================
    3. KONTEN UTAMA & ANIMASI
    ================================================ */
