@@ -1,110 +1,148 @@
-/* ================================================
-   1. HERO SECTION (Selamat Datang) - ALTERNATIVE DESIGN
-   ================================================ */
 .hero {
-  background: #ffffff;
-  padding: 80px 0 60px;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #fff2e8 30%,
+    #ffd5b0 60%,
+    #ffb27a 85%,
+    #ff9952 100%
+  );
+  padding: 60px 0 40px;
   position: relative;
   overflow: hidden;
+  min-height: 650px;
 }
 
-/* Dekorasi Wave Pattern */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(135deg, #fff8f5 0%, #fff0e8 100%);
-  clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
-  z-index: 1;
-}
-
-/* Accent Dots */
+/* Waves Bottom */
 .hero::after {
   content: "";
   position: absolute;
-  top: 50px;
-  right: 100px;
-  width: 12px;
-  height: 12px;
-  background: var(--primary-orange);
-  border-radius: 50%;
-  box-shadow: 
-    -80px 40px 0 -2px rgba(241, 90, 36, 0.3),
-    -150px -30px 0 -2px rgba(241, 90, 36, 0.4),
-    60px 120px 0 -2px rgba(241, 90, 36, 0.2),
-    -200px 100px 0 -2px rgba(241, 90, 36, 0.3);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  background: #ffffff;
+  clip-path: ellipse(75% 100% at 50% 100%);
   z-index: 1;
 }
 
+/* Decorative floating circles */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 120px;
+  width: 90px;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: float 6s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+/* Container Layout */
 .hero-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 60px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 40px;
   position: relative;
   z-index: 2;
-  gap: 60px;
+  margin-top: -30px;
 }
 
 .hero-text {
   flex: 1;
-  z-index: 2;
+  color: #000000; /* <<< TEKS HITAM */
 }
 
-.hero-text .orange {
-  color: var(--primary-orange);
-  position: relative;
+.tagline {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 8px 22px;
+  font-size: 0.85rem;
+  border-radius: 25px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.hero-text h1 {
+  font-size: 3.2rem;
   font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 20px;
+  color: #ff9952;
 }
 
 .hero-text p {
-  font-size: 3rem;
-  color: #313131ff;
-  max-width: 700px;
-  line-height: 1.4;
-  margin-bottom: 100px;
-  font-weight: 600;
+  max-width: 500px;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin-bottom: 30px;
+  color: #000; /* hitam */
 }
 
-/* Card Container untuk Logo */
 .hero-image {
   position: relative;
-  flex-shrink: 0;
-  z-index: 2;
+  width: 400px;
+  transform: translate(40px, -20px); /* kanan + naik */
 }
 
-.orange-circle {
-  position: absolute;
-  right: -120px;
-  top: -60px;
-  width: 420px;
-  height: 420px;
-  background: #ffffff;
-  border-radius: 24px;
-  box-shadow: 
-    0 30px 90px rgba(0, 0, 0, 0.08),
-    0 10px 30px rgba(241, 90, 36, 0.1);
-  z-index: 1;
-  transform: rotate(-5deg);
-}
-
-.hero-image .logo-pasuruan {
+/* Circle Crop */
+.hero-image-wrapper {
+  width: 100%;
+  padding-bottom: 100%;
+  border-radius: 50%;
+  overflow: hidden;
   position: relative;
-  z-index: 2;
-  top: -20px;
-  right: -20px;
-  width: 240px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
-  margin-top: 10px;
-  transition: transform 0.3s ease;
+  border: 10px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 }
 
-.hero-image .logo-pasuruan:hover {
-  transform: scale(1.03);
+.hero-image-wrapper img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 50px;
+}
+
+/* Floating Circles on Image */
+.hero-image::before,
+.hero-image::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.hero-image::before {
+  width: 120px;
+  height: 120px;
+  bottom: -30px;
+  left: -70px;
+}
+
+.hero-image::after {
+  width: 90px;
+  height: 90px;
+  top: -10px;
+  right: -30px;
 }
 
 /* ================================================
@@ -117,7 +155,7 @@
   padding: 20px 0;
   position: relative;
   z-index: 3;
-  margin-top: -50px;
+  margin-top: -200px;
 }
 
 .banner {
@@ -382,33 +420,50 @@
 
 /* Tablet ( < 992px ) */
 @media (max-width: 992px) {
-  /* -- Hero -- */
   .hero {
     padding: 50px 0 50px;
   }
-
   .hero::before {
     width: 50%;
     clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%);
+    top: 0;
+    left: 0;
+  }
+
+  .hero-container {
+    padding: 0 30px;
+    gap: 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.8rem;
   }
 
   .hero-text p {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     max-width: 100%;
-    padding-right: 20px;
-    margin-bottom: 70px;
+    padding-right: 0;
+    margin-bottom: 40px; 
+  }
+
+  .hero-image {
+    width: 350px;
+    transform: translate(20px, -10px); 
+  }
+  .hero-image-wrapper {
+    border: 8px solid rgba(255, 255, 255, 0.4);
   }
 
   .orange-circle {
-    width: 340px;
-    height: 340px;
-    right: -100px;
-    top: -50px;
+    width: 250px;
+    height: 250px; 
+    right: -50px
+    top: -20px;
   }
 
   .hero-image .logo-pasuruan {
-    width: 190px;
-    right: -10px;
+    width: 150px; 
+    right: 0;
   }
 
   /* -- Banner -- */
@@ -454,7 +509,6 @@
     height: 100px;
   }
 
-  /* Aturan Last Access & Tombol (Tablet + Mobile) */
   .app-status {
     display: none !important;
   }
@@ -477,48 +531,90 @@
 /* Mobile ( < 768px ) */
 @media (max-width: 768px) {
   .hero {
-    padding: 30px 0 40px;
+    padding: 25px 0 35px;
+    min-height: 400px; 
     overflow: hidden;
   }
 
-  .hero::before {
-    width: 60%;
-    clip-path: polygon(50% 0, 100% 0, 100% 100%, 20% 100%);
-  }
-
-  .hero::after {
-    top: 30px;
-    right: 50px;
-    width: 8px;
-    height: 8px;
-  }
-
+  
   .hero-container {
-    align-items: flex-start;
-    gap: 20px;
+    gap: 10px; 
+    padding: 0 10px; 
+    margin-top: 0;
+  }
+
+  /* --- Teks Area --- */
+  .hero-text {
+    flex: 1.5; 
+  }
+
+  .tagline {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    margin-bottom: 8px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.4rem; 
+    line-height: 1.2;
+    margin-bottom: 8px;
   }
 
   .hero-text p {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    padding-right: 30px;
-    margin-bottom: 60px;
+    font-size: 0.75rem; 
+    line-height: 1.35;
+    padding-right: 5px; 
+    margin-bottom: 12px; 
   }
 
+  /* --- Gambar Area --- */
+  .hero-image {
+    width: 150px; 
+    transform: none; 
+  }
+  
+  .hero-image-wrapper {
+    border: 3px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .hero-image-wrapper img {
+    padding: 15px;
+  }
+
+
   .orange-circle {
-    width: 190px;
-    height: 190px;
-    top: -30px;
-    right: -60px;
-    border-radius: 16px;
+    width: 80px; 
+    height: 80px; 
+    top: -5px;
+    right: -15px;
+    border-radius: 8px;
   }
 
   .hero-image .logo-pasuruan {
-    width: 100px;
-    right: -5px;
-    top: -10px;
+    width: 40px; 
+    right: 0px;
+    top: 0px;
   }
 
+  .hero-image::before,
+  .hero-image::after {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .hero-image::before {
+    width: 50px; 
+    height: 50px;
+    bottom: -15px; 
+    left: -20px; 
+  }
+
+  /* Lingkaran Kecil Atas-Kanan */
+  .hero-image::after {
+    width: 40px; 
+    height: 40px;
+    top: -5px; 
+    right: -10px; 
+  }
   /* -- App Section -- */
   .app-section {
     padding-top: 20px;
@@ -579,7 +675,7 @@
     overflow-x: auto;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    margin-top: -50px;
+    margin-top: -200px;
     padding-left: 15px;
     padding-right: 15px;
     -ms-overflow-style: none;
@@ -599,7 +695,6 @@
   }
 }
 
-/* ======== DESAIN POPUP ======== */
 .popup-overlay {
   position: fixed;
   inset: 0;
