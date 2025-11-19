@@ -18,6 +18,91 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+
+    <style>
+      /* Style untuk password toggle */
+      .password-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .password-wrapper input {
+        padding-right: 45px !important;
+      }
+
+      .password-toggle {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-grey);
+        font-size: 1.1rem;
+        padding: 8px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+      }
+
+      .password-toggle:hover {
+        color: var(--primary-orange);
+        background: rgba(241, 90, 36, 0.08);
+      }
+
+      .password-toggle:active {
+        transform: translateY(-50%) scale(0.95);
+      }
+
+      .password-toggle i {
+        pointer-events: none;
+      }
+
+      /* Style untuk error message */
+      .error-message {
+        display: none;
+        margin-top: 8px;
+        padding: 10px 15px;
+        background: linear-gradient(145deg, #fff5f5 0%, #ffe8e8 100%);
+        border: 1px solid rgba(220, 53, 69, 0.3);
+        border-radius: 8px;
+        color: #dc3545;
+        font-size: 0.85rem;
+        font-weight: 500;
+        line-height: 1.5;
+        animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .error-message.show {
+        display: block;
+      }
+
+      .error-message i {
+        margin-right: 6px;
+      }
+
+      .form-group.has-error input {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.1);
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -96,7 +181,7 @@
           <div class="tab-content active" id="akun">
             <div class="content-card">
               <h2>Ubah Sandi</h2>
-              <form>
+              <form id="form-ubah-sandi">
                 <div class="form-group">
                   <label for="pass-lama">Password Lama</label>
                   <input
@@ -105,21 +190,38 @@
                     placeholder="Masukkan Password Lama"
                   />
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="form-group-pass-baru">
                   <label for="pass-baru">Password Baru</label>
-                  <input
-                    type="password"
-                    id="pass-baru"
-                    placeholder="Masukkan Password Baru"
-                  />
+                  <div class="password-wrapper">
+                    <input
+                      type="password"
+                      id="pass-baru"
+                      placeholder="Masukkan Password Baru"
+                    />
+                    <button
+                      type="button"
+                      class="password-toggle"
+                      data-target="pass-baru"
+                    >
+                      <i class="fas fa-eye-slash"></i>
+                    </button>
+                  </div>
+                  <div class="error-message" id="error-pass-baru">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Password harus minimal 8 karakter
+                  </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="form-group-pass-ulang">
                   <label for="pass-ulang">Password Baru (ulangi)</label>
                   <input
                     type="password"
                     id="pass-ulang"
                     placeholder="Masukkan Password Baru (ulangi)"
                   />
+                  <div class="error-message" id="error-pass-ulang">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Password tidak sama
+                  </div>
                 </div>
                 <div class="form-actions">
                   <button type="submit" class="btn btn-primary">Simpan</button>
@@ -392,6 +494,110 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // ============================================================
+        // === BAGIAN 0: PASSWORD TOGGLE & VALIDATION =================
+        // ============================================================
+        const passwordToggles = document.querySelectorAll(".password-toggle");
+
+        // Toggle password visibility
+        passwordToggles.forEach((toggle) => {
+          toggle.addEventListener("click", function () {
+            const targetId = this.getAttribute("data-target");
+            const passwordInput = document.getElementById(targetId);
+            const icon = this.querySelector("i");
+
+            if (passwordInput.type === "password") {
+              passwordInput.type = "text";
+              icon.classList.remove("fa-eye-slash");
+              icon.classList.add("fa-eye");
+            } else {
+              passwordInput.type = "password";
+              icon.classList.remove("fa-eye");
+              icon.classList.add("fa-eye-slash");
+            }
+          });
+        });
+
+        // Password validation
+        const formUbahSandi = document.getElementById("form-ubah-sandi");
+        const passBaru = document.getElementById("pass-baru");
+        const passUlang = document.getElementById("pass-ulang");
+        const errorPassBaru = document.getElementById("error-pass-baru");
+        const errorPassUlang = document.getElementById("error-pass-ulang");
+        const formGroupPassBaru = document.getElementById(
+          "form-group-pass-baru"
+        );
+        const formGroupPassUlang = document.getElementById(
+          "form-group-pass-ulang"
+        );
+
+        // Validate password baru (minimal 8 karakter)
+        passBaru.addEventListener("blur", function () {
+          if (this.value.length > 0 && this.value.length < 8) {
+            formGroupPassBaru.classList.add("has-error");
+            errorPassBaru.classList.add("show");
+          } else {
+            formGroupPassBaru.classList.remove("has-error");
+            errorPassBaru.classList.remove("show");
+          }
+        });
+
+        passBaru.addEventListener("input", function () {
+          if (this.value.length >= 8) {
+            formGroupPassBaru.classList.remove("has-error");
+            errorPassBaru.classList.remove("show");
+          }
+        });
+
+        // Validate password ulang (harus sama dengan password baru)
+        passUlang.addEventListener("blur", function () {
+          if (this.value.length > 0 && this.value !== passBaru.value) {
+            formGroupPassUlang.classList.add("has-error");
+            errorPassUlang.classList.add("show");
+          } else if (this.value === passBaru.value) {
+            formGroupPassUlang.classList.remove("has-error");
+            errorPassUlang.classList.remove("show");
+          }
+        });
+
+        passUlang.addEventListener("input", function () {
+          if (this.value === passBaru.value) {
+            formGroupPassUlang.classList.remove("has-error");
+            errorPassUlang.classList.remove("show");
+          }
+        });
+
+        // Form submit validation
+        formUbahSandi.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          let isValid = true;
+
+          // Check password baru
+          if (passBaru.value.length < 8) {
+            formGroupPassBaru.classList.add("has-error");
+            errorPassBaru.classList.add("show");
+            isValid = false;
+          }
+
+          // Check password ulang
+          if (passUlang.value !== passBaru.value) {
+            formGroupPassUlang.classList.add("has-error");
+            errorPassUlang.classList.add("show");
+            isValid = false;
+          }
+
+          if (isValid) {
+            alert("Password berhasil diubah!");
+            // Reset form
+            this.reset();
+            formGroupPassBaru.classList.remove("has-error");
+            formGroupPassUlang.classList.remove("has-error");
+            errorPassBaru.classList.remove("show");
+            errorPassUlang.classList.remove("show");
+          }
+        });
+
         // ============================================================
         // === BAGIAN 1: LOGIKA TAB FADE-IN ===========================
         // ============================================================

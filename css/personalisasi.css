@@ -1,44 +1,61 @@
-/* Judul Halaman */
+/* ================================================
+   PAGE TITLE
+   ================================================ */
+
 .page-title {
   font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 20px;
+  font-weight: 700;
+  margin-bottom: 25px;
   color: var(--text-dark);
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(241, 90, 36, 0.15);
+  padding-bottom: 18px;
   font-family: poppins, sans-serif;
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* Base Card untuk Konten */
+/* ================================================
+   CONTENT CARD
+   ================================================ */
+
 .content-card {
-  background-color: var(--white);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  padding: 30px;
+  background: linear-gradient(145deg, #ffffff 0%, #fffbf7 100%);
+  border: 1px solid rgba(241, 90, 36, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(241, 90, 36, 0.04);
+  padding: 35px;
   margin-bottom: 30px;
-  animation: fadeIn 0.5s ease-out 0.1s forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
   opacity: 0;
+}
+
+.content-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(241, 90, 36, 0.08);
 }
 
 .content-card h2 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 20px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 2px solid rgba(241, 90, 36, 0.15);
   padding-bottom: 15px;
   font-family: poppins, sans-serif;
+  color: var(--text-dark);
 }
 
-/* === Bagian Profil === */
+/* ================================================
+   PROFILE SECTION
+   ================================================ */
+
 .profile-content {
   display: flex;
   gap: 40px;
   flex-direction: row;
 }
 
-/* Form Kiri */
 .profile-form {
   flex: 2;
 }
@@ -49,40 +66,54 @@
 
 .form-group label {
   display: block;
-  font-weight: 500;
-  margin-bottom: 6px;
+  font-weight: 600;
+  margin-bottom: 8px;
   color: var(--text-dark);
+  font-size: 0.95rem;
 }
 
 .form-group input[type="text"],
 .form-group textarea {
   width: 100%;
   padding: 12px 15px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border: 1px solid rgba(241, 90, 36, 0.15);
+  border-radius: 10px;
   font-family: "Poppins", sans-serif;
   font-size: 0.95rem;
-  background-color: #fcfcfc;
+  background: linear-gradient(145deg, #ffffff 0%, #fffbf7 100%);
   color: var(--text-dark);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-orange);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(241, 90, 36, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
 }
 
 .form-group input[readonly],
 .form-group textarea[readonly] {
-  background-color: #f5f5f0;
+  background: linear-gradient(145deg, #f8f8f8 0%, #f5f5f0 100%);
   color: var(--text-grey);
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(241, 90, 36, 0.08);
+  cursor: not-allowed;
 }
 
 .form-group small {
   display: block;
   margin-top: 8px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-grey);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* Foto Profil Kanan */
+/* ================================================
+   PROFILE PHOTO
+   ================================================ */
+
 .profile-photo {
   flex: 1;
   text-align: center;
@@ -91,7 +122,7 @@
 
 .profile-photo h3 {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-dark);
   margin-bottom: 15px;
   border-bottom: none;
@@ -101,14 +132,21 @@
 .profile-photo .avatar {
   width: 150px;
   height: 150px;
-  border-radius: 8px;
-  /* Kotak */
+  border-radius: 12px;
   object-fit: cover;
   margin-bottom: 15px;
-  border: 3px solid var(--border-color);
+  border: 3px solid rgba(241, 90, 36, 0.15);
   display: block;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(241, 90, 36, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-photo .avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(241, 90, 36, 0.15);
+  border-color: rgba(241, 90, 36, 0.3);
 }
 
 .photo-buttons {
@@ -117,76 +155,115 @@
   gap: 10px;
 }
 
-/* === Tombol-Tombol === */
+/* ================================================
+   BUTTONS
+   ================================================ */
+
 .btn {
   font-family: "Poppins", sans-serif;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.9rem;
-  /* Transisi 'Angkat' */
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .btn-primary {
-  background-color: var(--primary-orange);
+  background: linear-gradient(135deg, var(--primary-orange) 0%, #ff8c42 100%);
   color: var(--white);
+  box-shadow: 0 4px 12px rgba(241, 90, 36, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: #d13a0a;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(241, 90, 36, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(241, 90, 36, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(241, 90, 36, 0.35);
 }
 
 .btn-secondary {
   background-color: var(--white);
   color: var(--primary-orange);
-  border: 1px solid var(--primary-orange);
+  border: 2px solid var(--primary-orange);
+  box-shadow: 0 2px 8px rgba(241, 90, 36, 0.1);
 }
 
 .btn-secondary:hover {
-  background-color: #fff7f0;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(241, 90, 36, 0.15);
+  background: linear-gradient(145deg, #fff7f0 0%, #ffede0 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(241, 90, 36, 0.2);
+}
+
+.btn-secondary:active {
+  transform: translateY(-1px);
 }
 
 .btn-success {
-  background-color: #28a745;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
   color: var(--white);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
 }
 
 .btn-success:hover {
-  background-color: #218838;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.btn-success:active {
+  transform: translateY(-1px);
 }
 
 .btn-tertiary {
   background-color: transparent;
   color: var(--text-grey);
   padding: 10px;
+  box-shadow: none;
 }
 
 .btn-tertiary:hover {
   color: var(--primary-orange);
   transform: translateY(-2px);
+  background: rgba(241, 90, 36, 0.05);
 }
 
 .btn-danger {
-  background-color: #8c1007;
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
   color: var(--white);
-  border: none;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
 }
 
 .btn-danger:hover {
-  background-color: #c10000ff;
-  color: var(--white);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(190, 14, 14, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+.btn-danger:active {
+  transform: translateY(-1px);
 }
 
 .form-actions {
@@ -194,7 +271,10 @@
   text-align: right;
 }
 
-/* === Bagian Telegram === */
+/* ================================================
+   TELEGRAM SECTION
+   ================================================ */
+
 .telegram-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -202,7 +282,7 @@
 }
 
 .telegram-cara {
-  border-right: 1px solid var(--border-color);
+  border-right: 2px solid rgba(241, 90, 36, 0.15);
   padding-right: 30px;
 }
 
@@ -213,22 +293,27 @@
 
 .telegram-cara h3 {
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 15px;
   padding-bottom: 0;
   border-bottom: none;
+  color: var(--text-dark);
 }
 
 .telegram-cara h3 a {
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
   color: var(--text-grey);
-  transition: color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .telegram-cara h3 a:hover {
   color: var(--primary-orange);
+  transform: translateX(4px);
 }
 
 .telegram-cara h3 a span {
@@ -243,33 +328,48 @@
 }
 
 .telegram-cara ol li {
-  margin-bottom: 10px;
-  line-height: 1.6;
+  margin-bottom: 12px;
+  line-height: 1.7;
   color: var(--text-dark);
 }
 
 .telegram-cara ol li a {
   color: #12a4ec;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.telegram-cara ol li a:hover {
-  text-decoration: underline;
+.telegram-cara ol li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(90deg, #12a4ec 0%, #0d8bc9 100%);
+  transition: width 0.3s ease;
 }
+
+.telegram-cara ol li a:hover::after {
+  width: 100%;
+}
+
+/* ================================================
+   QR CODE
+   ================================================ */
 
 .qr-code {
   width: 150px;
   height: 150px;
-  border: 1px solid var(--border-color);
+  border: 2px solid rgba(241, 90, 36, 0.15);
+  border-radius: 12px;
   display: block;
   margin-top: 20px;
   margin-bottom: 0;
-  transition: transform 0.3s ease;
-}
-
-.qr-code:hover {
-  transform: scale(1.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .qr-wrapper {
@@ -289,9 +389,14 @@
   text-align: center;
   font-size: 0.85rem;
   color: var(--text-grey);
-  margin-top: 10px;
-  line-height: 1.5;
+  margin-top: 12px;
+  line-height: 1.6;
+  font-weight: 500;
 }
+
+/* ================================================
+   TELEGRAM INPUT
+   ================================================ */
 
 .telegram-input {
   display: flex;
@@ -301,20 +406,21 @@
 
 .telegram-input input {
   flex-grow: 1;
-  padding: 10px 15px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
+  padding: 12px 15px;
+  border: 1px solid rgba(241, 90, 36, 0.15);
+  border-radius: 10px;
   font-family: "Poppins", sans-serif;
   color: var(--text-dark);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(145deg, #ffffff 0%, #fffbf7 100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
-.form-group input[type="text"]:focus,
-.form-group textarea:focus,
 .telegram-input input:focus {
   border-color: var(--primary-orange);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(241, 90, 36, 0.15);
+  box-shadow: 0 0 0 4px rgba(241, 90, 36, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
 }
 
 .text-center {
@@ -330,26 +436,34 @@
   text-align: center;
 }
 
-/* === Teks Placeholder === */
+/* ================================================
+   PLACEHOLDER
+   ================================================ */
+
 ::placeholder {
   color: var(--text-grey);
-  opacity: 1;
+  opacity: 0.7;
 }
 
-/* === Animasi Keyframes === */
-@keyframes fadeIn {
+/* ================================================
+   ANIMATIONS
+   ================================================ */
+
+@keyframes fadeSlideIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* === Responsif === */
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+
 @media (max-width: 992px) {
   .profile-content {
     flex-direction: column;
@@ -369,7 +483,7 @@
   .telegram-cara {
     border-right: none;
     padding-right: 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid rgba(241, 90, 36, 0.15);
     padding-bottom: 30px;
   }
 
@@ -378,7 +492,6 @@
     padding-bottom: 0;
   }
 
-  /* Mengubah .qr-wrapper untuk rata tengah */
   .qr-wrapper {
     display: flex;
     flex-direction: column;
@@ -398,13 +511,29 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .content-card {
-    padding: 20px;
+    padding: 25px 20px;
   }
 
   .page-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-card {
+    padding: 20px 15px;
+    border-radius: 14px;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+    padding-bottom: 15px;
+  }
+
+  .content-card h2 {
+    font-size: 1.3rem;
   }
 
   .telegram-input {
@@ -414,5 +543,20 @@
   .telegram-input input,
   .telegram-input button {
     width: 100%;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  .profile-photo .avatar {
+    width: 130px;
+    height: 130px;
+  }
+
+  .qr-code {
+    width: 130px;
+    height: 130px;
   }
 }

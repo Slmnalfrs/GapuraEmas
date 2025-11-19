@@ -18,7 +18,7 @@
 body {
   font-family: "Poppins", sans-serif;
   font-display: swap;
-  background-color: var(--bg-light);
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
   color: var(--text-dark);
   line-height: 1.6;
   padding-top: 85px;
@@ -50,12 +50,13 @@ iframe {
   display: flex;
   align-items: center;
   padding: 15px 30px;
-  background: var(--white);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #ffffff 0%, #fffbf7 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(241, 90, 36, 0.04);
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+  border-bottom: 1px solid rgba(241, 90, 36, 0.1);
 }
 
 /* Navigasi Teks (Desktop) */
@@ -71,36 +72,43 @@ nav a {
   margin: 0 5px;
   text-decoration: none;
   color: var(--text-grey);
-  font-weight: 500;
-  padding: 8px 14px;
-  border-radius: 6px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 10px;
   background-color: transparent;
   display: inline-block;
   font-size: 0.9rem;
-  transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .nav-separator {
-  color: var(--text-grey);
+  color: rgba(241, 90, 36, 0.3);
   font-weight: 500;
   margin: 0 2px;
   font-size: 0.9rem;
 }
 
 nav a:hover {
-  background-color: transparent;
+  background: linear-gradient(
+    145deg,
+    rgba(241, 90, 36, 0.08) 0%,
+    rgba(241, 90, 36, 0.04) 100%
+  );
   color: var(--primary-orange);
   transform: translateY(-2px);
 }
 
 nav a.active {
-  background-color: var(--primary-orange);
+  background: linear-gradient(135deg, var(--primary-orange) 0%, #ff8c42 100%);
   color: var(--white);
   transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(241, 90, 36, 0.3);
 }
 
 nav a.active:hover {
-  background-color: #d13a0a;
+  box-shadow: 0 6px 16px rgba(241, 90, 36, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Logo (Kiri) */
@@ -111,11 +119,12 @@ nav a.active:hover {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0px;
+  gap: 10px;
 }
 
 .logo img {
   width: 40px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .logo h1 {
@@ -149,7 +158,9 @@ nav a.active:hover {
   font-size: 20px;
   color: var(--text-grey);
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 8px;
+  border-radius: 8px;
 }
 
 .user-icon {
@@ -159,11 +170,13 @@ nav a.active:hover {
 
 .notification-icon:hover {
   color: var(--primary-orange);
+  background: rgba(241, 90, 36, 0.08);
   transform: scale(1.1) translateY(-1px);
 }
 
 .user-icon:hover {
   color: #d13a0a;
+  background: rgba(241, 90, 36, 0.08);
   transform: scale(1.1);
 }
 
@@ -173,21 +186,25 @@ nav a.active:hover {
   align-items: flex-end;
   margin: 0;
   font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .user-details .role {
   font-size: 0.75rem;
   color: var(--text-grey);
   margin: 0;
+  font-weight: 500;
 }
 
 /* ================================================
    2. FOOTER
    ================================================ */
 footer {
-  background-color: var(--white);
-  padding: 25px 0;
+  background: linear-gradient(145deg, #ffffff 0%, #fffbf7 100%);
+  padding: 30px 0;
   margin-top: 60px;
+  border-top: 2px solid rgba(241, 90, 36, 0.1);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .footer-content {
@@ -199,34 +216,44 @@ footer {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 30px;
+  font-weight: 500;
 }
 
 .footer-link {
   color: #12a4ec;
   font-weight: 600;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.footer-link:hover {
-  color: #12a4ec;
-  text-decoration: underline;
+.footer-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(90deg, #12a4ec 0%, #0d8bc9 100%);
+  transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
 }
 
 /* ================================================
    3. KONTEN UTAMA & ANIMASI
    ================================================ */
 main {
-  animation: fadeIn 1s ease-out forwards;
-  -webkit-animation: fadeIn 1s ease-out forwards;
+  animation: fadeSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-@keyframes fadeIn {
+@keyframes fadeSlideIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -244,12 +271,13 @@ main {
   left: 10px;
   right: 10px;
   width: auto;
-  background-color: var(--white);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #ffffff 0%, #fffbf7 100%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(241, 90, 36, 0.08);
   border-radius: 20px;
   padding: 3px;
   justify-content: space-around;
   align-items: center;
+  border: 1px solid rgba(241, 90, 36, 0.1);
 }
 
 .mobile-nav a {
@@ -263,7 +291,8 @@ main {
   min-height: 45px;
   padding: 4px 2px;
   border-radius: 15px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .mobile-nav a span {
@@ -284,73 +313,109 @@ main {
 
 .mobile-nav a:not(.active):hover {
   color: var(--text-dark);
+  background: rgba(241, 90, 36, 0.05);
 }
 
 .mobile-nav a.active {
-  background-color: var(--primary-orange);
+  background: linear-gradient(135deg, var(--primary-orange) 0%, #ff8c42 100%);
   color: var(--white);
+  box-shadow: 0 4px 12px rgba(241, 90, 36, 0.4);
 }
 
 /* ================================================
-   4.5 GAYA TOMBOL GLOBAL (BARU)
+   4.5 GAYA TOMBOL GLOBAL
    ================================================ */
 .btn {
   font-family: "Poppins", sans-serif;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.9rem;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .btn-primary {
-  background-color: var(--primary-orange);
+  background: linear-gradient(135deg, var(--primary-orange) 0%, #ff8c42 100%);
   color: var(--white);
+  box-shadow: 0 4px 12px rgba(241, 90, 36, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: #d13a0a;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(241, 90, 36, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(241, 90, 36, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
   background-color: var(--white);
   color: var(--primary-orange);
-  border: 1px solid var(--primary-orange);
+  border: 2px solid var(--primary-orange);
+  box-shadow: 0 2px 8px rgba(241, 90, 36, 0.1);
 }
 
 .btn-secondary:hover {
-  background-color: #fff7f0;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(241, 90, 36, 0.15);
+  background: linear-gradient(145deg, #fff7f0 0%, #ffede0 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(241, 90, 36, 0.2);
+}
+
+.btn-secondary:active {
+  transform: translateY(-1px);
 }
 
 .btn-success {
-  background-color: #28a745;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
   color: var(--white);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
 }
 
 .btn-success:hover {
-  background-color: #218838;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.btn-success:active {
+  transform: translateY(-1px);
 }
 
 .btn-danger {
-  background-color: #8c1007;
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
   color: var(--white);
-  border: none;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
 }
 
 .btn-danger:hover {
-  background-color: #680901;
-  color: var(--white);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+.btn-danger:active {
+  transform: translateY(-1px);
 }
 
 /* ================================================
@@ -364,23 +429,30 @@ main {
 }
 
 .fab {
-  background-color: var(--primary-orange);
+  background: linear-gradient(135deg, var(--primary-orange) 0%, #ff8c42 100%);
   color: var(--white);
   width: 60px;
   height: 60px;
   border-radius: 50%;
   border: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(241, 90, 36, 0.4),
+    0 0 0 4px rgba(241, 90, 36, 0.1);
   cursor: pointer;
   font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, bottom 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fab:hover {
-  transform: scale(1.1);
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 30px rgba(241, 90, 36, 0.5),
+    0 0 0 6px rgba(241, 90, 36, 0.15);
+}
+
+.fab:active {
+  transform: scale(1.05);
 }
 
 /* ================================================
@@ -388,17 +460,14 @@ main {
    ================================================ */
 
 /* Tablet ( < 768px ) */
-@media (max-width: 480px) {
-  /* -- Body -- */
+@media (max-width: 768px) {
   body {
-    padding-top: 66px;
+    padding-top: 70px;
     padding-bottom: 70px;
   }
 
-  /* -- Navbar Atas (Mobile Diperbesar) -- */
   .navbar {
-    padding: 12px 15px;
-    flex-wrap: nowrap;
+    padding: 12px 20px;
   }
 
   .navbar nav {
@@ -411,11 +480,9 @@ main {
     margin-right: 0;
   }
 
-  /* [UPDATE] Tampilkan teks "gapuraemas" di samping logo pada mode mobile */
   .logo h1 {
     display: block;
-    font-size: 1rem;
-    margin-left: 5px;
+    font-size: 1.1rem;
   }
 
   .logo img {
@@ -431,26 +498,22 @@ main {
     font-size: 24px;
   }
 
-  /* -- Footer -- */
   .footer-content {
     flex-direction: column;
     text-align: center;
-    gap: 10px;
+    gap: 15px;
   }
 
-  /* -- Konten Utama -- */
   main {
-    margin-top: -38px;
+    margin-top: -30px;
   }
 
-  /* -- Tampilkan Navbar Bawah -- */
   .mobile-nav {
     display: flex;
   }
 
-  /* -- Posisi FAB di Mobile -- */
   .fab-container {
-    bottom: 71px;
+    bottom: 75px;
     right: 20px;
   }
 }
@@ -458,26 +521,29 @@ main {
 /* Mobile ( < 480px ) */
 @media (max-width: 480px) {
   body {
-    padding-top: 56px;
+    padding-top: 60px;
     padding-bottom: 70px;
   }
 
-  /* -- Navbar Atas (Mobile Diperbesar) -- */
   .navbar {
-    padding: 10px 10px;
+    padding: 10px 15px;
   }
 
   .logo img {
     width: 35px;
   }
 
+  .logo h1 {
+    font-size: 1rem;
+  }
+
   .user-info {
-    gap: 15px;
+    gap: 12px;
   }
 
   .notification-icon,
   .user-icon {
-    font-size: 23px;
+    font-size: 22px;
   }
 
   .container {
@@ -485,62 +551,64 @@ main {
   }
 
   main {
-    margin-top: -38px;
+    margin-top: -30px;
   }
 
   .fab-container {
-    bottom: 66px;
-    right: 20px;
+    bottom: 70px;
+    right: 15px;
+  }
+
+  .fab {
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
   }
 }
 
 /* ================================================
-   7. PANEL NOTIFIKASI (PERBAIKAN FINAL)
+   7. PANEL NOTIFIKASI
    ================================================ */
 .notification-panel {
   position: fixed;
-  top: 75px;
+  top: 80px;
   right: 30px;
-  width: 340px;
+  width: 360px;
   max-width: 90vw;
-  background-color: var(--white);
-  border-radius: var(--border-radius);
-  border: 1px solid #dcdcdc;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(145deg, #ffffff 0%, #fffbf7 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(241, 90, 36, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(241, 90, 36, 0.1);
   z-index: 1001;
   opacity: 0;
   transform: translateY(-10px) scale(0.95);
   visibility: hidden;
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Status aktif (terlihat) */
 .notification-panel.active {
   opacity: 1;
   transform: translateY(0) scale(1);
   visibility: visible;
 }
 
-/* Wrapper untuk Judul dan Tombol X */
 .notification-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 20px 15px 20px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 2px solid rgba(241, 90, 36, 0.1);
 }
 
-/* Judul */
 .notification-panel h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 700;
   padding: 0;
   border-bottom: none;
   margin-bottom: 0;
   color: var(--text-dark);
 }
 
-/* Tombol Close (X) */
 .notification-close-btn {
   background: none;
   border: none;
@@ -550,111 +618,142 @@ main {
   cursor: pointer;
   padding: 0;
   line-height: 1;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .notification-close-btn:hover {
   color: var(--primary-orange);
-  transform: scale(1.1);
+  background: rgba(241, 90, 36, 0.08);
+  transform: rotate(90deg);
 }
 
-/* Daftar Notifikasi */
 .notification-list {
-  max-height: 300px;
+  max-height: 350px;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(241, 90, 36, 0.3) transparent;
 }
 
-/* [PERBAIKAN] Item Notifikasi sebagai Teks Biasa */
+.notification-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notification-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.notification-list::-webkit-scrollbar-thumb {
+  background: rgba(241, 90, 36, 0.3);
+  border-radius: 3px;
+}
+
+.notification-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(241, 90, 36, 0.5);
+}
+
 .notification-item {
   display: flex;
   align-items: center;
   gap: 15px;
   padding: 15px 20px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(241, 90, 36, 0.08);
   text-decoration: none;
   color: var(--text-dark);
   cursor: default;
+  transition: all 0.3s ease;
+}
+
+.notification-item:hover {
+  background: linear-gradient(
+    145deg,
+    rgba(241, 90, 36, 0.03) 0%,
+    rgba(241, 90, 36, 0.01) 100%
+  );
 }
 
 .notification-item:last-child {
   border-bottom: none;
 }
 
-/* [PERBAIKAN] Membuat SEMUA dot berwarna hijau */
 .notification-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #28a745;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.4);
 }
 
 .notification-text {
   font-size: 0.9rem;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--text-dark);
+  font-weight: 500;
 }
 
 .notification-footer {
   padding: 15px;
-  border-top: 1px solid var(--border-color);
+  border-top: 2px solid rgba(241, 90, 36, 0.1);
 }
 
-/* Tombol footer sekarang menggunakan .btn-secondary */
 .notification-footer .btn-secondary {
   width: 100%;
   text-align: center;
 }
 
-/* Penyesuaian Posisi Notifikasi di Mobile */
 @media (max-width: 768px) {
   .notification-panel {
-    top: 82px;
+    top: 85px;
     right: 15px;
+    width: 340px;
   }
 }
 
 @media (max-width: 480px) {
   .notification-panel {
-    top: 72px;
+    top: 75px;
+    width: calc(100vw - 30px);
   }
 }
 
 /* ================================================
-   8. DROPDOWN PROFIL (BARU)
+   8. DROPDOWN PROFIL
    ================================================ */
 .profile-dropdown {
   position: absolute;
-  top: 60px;
+  top: 65px;
   right: 0;
-  width: 160px;
-  background-color: var(--white);
-  border-radius: var(--border-radius);
-  border: 1px solid #dcdcdc;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 170px;
+  background: linear-gradient(145deg, #ffffff 0%, #fffbf7 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(241, 90, 36, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(241, 90, 36, 0.1);
   z-index: 1001;
   padding: 0;
   opacity: 0;
   transform: translateY(-10px) scale(0.95);
   visibility: hidden;
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Status aktif (terlihat) */
 .profile-dropdown.active {
   opacity: 1;
   transform: translateY(0) scale(1);
   visibility: visible;
 }
 
-/* [BARU] Header untuk tombol X */
 .profile-dropdown-header {
   display: flex;
   justify-content: flex-end;
-  padding: 5px 5px 0 0;
+  padding: 8px 8px 0 0;
 }
 
-/* [BARU] Tombol Close (X) untuk Profil */
 .profile-close-btn {
   background: none;
   border: none;
@@ -662,22 +761,27 @@ main {
   font-weight: 400;
   color: var(--text-grey);
   cursor: pointer;
-  padding: 0 5px;
+  padding: 0;
   line-height: 1;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile-close-btn:hover {
   color: var(--primary-orange);
-  transform: scale(1.1);
+  background: rgba(241, 90, 36, 0.08);
+  transform: rotate(90deg);
 }
 
-/* [BARU] Body untuk tombol Logout */
 .profile-dropdown-body {
-  padding: 5px 10px 10px 10px;
+  padding: 5px 12px 12px 12px;
 }
 
-/* [DIUBAH] Tombol Logout dengan Ikon */
 .profile-dropdown .btn-danger {
   width: 100%;
   text-align: center;
@@ -685,12 +789,19 @@ main {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  padding: 10px 16px;
+  font-size: 0.85rem;
 }
 
-/* Penyesuaian Posisi di Mobile */
 @media (max-width: 768px) {
   .profile-dropdown {
-    top: 66px;
+    top: 70px;
     right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-dropdown {
+    top: 65px;
   }
 }
